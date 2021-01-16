@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>utp-trade-ht</artifactId>
+        <groupId>cn.kingnet</groupId>
+        <version>2.5.5</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>utp-discovery</artifactId>
+    <packaging>jar</packaging>
+    <name>utp-discovery</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.kingnet</groupId>
+            <artifactId>kingnet-framework-starter-eureka-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.kingnet</groupId>
+            <artifactId>kingnet-framework-starter-log</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>utp-discovery</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profileActive>dev</profileActive>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profileActive>test</profileActive>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>application.yml</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>live</id>
+            <properties>
+                <profileActive>live</profileActive>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <excludes>
+                            <exclude>application.yml</exclude>
+                        </excludes>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

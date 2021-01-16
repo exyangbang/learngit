@@ -1,0 +1,58 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "merchant",
+    "type": "table",
+    "name": "MerchantCertificationPicInfo",
+    "mysqlName":"merchant_certification_pic_info",
+    "update":false,
+    "doc": "商户证件照片信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"merchant_certification_pic_info_index_1",
+            "fields":["merNo"]
+        },
+        {
+            "name":"merchant_certification_pic_info_index_2",
+            "fields":["certCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"certCode",
+            "operation":"=",
+            "paramName":"cert_code"
+        }
+    ],
+    "fields": [
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        },
+        {
+            "name": "certCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "证件号"
+        },
+        {
+            "name": "certPic",
+            "type": "byte[]",
+            "mysql_type":"blob",
+            "doc": "证件照片"
+        },
+        {
+            "name": "certPicPath",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "证件照片路径"
+        }
+    ]
+}

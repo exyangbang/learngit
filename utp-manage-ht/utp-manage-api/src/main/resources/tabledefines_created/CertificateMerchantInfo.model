@@ -1,0 +1,46 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "certificate",
+    "type": "table",
+    "name": "CertificateMerchantInfo",
+    "mysqlname":"certificate_merchant_info",
+    "update":false,
+    "doc": "证书商户映射表",
+    "key":[],
+    "index":[
+        {
+            "name":"certificate_merchant_info_index_1",
+            "fields":["certId"]
+        },
+        {
+            "name":"certificate_merchant_info_index_2",
+            "fields":["merNo"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"certId",
+            "operation":"=",
+            "paramName":"cert_id"
+        },
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        }
+    ],
+    "fields": [
+        {
+            "name": "certId",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "证书主键编号"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        }
+    ]
+}

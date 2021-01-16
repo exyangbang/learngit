@@ -1,0 +1,120 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "industry",
+    "type": "table",
+    "name": "Industry",
+    "mysqlname":"t_industry",
+    "update":false,
+    "doc": "行业管理",
+    "key":[],
+    "index":[
+        {
+            "name":"t_industry_index_1",
+            "fields":["name"],
+            "unique":true
+        },
+        {
+            "name":"t_industry_index_2",
+            "fields":["code"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"name",
+            "operation":"like",
+            "paramName":"name"
+        },
+        {
+            "name":"code",
+            "operation":"=",
+            "paramName":"code"
+        }
+    ],
+    "fields": [
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "名称"
+        },
+        {
+            "name": "simpleName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "简称"
+        },
+         {
+             "name": "code",
+             "type": "String",
+             "mysql_type":"varchar(12)",
+             "doc": "行业代码"
+         },
+        {
+            "name": "provinceCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "省代码"
+        },
+        {
+            "name": "cityCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "市代码"
+        },
+        {
+            "name": "countyCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "县代码"
+        },
+        {
+            "name": "account",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "来款账户"
+        },
+        {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "来款账户名称"
+        },
+        {
+            "name": "bankName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "来款银行名称"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "来款银行行号"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "状态"
+        },
+        {
+            "name": "innerNoticeUrl",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "入金通知 URL"
+        }
+        {
+            "name": "feeExpenditureAccount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "选择手续费支出账户"
+        },
+        {
+            "name": "processingFeeIncomeAccount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "手续费收益账户"
+        }
+    ]
+}

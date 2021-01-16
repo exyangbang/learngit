@@ -1,0 +1,83 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "operationrecord",
+    "type": "table",
+    "name": "OperationRecord",
+    "mysqlname":"t_operation_record",
+    "update":false,
+    "doc": "审批操作记录",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "account",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "虚拟账户"
+        },
+         {
+             "name": "objType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "账户类型（1-行业 2-商户 3-个人）"
+         },
+        {
+            "name": "busLicCode",
+            "type": "String",
+            "mysql_type":" varchar(20)",
+            "doc": "证件号"
+        },
+        {
+            "name": "objName",
+            "type": "String",
+            "mysql_type":" varchar(200)",
+            "doc": "账户名称"
+        },
+        {
+            "name": "code",
+            "type": "String",
+            "mysql_type":" varchar(20)",
+            "doc": "代付客户号"
+        },
+        {
+            "name": "indName",
+            "type": "String",
+            "mysql_type":" varchar(200)",
+            "doc": "代付客名称"
+        },
+        {
+            "name": "bankAccountNo",
+            "type": "String",
+            "mysql_type":" varchar(32)",
+            "doc": "资金账号"
+        },
+        {
+            "name": "bankAccountName",
+            "type": "String",
+            "mysql_type":" varchar(200)",
+            "doc": "资金账号名称"
+        },
+        {
+            "name": "remarks",
+            "type": "String",
+            "mysql_type":" varchar(500)",
+            "doc": "备注"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":" varchar(10)",
+            "doc": "状态（0-冻结 1-正常）"
+        },
+        {
+            "name": "operationType",
+            "type": "String",
+            "mysql_type":" varchar(32)",
+            "doc": "状态（0-审批驳回 1-审批通过 2-冻结审核 3-解冻待审核）"
+        }
+    ]
+}

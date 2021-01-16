@@ -1,0 +1,184 @@
+server:
+  port: 9761
+spring:
+  application:
+    name: utp-trade-discovery
+  main:
+    banner-mode: 'off'
+  profiles:
+    active: @profileActive@
+  config:
+    location: file:./utp-config/
+
+---
+spring:
+  profiles: dev
+eureka:
+  environment: dev
+  server:
+    ## 关闭自我保护
+    enable-self-preservation: false
+    ## 清理间隔（单位毫秒，默认是60*1000）
+    eviction-interval-timer-in-ms: 5000
+  instance:
+    hostname: utp-trade-discovery
+    ## 续约到期时间（默认90秒）
+    lease-expiration-duration-in-seconds: 30
+    ## 续约更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:9761/eureka/
+
+---
+spring:
+  profiles: test
+eureka:
+  environment: test
+  instance:
+    hostname: utp-trade-discovery
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: sit
+eureka:
+  environment: sit
+  instance:
+    hostname: utp-trade-discovery
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: uat
+eureka:
+  environment: uat
+  instance:
+    hostname: utp-trade-discovery
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: uat1
+eureka:
+  environment: uat
+  instance:
+    hostname: utp-trade-discovery-01
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: uat2
+eureka:
+  environment: uat
+  instance:
+    hostname: utp-trade-discovery-02
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/
+
+
+---
+spring:
+  profiles: pre1
+eureka:
+  environment: pre
+  instance:
+    hostname: utp-trade-discovery-01
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: pre2
+eureka:
+  environment: pre
+  instance:
+    hostname: utp-trade-discovery-02
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/
+
+
+---
+spring:
+  profiles: prd1
+eureka:
+  environment: prd
+  instance:
+    hostname: utp-trade-discovery-01
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: prd2
+eureka:
+  environment: prd
+  instance:
+    hostname: utp-trade-discovery-02
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/
+
+---
+spring:
+  profiles: live1
+eureka:
+  environment: live
+  instance:
+    hostname: utp-trade-discovery-01
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: live2
+eureka:
+  environment: live
+  instance:
+    hostname: utp-trade-discovery-02
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/

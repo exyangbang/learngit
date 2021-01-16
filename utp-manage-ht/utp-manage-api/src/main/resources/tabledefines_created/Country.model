@@ -1,0 +1,46 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "country",
+    "type": "table",
+    "name": "Country",
+    "mysqlname":"t_country",
+    "update":false,
+    "doc": "国家代码",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+    ],
+    "fields": [
+        {
+            "name": "twoBitLetters",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "账号"
+        },
+        {
+            "name": "threeBitLetters",
+            "type": "String",
+            "mysql_type":"varchar(3)",
+            "doc": "归属对象类型"
+        },
+         {
+             "name": "numCode",
+             "type": "String",
+             "mysql_type":"varchar(3)",
+             "doc": "数字代码"
+         },
+        {
+            "name": "engName",
+            "type": "String",
+            "mysql_type":"varchar(256)",
+            "doc": "英文名称"
+        },
+        {
+            "name": "chName",
+            "type": "String",
+            "mysql_type":"bigint(256)",
+            "doc": "中文名称"
+        }
+    ]
+}

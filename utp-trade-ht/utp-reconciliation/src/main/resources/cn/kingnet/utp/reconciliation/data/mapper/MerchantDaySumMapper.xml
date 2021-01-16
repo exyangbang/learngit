@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.reconciliation.data.mapper.MerchantDaySumMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.reconciliation.data.entity.MerchantDaySum">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="reconcile_date" jdbcType="VARCHAR" property="reconcileDate" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="mer_no" jdbcType="VARCHAR" property="merNo" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="total_count" jdbcType="BIGINT" property="totalCount" />
+    <result column="total_amount" jdbcType="BIGINT" property="totalAmount" />
+    <result column="total_fee" jdbcType="BIGINT" property="totalFee" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+  </resultMap>
+</mapper>

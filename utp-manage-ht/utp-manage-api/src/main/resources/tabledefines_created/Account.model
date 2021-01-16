@@ -1,0 +1,93 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "account",
+    "type": "table",
+    "name": "Account",
+    "mysqlname":"t_account",
+    "update":false,
+    "doc": "账户管理",
+    "key":[],
+    "index":[
+        {
+            "name":"t_account_index_1",
+            "fields":["account"],
+            "unique":true
+        },
+        {
+            "name":"t_account_index_2",
+            "fields":["objCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"account",
+            "operation":"like",
+            "paramName":"account"
+        },
+        {
+            "name":"objType",
+            "operation":"=",
+            "paramName":"obj_type"
+        },
+        {
+            "name":"objCode",
+            "operation":"=",
+            "paramName":"obj_code"
+        },
+        {
+            "name":"objName",
+            "operation":"like",
+            "paramName":"obj_name"
+        }
+    ],
+    "fields": [
+        {
+            "name": "account",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "账号"
+        },
+        {
+            "name": "objType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "归属对象类型"
+        },
+         {
+             "name": "objCode",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "归属对象编号"
+         },
+        {
+            "name": "objName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "归属对象名称"
+        },
+        {
+            "name": "balance",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "账户余额"
+        },
+        {
+            "name": "frozenAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "冻结金额"
+        },
+        {
+            "name": "availAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "可用金额"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "状态"
+        }
+    ]
+}

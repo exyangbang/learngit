@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.ChannelIncomeFlowMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.ChannelIncomeFlow">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="acc_name" jdbcType="VARCHAR" property="accName" />
+    <result column="amt" jdbcType="BIGINT" property="amt" />
+    <result column="core_no" jdbcType="VARCHAR" property="coreNo" />
+    <result column="rid" jdbcType="VARCHAR" property="rid" />
+    <result column="ex_acct_no" jdbcType="VARCHAR" property="exAcctNo" />
+    <result column="ex_acct_name" jdbcType="VARCHAR" property="exAcctName" />
+    <result column="clear_bankno" jdbcType="VARCHAR" property="clearBankno" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="tran_no" jdbcType="VARCHAR" property="tranNo" />
+    <result column="tran_date" jdbcType="VARCHAR" property="tranDate" />
+    <result column="auto_payee_acct_ao" jdbcType="VARCHAR" property="autoPayeeAcctAo" />
+    <result column="auto_payee_acct_name" jdbcType="VARCHAR" property="autoPayeeAcctName" />
+    <result column="manual_payee_acct_no" jdbcType="VARCHAR" property="manualPayeeAcctNo" />
+    <result column="manual_payee_acct_name" jdbcType="VARCHAR" property="manualPayeeAcctName" />
+    <result column="biz_flag" jdbcType="VARCHAR" property="bizFlag" />
+    <result column="elc_make_flag" jdbcType="VARCHAR" property="elcMakeFlag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="handle_flag" jdbcType="VARCHAR" property="handleFlag" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="industry_name" jdbcType="VARCHAR" property="industryName" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+  </resultMap>
+
+    <select id="selectChannelIncomeFlow4SubAccount" parameterType="java.util.HashMap" resultType="cn.kingnet.utp.service.persistence.vo.ChannelIncomeFlow4AccountVo">
+
+    select  a.id,e.id as bank_trans_detail_id,a.acc_no,a.acc_name,a.amt,a.core_no,a.rid,a.tran_date,a.tran_no,a.clear_bankno,a.bank_name,a.biz_flag, a.handle_flag,
+    b.account,b.industry_code,b.industry_name,b.nature,b.inner_notice_url,e.other_cust_account_no,e.other_cust_name,e.remark_detail,e.detail_serial_number,e.summary_description
+    from (
+        select c.account,c.industry_code,c.industry_name,c.nature,d.inner_notice_url  from t_merchant_info c  INNER JOIN t_industry d  on d.code = c.industry_code where c.industry_code= #{industryCode}
+          UNION ALL
+         select c.settle_account as account,c.industry_code,c.industry_name,'9' as nature,d.inner_notice_url from t_merchant_info c INNER JOIN t_industry d  on d.code = c.industry_code  where c.industry_code= #{industryCode} AND c.settle_account is NOT NULL
+        ) as b
+    INNER JOIN t_channel_income_flow a on a.acc_no = b.account  and a.handle_flag = '0'
+    INNER JOIN t_bank_account_trans_detail e ON e.sys_reference_no = a.core_no and e.oper_status='0' and e.drcr_flag='1' AND e.reversed_flag='0'
+
+  </select>
+
+    <select id="selectChannelIncomeFlow4FunctionAccount" parameterType="java.util.HashMap" resultType="cn.kingnet.utp.service.persistence.vo.ChannelIncomeFlow4AccountVo">
+
+    select  a.id,e.id as bank_trans_detail_id,a.acc_no,a.acc_name,a.amt,a.core_no,a.rid,a.tran_date,a.tran_no,a.clear_bankno,a.bank_name,a.biz_flag, a.handle_flag,
+    b.account,b.industry_code,b.industry_name,b.nature,b.inner_notice_url,e.other_cust_account_no,e.other_cust_name,e.remark_detail,e.detail_serial_number,e.summary_description
+        from (
+            select c.account,d.code as industry_code,d.name as industry_name,c.industry_type as nature,d.inner_notice_url from  t_industry c INNER JOIN t_industry d on c.id = d.fee_expenditure_account
+        UNION
+           select c.account,d.code as industry_code,d.name as industry_name,c.industry_type as nature,d.inner_notice_url from  t_industry c INNER JOIN t_industry d on c.id = d.auth_payment_account_id
+         ) as b
+     INNER JOIN t_channel_income_flow a on a.acc_no=b.account  and a.handle_flag = '0'
+     INNER JOIN t_bank_account_trans_detail e ON e.sys_reference_no=a.core_no and e.oper_status='0' and e.drcr_flag='1' AND e.reversed_flag='0'
+
+  </select>
+</mapper>

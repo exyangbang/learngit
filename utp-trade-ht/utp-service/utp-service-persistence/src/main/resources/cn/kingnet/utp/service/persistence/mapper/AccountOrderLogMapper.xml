@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.AccountOrderLogMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.AccountOrderLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="amt" jdbcType="BIGINT" property="amt" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="callback_url" jdbcType="VARCHAR" property="callbackUrl" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="resp_desc" jdbcType="VARCHAR" property="respDesc" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,182 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "accountinfo",
+    "type": "table",
+    "name": "AccountInfo",
+    "mysqlname":"t_account_info",
+    "update":false,
+    "doc": "账户信息",
+    "key":[],
+    "index":[
+        {
+            "name":"t_account_info_account",
+            "fields":["account"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"account",
+            "operation":"like",
+            "paramName":"account"
+        }
+    ],
+    "fields": [
+        {
+            "name": "account",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "账号"
+        },
+        {
+            "name": "objType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "归属对象类型"
+        },
+         {
+             "name": "businessScope",
+             "type": "String",
+             "mysql_type":"varchar(250)",
+             "doc": "经营范围"
+         },
+       {
+                 "name": "registerFund",
+                 "type": "String",
+                 "mysql_type":"varchar(20)",
+                 "doc": "企业注册资金"
+             },
+        {
+            "name": "businessIndate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "营业执照有效期（yyyy-MM-dd）"
+        },
+      {
+            "name": "legalIndate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "法人证件有效期（yyyy-MM-dd）"
+        },
+        {
+            "name": "controlName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "控股股东或者实际控制人姓名"
+        },
+        {
+            "name": "controlCerfileType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "控股股东或者实际控制人证件类型"
+        },
+        {
+            "name": "controlCerfileNo",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "控股股东或者实际控制人证件号"
+        },
+        {
+            "name": "controlIndate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "控股股东或者实际控制人证件有效期（yyyy-MM-dd）"
+        },
+        {
+             "name": "chargeName",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "负责人姓名"
+        },
+        {
+            "name": "chargeCerfileType",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "负责人证件类型"
+        },
+        {
+            "name": "chargeCerfileNo",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "负责人证件号"
+        },
+        {
+             "name": "chargeIndate",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "负责人证件有效期（yyyy-MM-dd）"
+        },
+        {
+             "name": "authBusName",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "授权办理业务人员姓名"
+        },
+        {
+             "name": "authBusType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "授权办理业务人员证件类型"
+        },
+        {
+             "name": "authBusNo",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "授权办理业务人员证件号"
+        },
+        {
+             "name": "authBusIndate",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "授权办理业务人员证件有效期（yyyy-MM-dd)"
+        },
+        {
+             "name": "customerManager",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "客户经理"
+        },
+        {
+             "name": "customerManagerPhone",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "客户经理联系方式（固话或者手机号码）"
+        },
+        {
+             "name": "enterpriseType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "企业类型"
+        },
+        {
+             "name": "enterpriseSale",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "企业规模"
+        },
+        {
+             "name": "enterpriseEcoNature",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "企业经济性质"
+        },
+        {
+             "name": "listingType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "上市类型"
+        },
+        {
+             "name": "residentType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "居民类型"
+        },
+        {
+             "name": "userType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "用户类型|0-个人 1-商户"
+        }
+    ]
+}

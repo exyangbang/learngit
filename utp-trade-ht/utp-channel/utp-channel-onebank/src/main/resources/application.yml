@@ -1,0 +1,167 @@
+---
+spring:
+  profiles: dev
+logging:
+  level:
+    cn.kingnet: debug
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+cn:
+  kingnet:
+    utp:
+      channel:
+        onebank:
+          thread-pool-num: 8
+          max-thread-pool-num: 8
+          dmb-config-path: utp-config/onebank/consumer/dev
+          timeout: 6000
+          channel-id: 'CEB'
+          txn-teller-id: 'CEB001'
+          txn-branch-code: '1001'
+          dfa: 'EM0'
+          target-dfa: 'H10'
+          target-dfa-general: 'H10'
+          transfer-map:
+            private: #RDFA对私区 转账交易
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3041020009'
+              scene-id: '01'
+              call-back-service-id: '1041040001'
+              call-back-scene-id: '01'
+            public: #CDFA对公区 转账交易
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3041030009'
+              scene-id: '01'
+              call-back-service-id: '1041040001'
+              call-back-scene-id: '01'
+            accountBalanceQuery:  #一般户账户余额查询
+              service-id: '3013020007'
+              scene-id: '09'
+              prcscd: 'i302'
+            accountTransDetailQuery:  #一般户交易资金明细查询
+              service-id: '3013020010'
+              scene-id: '03'
+              prcscd: 'f304'
+            privateTransQuery: #RDFA对私区转账交易结果查询
+              service-id: '3043020004'
+              scene-id: '01'
+            publicTransQuery: #CDFA对公区转账交易结果查询
+              service-id: '3043030004'
+              scene-id: '01'
+            statementDownload: #对账单下载
+              product-code: 'ALL'
+              service-id: '3044010003'
+              scene-id: '03'
+            innerAccountBalanceQuery: #内部户账户余额查询及内部户账户信息查询
+              service-id: '3013010028'
+              scene-id: '05'
+              prcscd: 'i303'
+            innerAccountTransDetailQuery: #内部户交易资金明细查询
+              service-id: '3013010029'
+              scene-id: '06'
+              prcscd: 'i328'
+            accountVerification: #RDFA对私区四要素认证
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3042020006'
+              scene-id: '01'
+              version: '1.0.1'
+            accountPublicVerification: #CDFA对公区四要素认证
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3042030006'
+              scene-id: '01'
+              version: '1.0.1'
+            accountInfoQuery: #一般户账户信息查询
+              service-id: '3013020007'
+              scene-id: '10'
+              prcscd: 'i306'
+            getPersonHotspot: #查询个人客户热点信息
+              service-id: '2013010001'
+              scene-id: '01'
+            getOrgHotspot: #查询企业客户热点信息
+              service-id: '2013010002'
+              scene-id: '01'
+            addPerson: #建立个人客户信息
+              service-id: '2012010001'
+              scene-id: '01'
+            addOrg: #建立企业客户信息
+              service-id: '2012010002'
+              scene-id: '01'
+            updatePerson: #更新个人客户信息
+              service-id: '2012010001'
+              scene-id: '04'
+            updateOrg: #更新企业客户信息
+              service-id: '2012010002'
+              scene-id: '04'
+            orcIdentity: #ORC身份识别
+              service-id: '6012010004'
+              scene-id: '01'
+            onlineCheck: #联网核查
+              product-code: '3044APA001'
+              service-id: '5012010004'
+              scene-id: '01'
+          ftp:
+            host: 10.11.17.77
+            port: 6688
+            https-port: 6686
+            sys-id: 32103
+            user-name: sys_32103
+            password: 6EC57294D519242DF8A9E18520C34F92EC8BDC2D57A332FEB2696AB1F3F04E69
+          electronic:
+            url: 'http://10.11.20.134:80/paperless/uat/PaperlessServer/PaperlessServlet'
+            operator-code: '001001'
+            channel-code: 'APA'
+            seal-code: 'RECEIPT'
+            seal-password: '11111111'
+            timestamp-channel: '0'
+            template-config-map:
+              #帝网科技客户电子回单模版参数配置
+              KHDZHD:
+                template-code: 'APA-KHDZHD-001'
+                sign-location-type: '3'
+                keyword: '客户电子回单'
+                location-style: 'D'
+                offset-x: 10
+              #帝网科技客户电子回单模版参数配置(带手续费)
+              KHDZHD002:
+                template-code: 'APA-KHDZHD-002'
+                sign-location-type: '3'
+                keyword: '客户电子回单'
+                location-style: 'D'
+                offset-x: 10
+              #帝网科技开立回单模版参数配置
+              KLHD:
+                template-code: 'APA-KLHD-001'
+                sign-location-type: '3'
+                keyword: '注册会员号开立'
+                location-style: 'D'
+                offset-x: 10
+#渠道配置 end#
+
+feign:
+  name:
+    onebank: utp-channel-onebank
+    persis: utp-service-persistence
+    account: utp-product-account
+    scheduler: utp-scheduler
+
+#hystrix及ribbon配置 start#
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#hystrix及ribbon配置 end#

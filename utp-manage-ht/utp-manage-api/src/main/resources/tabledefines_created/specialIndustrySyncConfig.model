@@ -1,0 +1,36 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "specialIndustrySyncConfig",
+    "type": "table",
+    "name": "SpecialIndustrySyncConfig",
+    "mysqlname":"t_special_industry_sync_config",
+    "update":false,
+    "doc": "特殊客户同步名单配置",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "客户名称"
+        },
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "客户名称"
+        },
+         {
+             "name": "remark",
+             "type": "String",
+             "mysql_type":"varchar(1000)",
+             "doc": "备注"
+         }
+    ]
+}

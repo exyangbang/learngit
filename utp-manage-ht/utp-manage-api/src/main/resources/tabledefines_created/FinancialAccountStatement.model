@@ -1,0 +1,66 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "financialaccountstatement",
+    "type": "table",
+    "name": "FinancialAccountStatement",
+    "mysqlname":"t_financial_account_statement",
+    "update":false,
+    "doc": "资金账户统计报表",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "accountNo",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "资金账号"
+        },
+        {
+            "name": "merName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "客户名称"
+        },
+         {
+             "name": "industryCode",
+             "type": "String",
+             "mysql_type":"varchar(12)",
+             "doc": "代付客户号"
+         },
+         {
+            "name": "industryName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "代付客户名"
+         },
+         {
+            "name": "inTotalAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "入金总金额（单位分）"
+        },
+        {
+             "name": "outTotalAmount",
+             "type": "Long",
+             "mysql_type":"bigint(20)",
+             "doc": "出金总金额（单位分）"
+         },
+         {
+             "name": "currentAccountBalance",
+             "type": "Long",
+             "mysql_type":"bigint(20)",
+             "doc": "当日账户余额（单位分）"
+         },
+          {
+             "name": "transDate",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "交易日期 格式为yyyyMMdd"
+         },
+    ]
+}

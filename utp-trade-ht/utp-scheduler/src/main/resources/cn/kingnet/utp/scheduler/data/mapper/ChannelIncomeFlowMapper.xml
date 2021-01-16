@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.scheduler.data.mapper.ChannelIncomeFlowMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.scheduler.data.entity.ChannelIncomeFlow">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="acc_name" jdbcType="VARCHAR" property="accName" />
+    <result column="amt" jdbcType="BIGINT" property="amt" />
+    <result column="core_no" jdbcType="VARCHAR" property="coreNo" />
+    <result column="rid" jdbcType="VARCHAR" property="rid" />
+    <result column="ex_acct_no" jdbcType="VARCHAR" property="exAcctNo" />
+    <result column="ex_acct_name" jdbcType="VARCHAR" property="exAcctName" />
+    <result column="clear_bankno" jdbcType="VARCHAR" property="clearBankno" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="tran_no" jdbcType="VARCHAR" property="tranNo" />
+    <result column="tran_date" jdbcType="VARCHAR" property="tranDate" />
+    <result column="auto_payee_acct_ao" jdbcType="VARCHAR" property="autoPayeeAcctAo" />
+    <result column="auto_payee_acct_name" jdbcType="VARCHAR" property="autoPayeeAcctName" />
+    <result column="manual_payee_acct_no" jdbcType="VARCHAR" property="manualPayeeAcctNo" />
+    <result column="manual_payee_acct_name" jdbcType="VARCHAR" property="manualPayeeAcctName" />
+    <result column="biz_flag" jdbcType="VARCHAR" property="bizFlag" />
+    <result column="elc_make_flag" jdbcType="VARCHAR" property="elcMakeFlag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="handle_flag" jdbcType="VARCHAR" property="handleFlag" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="industry_name" jdbcType="VARCHAR" property="industryName" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,73 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "channel",
+    "type": "table",
+    "name": "ChannelIndustry",
+    "mysqlname":"t_channel_industry",
+    "update":false,
+    "doc": "渠道平台管理",
+    "key":[],
+    "index":[
+        {
+            "name":"t_channel_info_index_1",
+            "fields":["channelCode"]
+        },
+        {
+            "name":"t_channel_info_index_2",
+            "fields":["industryCode"]
+        },
+        {
+            "name":"t_channel_info_index_3",
+            "fields":["productNo"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"channelCode",
+            "operation":"=",
+            "paramName":"channel_code"
+        },
+        {
+            "name":"industryCode",
+            "operation":"=",
+            "paramName":"industry_code"
+        },
+         {
+             "name":"productNo",
+             "operation":"=",
+             "paramName":"product_no"
+         }
+    ],
+    "fields": [
+         {
+             "name": "channelCode",
+             "type": "String",
+             "mysql_type":"varchar(50)",
+             "doc": "渠道代码"
+         },
+           {
+               "name": "productNo",
+               "type": "String",
+               "mysql_type":"varchar(50)",
+               "doc": "支付产品编码"
+           },
+           {
+              "name": "industryCode",
+              "type": "String",
+              "mysql_type":"varchar(50)",
+              "doc": "平台号"
+          },
+          {
+              "name": "indFeeTemplateId",
+              "type": "Long",
+              "mysql_type":"bigint(20)",
+              "doc": "平台手续费模板Id"
+          },
+          {
+              "name": "chnFeeTemplateId",
+              "type": "Long",
+              "mysql_type":"bigint(20)",
+              "doc": "渠道手续费模板Id"
+          }
+    ]
+}

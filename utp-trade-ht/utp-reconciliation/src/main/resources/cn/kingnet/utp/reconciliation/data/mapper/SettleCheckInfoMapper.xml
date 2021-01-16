@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.reconciliation.data.mapper.SettleCheckInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.reconciliation.data.entity.SettleCheckInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="error_type" jdbcType="VARCHAR" property="errorType" />
+    <result column="error_desc" jdbcType="VARCHAR" property="errorDesc" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="account_handle_flag" jdbcType="VARCHAR" property="accountHandleFlag" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="reconcile_time" jdbcType="TIMESTAMP" property="reconcileTime" />
+    <result column="reconcile_date" jdbcType="VARCHAR" property="reconcileDate" />
+    <result column="before_trans_status" jdbcType="VARCHAR" property="beforeTransStatus" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_amount" jdbcType="BIGINT" property="transAmount" />
+    <result column="mer_fee" jdbcType="BIGINT" property="merFee" />
+    <result column="channel_fee" jdbcType="BIGINT" property="channelFee" />
+    <result column="real_amount" jdbcType="BIGINT" property="realAmount" />
+    <result column="mer_no" jdbcType="VARCHAR" property="merNo" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="channel_key" jdbcType="VARCHAR" property="channelKey" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="channel_resp_code" jdbcType="VARCHAR" property="channelRespCode" />
+    <result column="channel_resp_id" jdbcType="VARCHAR" property="channelRespId" />
+    <result column="channel_resp_msg" jdbcType="VARCHAR" property="channelRespMsg" />
+    <result column="channel_resp_time" jdbcType="VARCHAR" property="channelRespTime" />
+    <result column="client_trans_time" jdbcType="VARCHAR" property="clientTransTime" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="server_batch_no" jdbcType="VARCHAR" property="serverBatchNo" />
+    <result column="server_link_id" jdbcType="VARCHAR" property="serverLinkId" />
+    <result column="resp_code" jdbcType="VARCHAR" property="respCode" />
+    <result column="revoke_status" jdbcType="VARCHAR" property="revokeStatus" />
+    <result column="refund_status" jdbcType="VARCHAR" property="refundStatus" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="batch_sub_no" jdbcType="VARCHAR" property="batchSubNo" />
+    <result column="pc_flag" jdbcType="VARCHAR" property="pcFlag" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="payee_acct_no" jdbcType="VARCHAR" property="payeeAcctNo" />
+    <result column="payee_name" jdbcType="VARCHAR" property="payeeName" />
+    <result column="payer_acct_no" jdbcType="VARCHAR" property="payerAcctNo" />
+    <result column="payer_name" jdbcType="VARCHAR" property="payerName" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="mer_settle_type" jdbcType="VARCHAR" property="merSettleType" />
+    <result column="mer_charge_mode" jdbcType="VARCHAR" property="merChargeMode" />
+    <result column="channel_settle_type" jdbcType="VARCHAR" property="channelSettleType" />
+    <result column="channel_charge_mode" jdbcType="VARCHAR" property="channelChargeMode" />
+    <result column="channel_settle_date" jdbcType="VARCHAR" property="channelSettleDate" />
+    <result column="orgin_channel_fee" jdbcType="BIGINT" property="orginChannelFee" />
+    <result column="payer_account" jdbcType="VARCHAR" property="payerAccount" />
+    <result column="payee_account" jdbcType="VARCHAR" property="payeeAccount" />
+    <result column="fee_account" jdbcType="VARCHAR" property="feeAccount" />
+    <result column="income_account" jdbcType="VARCHAR" property="incomeAccount" />
+    <result column="need_channel_reconcile" jdbcType="VARCHAR" property="needChannelReconcile" />
+    <result column="show_payer_account_no" jdbcType="VARCHAR" property="showPayerAccountNo" />
+    <result column="show_payer_account_name" jdbcType="VARCHAR" property="showPayerAccountName" />
+    <result column="show_payee_account_no" jdbcType="VARCHAR" property="showPayeeAccountNo" />
+    <result column="show_payee_account_name" jdbcType="VARCHAR" property="showPayeeAccountName" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="elc_make_flag" jdbcType="VARCHAR" property="elcMakeFlag" />
+    <result column="fee_account_name" jdbcType="VARCHAR" property="feeAccountName" />
+    <result column="income_account_name" jdbcType="VARCHAR" property="incomeAccountName" />
+    <result column="payer_opbk_name" jdbcType="VARCHAR" property="payerOpbkName" />
+    <result column="payee_opbk_name" jdbcType="VARCHAR" property="payeeOpbkName" />
+    <result column="summary_description" jdbcType="VARCHAR" property="summaryDescription" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+  </resultMap>
+</mapper>

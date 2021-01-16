@@ -1,0 +1,81 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "merchant",
+    "type": "table",
+    "name": "MerchantCertificationInfo",
+    "mysqlName":"merchant_certification_info",
+    "update":false,
+    "doc": "商户证件信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"merchant_certification_info_index_1",
+            "fields":["merNo"]
+        },
+        {
+            "name":"merchant_certification_info_index_2",
+            "fields":["certType"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"certType",
+            "operation":"=",
+            "paramName":"cert_type"
+        },
+        {
+            "name":"legalIdType",
+            "operation":"=",
+            "paramName":"legal_id_type"
+        }
+    ],
+    "fields": [
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        },
+        {
+            "name": "certType",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "证件类型"
+        },
+        {
+            "name": "legalIdType",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "法人代表证件类型"
+        },
+        {
+            "name": "certCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "证件号"
+        },
+        {
+            "name": "certName",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "证件名称"
+        },
+        {
+            "name": "certExpirationDateStart",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "证件有效起始日期"
+        },
+        {
+            "name": "certExpirationDateEnd",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "证件有效截止日期"
+        }
+    ]
+}

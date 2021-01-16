@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.SubaccountsAmtLimitMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.SubaccountsAmtLimit">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="industry_id" jdbcType="BIGINT" property="industryId" />
+    <result column="sub_obj_name" jdbcType="VARCHAR" property="subObjName" />
+    <result column="sub_account" jdbcType="VARCHAR" property="subAccount" />
+    <result column="subaccounts_individual_amt" jdbcType="BIGINT" property="subaccountsIndividualAmt" />
+    <result column="subaccounts_date_amt" jdbcType="BIGINT" property="subaccountsDateAmt" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+</mapper>

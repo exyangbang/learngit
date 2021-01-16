@@ -1,0 +1,55 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "industry",
+    "type": "table",
+    "name": "IndustryAccountInfo",
+    "mysqlName":"t_industry_account_info",
+    "update":false,
+    "doc": "平台来款账户信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"industry_account_info_index_1",
+            "fields":["industryCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"industryCode",
+            "operation":"=",
+            "paramName":"industry_code"
+        }
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(12)",
+            "doc": "平台号"
+        },
+        {
+            "name": "accountNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "来款账号"
+        },
+        {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "来款账户名称"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "开户行行号"
+        },
+        {
+            "name": "bankName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "开户行行名称"
+        }
+    ]
+}

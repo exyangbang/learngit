@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.JobTaskMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.JobTask">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="catch_exception" jdbcType="VARCHAR" property="catchException" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="job_date" jdbcType="VARCHAR" property="jobDate" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="job_name" jdbcType="VARCHAR" property="jobName" />
+    <result column="job_priority" jdbcType="INTEGER" property="jobPriority" />
+    <result column="jobtask_state" jdbcType="VARCHAR" property="jobtaskState" />
+    <result column="last_run_endtime" jdbcType="VARCHAR" property="lastRunEndtime" />
+    <result column="last_run_starttime" jdbcType="VARCHAR" property="lastRunStarttime" />
+    <result column="next_rerun_time" jdbcType="VARCHAR" property="nextRerunTime" />
+    <result column="retry_times" jdbcType="INTEGER" property="retryTimes" />
+    <result column="task_args" jdbcType="VARCHAR" property="taskArgs" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+  </resultMap>
+</mapper>

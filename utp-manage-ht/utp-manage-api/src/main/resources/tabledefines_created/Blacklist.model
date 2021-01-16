@@ -1,0 +1,44 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "blacklist",
+    "type": "table",
+    "name": "Blacklist",
+    "mysqlname":"t_blacklist",
+    "update":false,
+    "doc": "黑名单审批操作记录",
+    "key":[],
+    "index":[
+       {
+                "name":"t_blacklist_operation_record_bus_lic_code",
+                "fields":["busLicCode"],
+                "unique":true
+       }
+    ],
+    "conditions":[
+            {
+                "name":"busLicCode",
+                "operation":"=",
+                "paramName":"bus_lic_code"
+            }
+    ],
+    "fields": [
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "姓名"
+        },
+        {
+            "name": "busLicCode",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "证件号"
+        },
+         {
+             "name": "remark",
+             "type": "String",
+             "mysql_type":"varchar(1000)",
+             "doc": "备注"
+         }
+    ]
+}

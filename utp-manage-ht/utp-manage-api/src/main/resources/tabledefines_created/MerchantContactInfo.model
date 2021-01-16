@@ -1,0 +1,49 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "merchant",
+    "type": "table",
+    "name": "MerchantContactInfo",
+    "mysqlName":"merchant_contact_info",
+    "update":false,
+    "doc": "商户联系人信息表",
+    "key":[];
+    "index":[
+        {
+            "name":"merchant_contact_info_index_1",
+            "fields":["merNo"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        }
+    ],
+    "fields": [
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        },
+        {
+            "name": "contactName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "商户联系人"
+        },
+        {
+            "name": "contactPhone",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "商户联系人电话"
+        },
+        {
+            "name": "contactEmail",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "商户联系人邮箱"
+        }
+    ]
+}

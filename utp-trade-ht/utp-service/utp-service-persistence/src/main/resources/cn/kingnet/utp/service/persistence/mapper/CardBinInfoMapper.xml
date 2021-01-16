@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.CardBinInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.CardBinInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ISSUERCODE" jdbcType="VARCHAR" property="issuercode" />
+    <result column="ISSUERNAME" jdbcType="VARCHAR" property="issuername" />
+    <result column="CARDNAME" jdbcType="VARCHAR" property="cardname" />
+    <result column="CARDNOTRACK" jdbcType="VARCHAR" property="cardnotrack" />
+    <result column="CARDNOSTART_POS" jdbcType="VARCHAR" property="cardnostartPos" />
+    <result column="CARDNOLEN" jdbcType="VARCHAR" property="cardnolen" />
+    <result column="BINNUM" jdbcType="VARCHAR" property="binnum" />
+    <result column="BINTRACK" jdbcType="VARCHAR" property="bintrack" />
+    <result column="BINSTARTPOS" jdbcType="VARCHAR" property="binstartpos" />
+    <result column="BINLEN" jdbcType="VARCHAR" property="binlen" />
+    <result column="ALLTRACK" jdbcType="VARCHAR" property="alltrack" />
+    <result column="ALLTRACKSTARTPOS" jdbcType="VARCHAR" property="alltrackstartpos" />
+    <result column="ALLTRACKLEN" jdbcType="VARCHAR" property="alltracklen" />
+    <result column="CUPLOGOFLAG" jdbcType="CHAR" property="cuplogoflag" />
+    <result column="debitcreditflag" jdbcType="CHAR" property="debitcreditflag" />
+    <result column="ADDDELETESTAT" jdbcType="CHAR" property="adddeletestat" />
+    <result column="CLEARBANKNO" jdbcType="VARCHAR" property="clearbankno" />
+    <result column="CLEARBANKNAME" jdbcType="VARCHAR" property="clearbankname" />
+    <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="ADDDATA" jdbcType="VARCHAR" property="adddata" />
+    <result column="REMARK1" jdbcType="VARCHAR" property="remark1" />
+    <result column="REMARK2" jdbcType="VARCHAR" property="remark2" />
+    <result column="REMARK3" jdbcType="VARCHAR" property="remark3" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATEOR" jdbcType="VARCHAR" property="createor" />
+    <result column="UPDATEOR" jdbcType="VARCHAR" property="updateor" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="bankcode" jdbcType="VARCHAR" property="bankcode" />
+    <result column="bankname" jdbcType="VARCHAR" property="bankname" />
+    <result column="banktypeflag" jdbcType="VARCHAR" property="banktypeflag" />
+  </resultMap>
+</mapper>

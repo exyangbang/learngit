@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.AccountInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.AccountInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="obj_type" jdbcType="VARCHAR" property="objType" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="business_scope" jdbcType="VARCHAR" property="businessScope" />
+    <result column="register_fund" jdbcType="VARCHAR" property="registerFund" />
+    <result column="business_indate" jdbcType="VARCHAR" property="businessIndate" />
+    <result column="legal_indate" jdbcType="VARCHAR" property="legalIndate" />
+    <result column="control_name" jdbcType="VARCHAR" property="controlName" />
+    <result column="control_cerfile_type" jdbcType="VARCHAR" property="controlCerfileType" />
+    <result column="control_cerfile_no" jdbcType="VARCHAR" property="controlCerfileNo" />
+    <result column="control_indate" jdbcType="VARCHAR" property="controlIndate" />
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName" />
+    <result column="charge_cerfile_type" jdbcType="VARCHAR" property="chargeCerfileType" />
+    <result column="charge_cerfile_no" jdbcType="VARCHAR" property="chargeCerfileNo" />
+    <result column="charge_indate" jdbcType="VARCHAR" property="chargeIndate" />
+    <result column="auth_bus_name" jdbcType="VARCHAR" property="authBusName" />
+    <result column="auth_bus_type" jdbcType="VARCHAR" property="authBusType" />
+    <result column="auth_bus_no" jdbcType="VARCHAR" property="authBusNo" />
+    <result column="auth_bus_indate" jdbcType="VARCHAR" property="authBusIndate" />
+    <result column="customer_manager" jdbcType="VARCHAR" property="customerManager" />
+    <result column="customer_manager_phone" jdbcType="VARCHAR" property="customerManagerPhone" />
+    <result column="enterprise_type" jdbcType="VARCHAR" property="enterpriseType" />
+    <result column="enterprise_sale" jdbcType="VARCHAR" property="enterpriseSale" />
+    <result column="enterprise_eco_nature" jdbcType="VARCHAR" property="enterpriseEcoNature" />
+    <result column="listing_type" jdbcType="VARCHAR" property="listingType" />
+    <result column="resident_type" jdbcType="VARCHAR" property="residentType" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
+    <result column="business_start_date" jdbcType="VARCHAR" property="businessStartDate" />
+    <result column="legal_start_date" jdbcType="VARCHAR" property="legalStartDate" />
+    <result column="control_start_date" jdbcType="VARCHAR" property="controlStartDate" />
+    <result column="auth_bus_start_date" jdbcType="VARCHAR" property="authBusStartDate" />
+    <result column="ownerone_name" jdbcType="VARCHAR" property="owneroneName" />
+    <result column="ownerone_cerfile_type" jdbcType="VARCHAR" property="owneroneCerfileType" />
+    <result column="ownerone_cerfile_no" jdbcType="VARCHAR" property="owneroneCerfileNo" />
+    <result column="ownerone_start_date" jdbcType="VARCHAR" property="owneroneStartDate" />
+    <result column="ownerone_in_date" jdbcType="VARCHAR" property="owneroneInDate" />
+    <result column="ownertwo_name" jdbcType="VARCHAR" property="ownertwoName" />
+    <result column="ownertwo_cerfile_type" jdbcType="VARCHAR" property="ownertwoCerfileType" />
+    <result column="ownertwo_cerfile_no" jdbcType="VARCHAR" property="ownertwoCerfileNo" />
+    <result column="ownertwo_start_date" jdbcType="VARCHAR" property="ownertwoStartDate" />
+    <result column="ownertwo_in_date" jdbcType="VARCHAR" property="ownertwoInDate" />
+    <result column="ownerthree_name" jdbcType="VARCHAR" property="ownerthreeName" />
+    <result column="ownerthree_cerfile_type" jdbcType="VARCHAR" property="ownerthreeCerfileType" />
+    <result column="ownerthree_cerfile_no" jdbcType="VARCHAR" property="ownerthreeCerfileNo" />
+    <result column="ownerthree_start_date" jdbcType="VARCHAR" property="ownerthreeStartDate" />
+    <result column="ownerthree_in_date" jdbcType="VARCHAR" property="ownerthreeInDate" />
+    <result column="ownerfour_name" jdbcType="VARCHAR" property="ownerfourName" />
+    <result column="ownerfour_cerfile_type" jdbcType="VARCHAR" property="ownerfourCerfileType" />
+    <result column="ownerfour_cerfile_no" jdbcType="VARCHAR" property="ownerfourCerfileNo" />
+    <result column="ownerfour_start_date" jdbcType="VARCHAR" property="ownerfourStartDate" />
+    <result column="ownerfour_in_date" jdbcType="VARCHAR" property="ownerfourInDate" />
+    <result column="contact_province" jdbcType="VARCHAR" property="contactProvince" />
+    <result column="contact_city" jdbcType="VARCHAR" property="contactCity" />
+    <result column="contact_area" jdbcType="VARCHAR" property="contactArea" />
+    <result column="reg_province" jdbcType="VARCHAR" property="regProvince" />
+    <result column="reg_city" jdbcType="VARCHAR" property="regCity" />
+    <result column="reg_area" jdbcType="VARCHAR" property="regArea" />
+  </resultMap>
+</mapper>

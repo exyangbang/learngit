@@ -1,0 +1,29 @@
+server:
+  port: 9803
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9761/eureka/
+spring:
+  application:
+    name: utp-config-server
+  profiles:
+    active: native
+
+logging:
+  level.root: INFO
+  config: file:./utp-config/logback-spring.xml
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+  file.max-size: 50MB
+  file.max-history: 180
+
+---
+spring:
+  profiles: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:./utp-config
+
+ 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.ChannelIndustryMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.ChannelIndustry">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="channel_code" jdbcType="VARCHAR" property="channelCode"/>
+        <result column="product_no" jdbcType="VARCHAR" property="productNo"/>
+        <result column="industry_code" jdbcType="VARCHAR" property="industryCode"/>
+        <result column="ind_fee_template_id" jdbcType="BIGINT" property="indFeeTemplateId"/>
+        <result column="chn_fee_template_id" jdbcType="BIGINT" property="chnFeeTemplateId"/>
+        <result column="roof_placement" jdbcType="BIGINT" property="roofPlacement"/>
+        <result column="channel_mer_no" jdbcType="VARCHAR" property="channelMerNo"/>
+        <result column="channel_key" jdbcType="VARCHAR" property="channelKey"/>
+        <result column="public_fee_template_id" jdbcType="BIGINT" property="publicFeeTemplateId"/>
+        <result column="private_fee_template_id" jdbcType="BIGINT" property="privateFeeTemplateId"/>
+        <result column="channel_mer_name" jdbcType="VARCHAR" property="channelMerName"/>
+        <result column="channel_mer_short_name" jdbcType="VARCHAR" property="channelMerShortName"/>
+        <result column="channel_mer_category" jdbcType="VARCHAR" property="channelMerCategory"/>
+        <result column="channel_capital_source" jdbcType="VARCHAR" property="channelCapitalSource"/>
+    </resultMap>
+
+    <resultMap id="channelInfoBOMap" type="cn.kingnet.utp.service.persistence.entity.bo.ChannelInfoBO">
+        <result column="id" jdbcType="BIGINT" property="channelInfoId"/>
+        <result column="channel_key" jdbcType="VARCHAR" property="channelKey"/>
+        <result column="channel_name" jdbcType="VARCHAR" property="channelName"/>
+        <result column="channel_code" jdbcType="VARCHAR" property="channelCode"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="acc_no" jdbcType="VARCHAR" property="accNo"/>
+        <result column="amount" jdbcType="BIGINT" property="channelLimitAmount"/>
+        <result column="user_code" jdbcType="VARCHAR" property="userCode"/>
+        <result column="ind_fee_template_id" jdbcType="BIGINT" property="indFeeTemplateId"/>
+        <result column="chn_fee_template_id" jdbcType="BIGINT" property="chnFeeTemplateId"/>
+        <result column="roof_placement" jdbcType="BIGINT" property="roofPlacement"/>
+        <result column="channel_mer_no" jdbcType="VARCHAR" property="channelMerNo"/>
+        <result column="public_fee_template_id" jdbcType="BIGINT" property="publicFeeTemplateId"/>
+        <result column="private_fee_template_id" jdbcType="BIGINT" property="privateFeeTemplateId"/>
+        <result column="channel_mer_name" jdbcType="VARCHAR" property="channelMerName"/>
+        <result column="channel_mer_short_name" jdbcType="VARCHAR" property="channelMerShortName"/>
+        <result column="channel_mer_category" jdbcType="VARCHAR" property="channelMerCategory"/>
+        <result column="channel_capital_source" jdbcType="VARCHAR" property="channelCapitalSource"/>
+    </resultMap>
+
+    <select id="findChannelInfoBO" parameterType="java.util.Map" resultMap="channelInfoBOMap">
+    SELECT
+         ci.id ,
+         ci.channel_key ,
+         ci.channel_name ,
+         ci.channel_code ,
+         ci.status,
+         ci.acc_no,
+         ci.amount,
+         ci.user_code,
+         a.ind_fee_template_id,
+         a.chn_fee_template_id,
+         a.roof_placement,
+         ci.channel_mer_no,
+         a.public_fee_template_id,
+         a.private_fee_template_id,
+         ci.channel_mer_name,
+         ci.channel_mer_short_name,
+         ci.channel_mer_category,
+         ci.channel_capital_source
+     FROM t_channel_industry a
+     JOIN t_industry i ON i.code = a.industry_code
+     JOIN t_channel_info ci ON ci.channel_code = a.channel_code
+     WHERE a.industry_code = #{industryCode} AND a.product_no = #{productNo} AND i.status = '1' AND  ci.status = '1'
+  </select>
+</mapper>

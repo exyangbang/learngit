@@ -1,0 +1,53 @@
+---
+spring:
+  profiles: dev
+logging:
+  level:
+    cn.kingnet: debug
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+cn:
+  kingnet:
+    utp:
+      channel:
+        onebank:
+          thread-pool-num: 8
+          max-thread-pool-num: 8
+          dmb-config-path: utp-config/onebank/consumer
+          timeout: 6000
+          channel-id: 'CEB'
+          txn-teller-id: 'CEB001'
+          txn-branch-code: '1001'
+          transfer-map:
+            private:
+              product-code: '1050030102'
+              service-id: '3041020009'
+              scene-id: '01'
+              call-back-service-id: '8883010001'
+              call-back-scene-id: '01'
+            public:
+              product-code: '1050030102'
+              service-id: '3041030009'
+              scene-id: '01'
+              call-back-service-id: '8883010001'
+              call-back-scene-id: '01'
+            accountBalanceQuery:
+              service-id: '3013020007'
+              scene-id: '09'
+              prcscd: 'i302'
+            accountTransDetailQuery:
+              service-id: '3013020010'
+              scene-id: '03'
+              prcscd: 'f304'
+            privateTransQuery:
+              service-id: '3043020048'
+              scene-id: '01'
+            publicTransQuery:
+              service-id: '3043030047'
+              scene-id: '01'
+            statementDownload:
+              product-code: '1050030102'
+              service-id: '3044010003'
+              scene-id: '03'
+feign:
+  name:
+    account: utp-product-account

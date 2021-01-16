@@ -1,0 +1,25 @@
+drop table if exists t_outside_trans_order;
+create table t_outside_trans_order (
+	id  int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID'
+	,user_create varchar(250)  COMMENT '创建用户'
+	,gmt_create datetime  COMMENT '创建时间'
+	,user_modified varchar(250)  COMMENT '修改用户'
+	,gmt_modified datetime  COMMENT '修改时间'
+	,industry_code varchar(32)  COMMENT '平台编码'
+	,batch_id varchar(32)  COMMENT '批次号'
+	,req_date bigint(8)  COMMENT '请求日期yyyyMMdd'
+	,req_time int(6)  COMMENT '请求时间HHmmss'
+	,trans_date varchar(8)  COMMENT '交易日期yyyyMMdd'
+	,trans_time varchar(6)  COMMENT '交易时间HHmmss'
+	,trans_order_id bigint(64)  COMMENT '交易支付订单号'
+	,mer_no varchar(32)  COMMENT '交易商户号'
+	,pay_mode varchar(2)  COMMENT '支付方式|0支付宝 1微信 2银联  3无正向支付流水  9其他支付方式'
+	,trans_amount varchar(20)  COMMENT '交易金额单位分'
+	,seller_name varchar(200)  COMMENT '卖方名称'
+	,buyer_name varchar(200)  COMMENT '买方名称'
+	,goods_info varchar(1024)  COMMENT '商品信息(描述)'
+	,remark varchar(1024)  COMMENT '备注信息'
+	,upload_status varchar(10)  COMMENT '上送状态成功：SUCCESS | 失败：FAILURE'
+	,upload_desc varchar(1024)  COMMENT '上送状态描述'
+) COMMENT '';
+

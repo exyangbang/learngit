@@ -1,0 +1,291 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "trade",
+    "type": "table",
+    "name": "TransFlow",
+    "mysqlName":"t_trans_current",
+    "update":false,
+    "doc": "历史交易流水",
+    "key":[],
+    "index":[
+        {
+            "name":"t_trans_current_index_1",
+            "fields":["merNo"]
+        },
+        {
+            "name":"t_trans_current_index_2",
+            "fields":["channelCode"]
+        },
+        {
+            "name":"t_trans_current_index_3",
+            "fields":["orgCode"]
+        }
+    ],
+    "conditions":[
+        {
+          "name":"beginTransDate",
+          "operation":"<=",
+          "paramName":"trans_date"
+        },
+        {
+          "name":"endTransDate",
+          "operation":">",
+          "paramName":"trans_date"
+        },
+      {
+        "name":"beginTransTime",
+        "operation":"<=",
+        "paramName":"trans_time"
+      },
+      {
+        "name":"endTransTime",
+        "operation":">",
+        "paramName":"trans_time"
+      },
+      {
+        "name":"transStatus",
+        "operation":"=",
+        "paramName":"trans_status"
+      },
+      {
+        "name":"refundStatus",
+        "operation":"=",
+        "paramName":"refund_status"
+      },
+      {
+        "name":"reconcileStatus",
+        "operation":"=",
+        "paramName":"reconcile_status"
+      },
+      {
+        "name":"clientTransId",
+        "operation":"=",
+        "paramName":"client_trans_id"
+      },
+      {
+        "name":"serverTransId",
+        "operation":"=",
+        "paramName":"server_trans_id"
+      },
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"orgCode",
+            "operation":"=",
+            "paramName":"org_code"
+        },
+      {
+        "name":"productCode",
+        "operation":"=",
+        "paramName":"product_code"
+      },
+      {
+        "name":"transType",
+        "operation":"=",
+        "paramName":"trans_type"
+      }
+    ],
+    "fields": [
+        {
+            "name": "channelCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "渠道编号"
+        },
+        {
+            "name": "channelName",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "渠道名称"
+        },
+        {
+            "name": "channelRespCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "渠道返回代码"
+        },
+        {
+            "name": "channelRespId",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "渠道返回流水号"
+        },
+        {
+            "name": "channelRespMsg",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "渠道返回信息"
+        },
+        {
+            "name": "channelRespTime",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "渠道返回时间"
+        },
+        {
+            "name": "clientTransId",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "客户请求流水号"
+        },
+        {
+            "name": "clientTransTime",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "客户请求时间(yyyyMMddHHmmss)"
+        },
+        {
+            "name": "currency",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "货币类型"
+        },
+        {
+            "name": "orgCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "机构编码"
+        },
+        {
+            "name": "description",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "备注"
+        },
+        {
+            "name": "orgName",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "机构名称"
+        },
+        {
+            "name": "respException",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "返回错误"
+        },
+        {
+            "name": "respMessage",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "响应信息"
+        },
+        {
+            "name": "serverBatchNo",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "服务端批处理号"
+        },
+        {
+            "name": "serverLinkId",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "关联流水id"
+        },
+        {
+          "name": "serverTransId",
+          "type": "String",
+          "mysql_type":"varchar(20)",
+          "doc": "关联流水id"
+        },
+        {
+            "name": "reconcileDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "对账日期"
+        },
+        {
+            "name": "productCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "产品编码"
+        },
+        {
+            "name": "tradeType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "交易类型"
+        },
+        {
+            "name": "transAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "交易金额(分)"
+        },
+        {
+            "name": "transCallbackUrl",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "回调地址"
+        },
+        {
+            "name": "transDate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "交易日期(yyyyMMdd)"
+        },
+        {
+            "name": "transStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "交易状态"
+        },
+        {
+            "name": "transTime",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "交易时间(HHmmss)"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "商户编号"
+        },
+        {
+            "name": "respCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "响应码"
+        },
+        {
+            "name": "revokeStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "撤销状态"
+        },
+        {
+            "name": "refundStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "退货状态"
+        },
+        {
+            "name": "reconcileStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "对账状态"
+        },
+        {
+            "name": "userCode",
+            "type": "String",
+            "mysql_type": "varchar(50)",
+            "doc": "入网分配的用户名"
+        },
+      {
+        "name": "batchSubNo",
+        "type": "String",
+        "mysql_type":"varchar(50)",
+        "doc": "批量交易时：该批次下的明细流水号"
+      },
+      {
+        "name": "corpNo",
+        "type": "String",
+        "mysql_type": "varchar(50)",
+        "doc": "企业入网时分配的企业编码"
+      }
+    ]
+}

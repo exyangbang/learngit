@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.BlackListMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.BlackList">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="id_code" jdbcType="VARCHAR" property="idCode"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="obj_type" jdbcType="VARCHAR" property="objType"/>
+        <result column="bus_lic_code" jdbcType="VARCHAR" property="busLicCode"/>
+        <result column="ent_name" jdbcType="VARCHAR" property="entName"/>
+    </resultMap>
+
+    <select id="selectAllBlackList" parameterType="java.util.Map" resultType="cn.kingnet.utp.service.persistence.entity.BlackList">
+    select id_code,name,obj_type from t_blacklist where obj_type='1'
+    union all
+    select bus_lic_code as id_code,ent_name as name,obj_type from t_blacklist where obj_type='2'
+  </select>
+
+</mapper>

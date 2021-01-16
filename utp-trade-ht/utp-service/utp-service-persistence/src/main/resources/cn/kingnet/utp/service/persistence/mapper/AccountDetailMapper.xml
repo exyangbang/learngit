@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.AccountDetailMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.AccountDetail">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="operate_type" jdbcType="VARCHAR" property="operateType"/>
+        <result column="operate_sub_type" jdbcType="VARCHAR" property="operateSubType"/>
+        <result column="amount" jdbcType="BIGINT" property="amount"/>
+        <result column="before_balance" jdbcType="BIGINT" property="beforeBalance"/>
+        <result column="after_balance" jdbcType="BIGINT" property="afterBalance"/>
+        <result column="record_time" jdbcType="TIMESTAMP" property="recordTime"/>
+        <result column="seq_no" jdbcType="BIGINT" property="seqNo"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="peer_acc_no" jdbcType="VARCHAR" property="peerAccNo"/>
+        <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId"/>
+        <result column="outside_order_id" jdbcType="VARCHAR" property="outsideOrderId"/>
+        <result column="peer_acc_name" jdbcType="VARCHAR" property="peerAccName"/>
+    </resultMap>
+
+    <select id="queryIndustryAccountDetail" parameterType="java.util.Map" resultMap="BaseResultMap">
+        <!--  select b.* from t_industry a left join t_account_detail b on a.account = b.account and a.code = #{industryCode} and a.status != '2'
+          where
+          &amp;amp;amp;amp;lt;if test="operateType!=null"&amp;amp;amp;amp;gt;
+              b.operate_type = #{operateType} and
+          &amp;amp;amp;amp;lt;/if&amp;amp;amp;amp;gt;
+            b.record_time between #{startDate} and #{endDate}
+          union  all-->
+        select b.* from t_merchant_info c left join t_account_detail b on c.account = b.account and c.industry_code =
+        #{industryCode} and c.status != '3'
+        where
+        <if test="operateType!=null">
+            b.operate_type = #{operateType} and
+        </if>
+        b.record_time between #{startDate} and #{endDate}
+    </select>
+
+    <select id="getAccountDetailLastSeqNo" useCache="false" flushCache="true" parameterType="java.util.Map"
+            resultType="cn.kingnet.utp.service.persistence.entity.AccountDetail">
+    select * from t_account_detail t where t.account= #{account}
+      and t.seq_no = (select MAX(seq_no) from t_account_detail a where a.account= #{account})
+    </select>
+
+
+</mapper>

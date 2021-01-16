@@ -1,0 +1,151 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "channelincomeflow",
+    "type": "table",
+    "name": "ChannelIncomeFlow",
+    "mysqlname":"t_channel_income_flow",
+    "update":false,
+    "doc": "渠道入金通知流水表",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "accNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "虚拟账户账号"
+        },
+        {
+            "name": "accName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "虚拟账户客户姓名"
+        },
+         {
+             "name": "amt",
+             "type": "Long",
+             "mysql_type":"bigint(20)",
+             "doc": "充值金额,单位:分 无小数点"
+         },
+        {
+            "name": "coreNo",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "核心主交易流水"
+        },
+
+        {
+            "name": "rid",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "请求业务流水号"
+        },
+
+
+        {
+            "name": "exAcctNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "来账账号"
+        },
+        {
+            "name": "exAcctName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "来账户名"
+        },
+        {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "来款账户名称"
+        },
+        {
+            "name": "clearBankno",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "来账账号清算行号"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "来款银行行号"
+        },
+        {
+            "name": "bankName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "来账账号行名"
+        },
+
+        {
+            "name": "tranNo",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "支付系统业务流水号"
+        }
+        {
+            "name": "tranDate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "对账日期,yyyyMMdd"
+        },
+        {
+            "name": "autoPayeeAcctAo",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "入账账户"
+        }
+        ,
+        {
+            "name": "autoPayeeAcctName",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "入账户名"
+        },
+        {
+             "name": "manualPayeeAcctNo",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "手工提入账户"
+        }
+        ,
+        {
+             "name": "manualPayeeAcctName",
+             "type": "String",
+             "mysql_type":"varchar(32)",
+             "doc": "手工提入户名"
+        }
+         ,
+        {
+             "name": "bizFlag",
+             "type": "String",
+             "mysql_type":"varchar(2)",
+             "doc": "业务状态,(01-已入账,02-已挂账,03-已退账,04-已手工入账)"
+        } ,
+        {
+          "name": "elcMakeFlag",
+          "type": "String",
+          "mysql_type":"varchar(2)",
+          "doc": "电子回单生成标识0未生成 1已生成"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "beizhu"
+        },
+         {
+             "name": "handleFlag",
+             "type": "String",
+             "mysql_type":"varchar(2)",
+             "doc": "处理状态,(0-未入账,1-已入账)"
+         },
+    ]
+}

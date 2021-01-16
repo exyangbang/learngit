@@ -1,0 +1,130 @@
+package com.scenetec.upf.operation.repository.trade;
+
+import com.github.pagehelper.Page;
+import com.scenetec.upf.operation.model.vo.SubAccountPaymentFlowVO;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
+
+@Repository
+@Mapper
+public interface SubAccountPaymentFlowMapper {
+
+    @Select("<script> "
+            + "SELECT " 
+            + "concat(c.trans_date, c.trans_time) as tradeDate,"
+            + "c.channel_settle_date as settleDate,"
+            + "c.industry_code as industryCode,"
+            + "case WHEN a.obj_type = '2' " 
+            + " then m.industry_name "
+            + " else a.obj_name " 
+            + "end as industryName,"
+            + "c.client_trans_id as clientTransId,"
+            + "c.server_trans_id as serverTransId,"
+            + "c.payer_account as payerSubAccount,"
+            + "case WHEN a.obj_type = '2' " 
+            + " then m.real_name" 
+            + " else a.obj_name " 
+            + "end as payerSubAccountName,"
+            + "c.payee_acct_no as payeeSubAccount,"
+            + "c.payee_name as payeeSubAccountName,"
+            + "c.trans_amount as amount,"
+            + "c.trans_status as transStatus,"
+            + "c.resp_message as transDesc,"
+            + "c.description as remark,"
+            + "c.gmt_create as gmtCreate "
+            + "FROM t_trans_current c "
+            + "LEFT JOIN t_account a  ON c.payer_account = a.account "
+            + "LEFT JOIN t_merchant_info m ON a.account = m.account "
+            + "WHERE trade_type = 'ACC_PAYMENT' "
+            + "<if test='params.beginTransDatetime != null'> and concat(c.trans_date,c.trans_time) &gt;= #{params.beginTransDatetime} </if>"
+            + "<if test='params.endTransDatetime != null'> and concat(c.trans_date,c.trans_time) &lt;= #{params.endTransDatetime} </if>"
+            + "<if test='params.beginSettleDate != null'> and c.channel_settle_date &gt;= #{params.beginSettleDate} </if>"
+            + "<if test='params.endSettleDate != null'> and c.channel_settle_date &lt;= #{params.endSettleDate} </if>"
+            + "<if test='params.industryCode != null'> and c.industry_code = #{params.industryCode} </if>"
+            + "<if test='params.payerSubAccount != null'> and c.payer_account = #{params.payerSubAccount} </if>"
+            + "<if test='params.payeeSubAccount != null'> and c.payee_acct_no = #{params.payeeSubAccount} </if>"
+            + "<if test='params.transStatus != null'> and c.trans_status = #{params.transStatus} </if>"
+            + "UNION "
+            + "SELECT "
+            + "concat(c.trans_date, c.trans_time) as tradeDate,"
+            + "c.channel_settle_date as settleDate,"
+            + "c.industry_code as industryCode,"
+            + "case WHEN a.obj_type = '2' "
+            + " then m.industry_name "
+            + " else a.obj_name "
+            + "end as industryName,"
+            + "c.client_trans_id as clientTransId,"
+            + "c.server_trans_id as serverTransId,"
+            + "c.payer_account as payerSubAccount,"
+            + "case WHEN a.obj_type = '2' "
+            + " then m.real_name"
+            + " else a.obj_name "
+            + "end as payerSubAccountName,"
+            + "c.payee_acct_no as payeeSubAccount,"
+            + "c.payee_name as payeeSubAccountName,"
+            + "c.trans_amount as amount,"
+            + "c.trans_status as transStatus,"
+            + "c.resp_message as transDesc,"
+            + "c.description as remark,"
+            + "c.gmt_create as gmtCreate "
+            + "FROM t_trans_history c "
+            + "LEFT JOIN t_account a ON c.payer_account = a.account "
+            + "LEFT JOIN t_merchant_info m ON a.account = m.account "
+            + "WHERE trade_type = 'ACC_PAYMENT' "
+            + "<if test='params.beginTransDatetime != null'> and concat(c.trans_date,c.trans_time) &gt;= #{params.beginTransDatetime} </if>"
+            + "<if test='params.endTransDatetime != null'> and concat(c.trans_date,c.trans_time) &lt;= #{params.endTransDatetime} </if>"
+            + "<if test='params.beginSettleDate != null'> and c.channel_settle_date &gt;= #{params.beginSettleDate} </if>"
+            + "<if test='params.endSettleDate != null'> and c.channel_settle_date &lt;= #{params.endSettleDate} </if>"
+            + "<if test='params.industryCode != null'> and c.industry_code = #{params.industryCode} </if>"
+            + "<if test='params.payerSubAccount != null'> and c.payer_account = #{params.payerSubAccount} </if>"
+            + "<if test='params.payeeSubAccount != null'> and c.payee_acct_no = #{params.payeeSubAccount} </if>"
+            + "<if test='params.transStatus != null'> and c.trans_status = #{params.transStatus} </if>"
+            + " </script>")
+    Page<SubAccountPaymentFlowVO> list(@Param("params") Map<String, Object> params);
+
+    @Select("<script> select count(1) as total, IFNULL(sum(tmp.amount),0) as totalAmount from "
+            + "(SELECT "
+            + "c.id, "
+            + "c.trans_amount as amount "
+            + "FROM t_trans_current c "
+            + "LEFT JOIN t_account a  ON c.payer_account = a.account "
+            + "LEFT JOIN t_merchant_info m ON a.account = m.account "
+            + "WHERE trade_type = 'ACC_PAYMENT' "
+            + "<if test='params.beginTransDatetime != null'> and concat(c.trans_date,c.trans_time) &gt;= #{params.beginTransDatetime} </if>"
+            + "<if test='params.endTransDatetime != null'> and concat(c.trans_date,c.trans_time) &lt;= #{params.endTransDatetime} </if>"
+            + "<if test='params.beginSettleDate != null'> and c.channel_settle_date &gt;= #{params.beginSettleDate} </if>"
+            + "<if test='params.endSettleDate != null'> and c.channel_settle_date &lt;= #{params.endSettleDate} </if>"
+            + "<if test='params.industryCode != null'> and c.industry_code = #{params.industryCode} </if>"
+            + "<if test='params.payerSubAccount != null'> and c.payer_account = #{params.payerSubAccount} </if>"
+            + "<if test='params.payeeSubAccount != null'> and c.payee_acct_no = #{params.payeeSubAccount} </if>"
+            + "<if test='params.transStatus != null'> and c.trans_status = #{params.transStatus} </if>"
+            + "UNION "
+            + "SELECT "
+            + "c.id, "
+            + "c.trans_amount as amount "
+            + "FROM t_trans_history c "
+            + "LEFT JOIN t_account a ON c.payer_account = a.account "
+            + "LEFT JOIN t_merchant_info m ON a.account = m.account "
+            + "WHERE trade_type = 'ACC_PAYMENT' "
+            + "<if test='params.beginTransDatetime != null'> and concat(c.trans_date,c.trans_time) &gt;= #{params.beginTransDatetime} </if>"
+            + "<if test='params.endTransDatetime != null'> and concat(c.trans_date,c.trans_time) &lt;= #{params.endTransDatetime} </if>"
+            + "<if test='params.beginSettleDate != null'> and c.channel_settle_date &gt;= #{params.beginSettleDate} </if>"
+            + "<if test='params.endSettleDate != null'> and c.channel_settle_date &lt;= #{params.endSettleDate} </if>"
+            + "<if test='params.industryCode != null'> and c.industry_code = #{params.industryCode} </if>"
+            + "<if test='params.payerSubAccount != null'> and c.payer_account = #{params.payerSubAccount} </if>"
+            + "<if test='params.payeeSubAccount != null'> and c.payee_acct_no = #{params.payeeSubAccount} </if>"
+            + "<if test='params.transStatus != null'> and c.trans_status = #{params.transStatus} </if>"
+            + " ) tmp"
+            + " </script>")
+    Map<String, Long> countTotal(@Param("params") Map<String, Object> params);
+
+    @Select("<script>"
+            + "select trans_order_id from t_trans_order_relation where server_trans_id = #{serverTransId}"
+            + "</script>")
+    List<String> getTransOrderIds(@Param("serverTransId") String serverTransId);
+}

@@ -1,0 +1,24 @@
+---
+server:
+  port: 9761
+spring:
+  profiles: dev
+eureka:
+  environment: dev
+  server: 
+    ## 关闭自我保护
+    enable-self-preservation: false
+    ## 清理间隔（单位毫秒，默认是60*1000）
+    eviction-interval-timer-in-ms: 5000
+  instance:
+    hostname: utp-trade-discovery
+    ## 续约到期时间（默认90秒）
+    lease-expiration-duration-in-seconds: 30 
+    ## 续约更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 10
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:9761/eureka/
+

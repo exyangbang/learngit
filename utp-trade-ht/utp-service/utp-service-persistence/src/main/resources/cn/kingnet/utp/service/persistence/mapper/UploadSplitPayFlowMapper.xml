@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.UploadSplitPayFlowMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.UploadSplitPayFlow">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="settle_date" jdbcType="VARCHAR" property="settleDate" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="period" jdbcType="INTEGER" property="period" />
+    <result column="split_date" jdbcType="VARCHAR" property="splitDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="extend_1" jdbcType="VARCHAR" property="extend1" />
+    <result column="extend_2" jdbcType="VARCHAR" property="extend2" />
+    <result column="extend_3" jdbcType="VARCHAR" property="extend3" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="query_times" jdbcType="INTEGER" property="queryTimes" />
+    <result column="trans_desc" jdbcType="VARCHAR" property="transDesc" />
+    <result column="reconcile_date" jdbcType="VARCHAR" property="reconcileDate" />
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+    <result column="settle_mode" jdbcType="VARCHAR" property="settleMode" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="upload_status" jdbcType="VARCHAR" property="uploadStatus" />
+    <result column="upload_desc" jdbcType="VARCHAR" property="uploadDesc" />
+  </resultMap>
+</mapper>

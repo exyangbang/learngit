@@ -1,0 +1,73 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "fee",
+    "type": "table",
+    "name": "FeeTemplate",
+    "mysqlname":"t_fee_template",
+    "update":false,
+    "doc": "手续费模板管理",
+    "key":[],
+    "index":[
+        {
+            "name":"t_fee_template_index_1",
+            "fields":["name"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"name",
+            "operation":"like",
+            "paramName":"name"
+        }
+    ],
+    "fields": [
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "模板名称"
+        },
+        {
+            "name": "settleType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "结算类型"
+        },
+         {
+             "name": "chargeMode",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "收费模式"
+         },
+           {
+               "name": "calculateMode",
+               "type": "String",
+               "mysql_type":"varchar(10)",
+               "doc": "计算方式"
+           },
+           {
+              "name": "fee",
+              "type": "Double",
+              "mysql_type":"double",
+              "doc": "手续费"
+          },
+          {
+              "name": "minFee",
+              "type": "Double",
+              "mysql_type":"double",
+              "doc": "最小手续费"
+          },
+          {
+              "name": "maxFee",
+              "type": "Double",
+              "mysql_type":"double",
+              "doc": "最大手续费"
+          },
+           {
+               "name": "remark",
+               "type": "String",
+               "mysql_type":"varchar(255)",
+               "doc": "备注信息"
+           }
+    ]
+}

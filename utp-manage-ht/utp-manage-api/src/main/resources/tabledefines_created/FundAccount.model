@@ -1,0 +1,108 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "fundaccount",
+    "type": "table",
+    "name": "FundAccount",
+    "mysqlname":"t_fund_account",
+    "update":false,
+    "doc": "资金账户表",
+    "key":[],
+    "index":[
+        {
+            "name":"uk_fundAccount_account",
+            "fields":["account_num"],
+            "unique":true
+        },
+        {
+            "name":"uk_fundAccount_bank_account_no",
+            "fields":["bank_account_no"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"accountNum",
+            "operation":"=",
+            "paramName":"account_num"
+        },
+        {
+            "name":"bankAccountNo",
+            "operation":"=",
+            "paramName":"bank_account_no"
+        }
+    ],
+    "fields": [
+        {
+            "name": "accountNum",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "资金账户编号"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "清算行行号"
+        },
+         {
+             "name": "status",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "状态（0-不可用 1-可用）"
+         },
+        {
+            "name": "bankAccountNo",
+            "type": "String",
+            "mysql_type":"varchar(40)",
+            "doc": "华通客户账号|内部户账号'"
+        },
+        {
+            "name": "bankAccountName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "华通客户账号名称|内部户名称"
+        },
+        {
+            "name": "synchronizationTime",
+            "type": "Date",
+            "mysql_type":"datetime",
+            "doc": "最新同步时间"
+        },
+        {
+            "name": "currentBalance",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "当前余额"
+        },
+                 {
+                    "name": "remark",
+                    "type": "String",
+                    "mysql_type":"varchar(1000)",
+                    "doc": "备注"
+                 },
+                 {
+                    "name": "serverTransId",
+                    "type": "String",
+                    "mysql_type":"varchar(100)",
+                    "doc": "服务端交易流水号"
+                 },
+                 {
+                    "name": "clinetTransId",
+                    "type": "String",
+                    "mysql_type":"varchar(100)",
+                    "doc": "客户端交易流水号"
+                 },
+                 {
+                    "name": "addUsr",
+                    "type": "String",
+                    "mysql_type":"varchar(10)",
+                    "doc": "发起人：0-后管 1-联机"
+                 },
+                 {
+                    "name": "auditStatus",
+                    "type": "String",
+                    "mysql_type":"varchar(10)",
+                    "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+                 }
+
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "settle",
+    "type": "table",
+    "name": "MerReconcileRecord",
+    "mysqlname":"t_merchant_reconcile_record",
+    "update":false,
+    "doc": "商户对账记录",
+    "key":[],
+    "index":[
+        {
+            "name":"t_merchant_reconcile_record_index_1",
+            "fields":["reconcileDate"]
+        },
+        {
+            "name":"t_merchant_reconcile_record_index_2",
+            "fields":["merNo"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"reconcileDate",
+            "operation":"=",
+            "paramName":"reconcile_date"
+        },
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        }
+    ],
+    "fields": [
+        {
+            "name": "reconcileDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "对账时间"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "商户号"
+        },
+         {
+             "name": "reconcileStatus",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "对账状态 0-未对账 1-已对账"
+         }
+    ]
+}

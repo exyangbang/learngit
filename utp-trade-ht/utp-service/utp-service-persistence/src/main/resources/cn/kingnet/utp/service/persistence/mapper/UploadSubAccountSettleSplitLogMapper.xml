@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.UploadSubAccountSettleSplitLogMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.UploadSubAccountSettleSplitLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="req_date" jdbcType="VARCHAR" property="reqDate" />
+    <result column="req_time" jdbcType="VARCHAR" property="reqTime" />
+    <result column="settle_date" jdbcType="VARCHAR" property="settleDate" />
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+    <result column="batch_no" jdbcType="VARCHAR" property="batchNo" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="callback_url" jdbcType="VARCHAR" property="callbackUrl" />
+    <result column="callback_times" jdbcType="INTEGER" property="callbackTimes" />
+    <result column="period" jdbcType="VARCHAR" property="period" />
+    <result column="callback_status" jdbcType="VARCHAR" property="callbackStatus" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+</mapper>

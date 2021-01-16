@@ -1,0 +1,97 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "freezingfundsopeapproval",
+    "type": "table",
+    "name": "FreezingFundsOpeApproval",
+    "mysqlname":"t_freezing_funds_ope_approval",
+    "update":false,
+    "doc": "资金冻结解冻审批记录",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+           "name": "account",
+           "type": "String",
+           "mysql_type":"varchar(32)",
+           "doc": "虚拟账户账号"
+        },
+         {
+             "name": "objType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "归属对象类型（1:平台|行业账户,2-企业商户 3-个人 4-手续费收入账户 5-手续费支出账户 6-归集账户 7-佣金账户）"
+         },
+         {
+             "name": "objName",
+             "type": "String",
+             "mysql_type":"varchar(255)",
+             "doc": "账户名称"
+         },
+          {
+              "name": "code",
+              "type": "String",
+              "mysql_type":"varchar(100)",
+              "doc": "客户号"
+          },
+            {
+                "name": "indName",
+                "type": "String",
+                "mysql_type":"varchar(100)",
+                "doc": "客户名称"
+            },
+            {
+                "name": "operationType",
+                "type": "String",
+                "mysql_type":"varchar(10)",
+                "doc": "操作类型：0-冻结 1-解冻"
+            },
+            {
+                "name": "frozenAmount",
+                "type": "Long",
+                "mysql_type":"bigint(20)",
+                "doc": "冻结金额（单位分）"
+            },
+            {
+                "name": "busLicCode",
+                "type": "String",
+                "mysql_type":"varchar(100)",
+                "doc": "证件号"
+            },
+            {
+                "name": "remark",
+                "type": "String",
+                "mysql_type":"varchar(1000)",
+                "doc": "备注"
+            },
+            {
+                "name": "serverTransId",
+                "type": "String",
+                "mysql_type":"varchar(100)",
+                "doc": "服务端交易流水号"
+            },
+            {
+                "name": "clinetTransId",
+                "type": "String",
+                "mysql_type":"varchar(100)",
+                "doc": "客户端交易流水号"
+            },
+            {
+                "name": "addUsr",
+                "type": "String",
+                "mysql_type":"varchar(10)",
+                "doc": "发起人：0-后管 1-联机"
+            },
+            {
+                "name": "auditStatus",
+                "type": "String",
+                "mysql_type":"varchar(10)",
+                "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+            }
+
+        ]
+
+}

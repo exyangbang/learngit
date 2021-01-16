@@ -1,0 +1,62 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "withdrawcashaccount",
+    "type": "table",
+    "name": "WithdrawCashAccount",
+    "mysqlname":"t_withdraw_cash_account ",
+    "update":false,
+    "doc": "提现账户表",
+    "key":[],
+    "index":[
+        {
+            "name":"account_info_index_1",
+            "fields":["accountNo"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"accountNo",
+            "operation":"=",
+            "paramName":"account_no"
+        }
+    ],
+    "fields": [
+        {
+            "name": "accountNo",
+            "type": "String",
+            "mysql_type":"varchar(40)",
+            "doc": "收款方账号"
+        },
+         {
+             "name": "accountName",
+             "type": "String",
+             "mysql_type":"varchar(200)",
+             "doc": "收款方名称"
+         },
+        {
+            "name": "industryId",
+            "type": "Long",
+            "mysql_type":" bigint(20)",
+            "doc": "industry表id"
+        },
+        {
+            "name": "payeeOpbk",
+            "type": "Long",
+            "mysql_type":" bigint(20)",
+            "doc": "清算行号"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":" varchar(2)",
+            "doc": "状态（0-不可用 1-可用）"
+        },
+        {
+            "name": "fundAccount",
+            "type": "String",
+            "mysql_type":" varchar(32)",
+            "doc": "资金账户"
+        }
+    ]
+}

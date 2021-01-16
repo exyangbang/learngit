@@ -1,0 +1,89 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "electronicreceipt",
+    "type": "table",
+    "name": "ElectronicReceipt",
+    "mysqlname":"t_electronic_receipt",
+    "update":false,
+    "doc": "电子回单",
+    "key":[],
+    "index":[
+        {
+            "name":"idx_ele_recp_stid",
+            "fields":["serverTransId"],
+            "unique":true
+        },
+        {
+            "name":"idx_ele_recp_ic_ctid",
+            "fields":["industryCode","clientTransId"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"serverTransId",
+            "operation":"=",
+            "paramName":"server_trans_id"
+        },
+        {
+            "name":"industryCode",
+            "operation":"=",
+            "paramName":"industry_code"
+        },
+        {
+            "name":"clientTransId",
+            "operation":"=",
+            "paramName":"client_trans_id"
+        },
+    ],
+    "fields": [
+        {
+            "name": "orderNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "电子回单号"
+        },
+        {
+            "name": "md5Hex",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "校验值"
+        },
+         {
+             "name": "params",
+             "type": "String",
+             "mysql_type":"varchar(2000)",
+             "doc": "json参数字符串"
+         },
+         {
+            "name": "fileContent",
+            "type": "byte[]",
+            "mysql_type":"mediumblob",
+            "doc": "pdf文件内容"
+         },
+         {
+            "name": "serverTransId",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "交易流水ID"
+         },
+         {
+            "name": "tradeType",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "交易类型"
+         },
+         {
+            "name": "clientTransId",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "客户请求流水号"
+         },
+         {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(12)",
+            "doc": "平台号"
+         },
+    ]
+}

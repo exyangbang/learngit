@@ -1,0 +1,90 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "applicationformanualentry",
+    "type": "table",
+    "name": "ApplicationForManualEntry",
+    "mysqlname":"t_application_for_manual_entry",
+    "update":false,
+    "doc": "手工入账申请记录表",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "custAccountNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "客户账号"
+        },
+        {
+            "name": "custAccountName",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "客户名称"
+        },
+        {
+           "name": "txnAmount",
+           "type": "Long",
+           "mysql_type":"bigint(20)",
+           "doc": "交易金额（单位分)"
+       },
+        {
+           "name": "accountBalance",
+           "type": "Long",
+           "mysql_type":"bigint(20)",
+           "doc": "账户余额（单位分）"
+       },
+       {
+           "name": "otherCustAccountNo",
+           "type": "String",
+           "mysql_type":"varchar(50)",
+           "doc": "对方账号"
+       },
+       {
+           "name": "otherCustName",
+           "type": "String",
+           "mysql_type":"varchar(50)",
+           "doc": "对方客户名称"
+        },
+       {
+           "name": "account",
+           "type": "String",
+           "mysql_type":"varchar(50)",
+           "doc": "入账虚拟账号"
+       },
+       {
+           "name": "accountName",
+           "type": "String",
+           "mysql_type":"varchar(200)",
+           "doc": "入账户名"
+        },
+        {
+            "name": "sysReferenceNo",
+            "type": "String",
+            "mysql_type":"varchar(34)",
+            "doc": "华通系统交易流水号"
+       },
+        {
+            "name": "transId",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "平台专用银行账户交易明细表对应id"
+        },
+        {
+             "name": "status",
+             "type": "String",
+             "mysql_type":" varchar(2)",
+             "doc": "状态（0-不可用 1-可用）"
+        },
+        {
+             "name": "auditStatus",
+             "type": "String",
+             "mysql_type":" varchar(2)",
+             "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+        }
+    ]
+}

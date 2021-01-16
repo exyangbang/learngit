@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>job.ht.settle.download.args</name>
+        <value>
+            --localTargetPath=${job.ht.settle.local.target.path}
+            --remoteTargetPath=${job.ht.settle.remote.target.path}
+            --fileName=OENBANK_FZ_${job.ht.settle.settleDate}.txt
+            --fileEncoding=UTF-8
+            --settleDate=${job.ht.settle.settleDate}
+        </value>
+        <description>华通银行商户分账文件下载参数</description>
+    </property>
+    <property>
+        <name>job.ht.settle.write.args</name>
+        <value>
+            --settleDate=${job.ht.settle.settleDate}
+            --jobId=${job.ht.settle.jobId}
+        </value>
+        <description>华通银行商户分账虚账入账</description>
+    </property>
+</configuration>

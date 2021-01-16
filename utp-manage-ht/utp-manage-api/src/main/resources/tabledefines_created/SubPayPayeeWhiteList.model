@@ -1,0 +1,36 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "subpaypayeewhitelist",
+    "type": "table",
+    "name": "SubPayPayeeWhiteList",
+    "mysqlname":"t_sub_pay_payee_white_list",
+    "update":false,
+    "doc": "子账户单笔付款收款白名单",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "payeeAccount",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "收款账号"
+        },
+        {
+            "name": "payeeName",
+            "type": "String",
+            "mysql_type":"varchar(250)",
+            "doc": "收款户名"
+        },
+         {
+             "name": "industryId",
+             "type": "int",
+             "mysql_type":"int(20)",
+             "doc": "代付客户号"
+         }
+    ]
+}

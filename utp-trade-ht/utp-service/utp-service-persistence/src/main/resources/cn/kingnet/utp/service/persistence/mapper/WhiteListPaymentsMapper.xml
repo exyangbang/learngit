@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.WhiteListPaymentsMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.WhiteListPayments">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="industry_id" jdbcType="BIGINT" property="industryId" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="receiver_account" jdbcType="VARCHAR" property="receiverAccount" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="one_day_trading_quota" jdbcType="BIGINT" property="oneDayTradingQuota" />
+    <result column="current_transaction_amount" jdbcType="BIGINT" property="currentTransactionAmount" />
+    <result column="begin_date" jdbcType="VARCHAR" property="beginDate" />
+    <result column="end_date" jdbcType="VARCHAR" property="endDate" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+</mapper>

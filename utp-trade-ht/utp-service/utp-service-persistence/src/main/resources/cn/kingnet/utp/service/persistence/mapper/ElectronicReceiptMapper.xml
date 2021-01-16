@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.ElectronicReceiptMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.ElectronicReceipt">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="md5_hex" jdbcType="VARCHAR" property="md5Hex" />
+    <result column="params" jdbcType="VARCHAR" property="params" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="file_content" jdbcType="LONGVARBINARY" property="fileContent" />
+  </resultMap>
+</mapper>

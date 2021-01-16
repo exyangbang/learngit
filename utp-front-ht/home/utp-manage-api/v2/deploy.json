@@ -1,0 +1,17 @@
+{
+  "apppath": "apps",
+  "bakpath": "backup",
+  "deploypath": "deploy",
+  "consoleout": "logs",
+  "sshinfo": "",
+  "pkgroot": "",
+  "programs": [
+    {
+      "name": "utp-manage-api-v2",
+      "jvm_args": "-Xmx128m",
+      "doc": "华通后管api接口",
+      "pkg": "utp-manage-api-v2.jar",
+      "app_args": "--spring.profiles.active=test"
+    }	
+  ]
+}

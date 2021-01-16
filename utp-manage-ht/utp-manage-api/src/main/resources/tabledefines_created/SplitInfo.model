@@ -1,0 +1,233 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "splitinfo",
+    "type": "table",
+    "name": "SplitInfo",
+    "mysqlname":"t_split_info",
+    "update":false,
+    "doc": "",
+    "key":[],
+    "index":[
+        {
+            "name":"t_settle_check_info_index_1",
+            "fields":["merNo"],
+            "unique":true
+        },
+        {
+            "name":"t_split_info_settle_date",
+            "fields":["settleDate"]
+        },
+         {
+             "name":"t_split_info_industryCodeAndSettleDateAndbatchId",
+             "fields":["industryCode","settleDate","batchId"]
+         },
+         {
+             "name":"t_split_info_extend_1_index",
+             "fields":["extend1"]
+         }
+    ],
+
+
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"settleDate",
+            "operation":"=",
+            "paramName":"settle_date"
+        },
+        {
+            "name":"clientTransId",
+            "operation":"=",
+            "paramName":"client_trans_id"
+        },
+        {
+            "name":"industryCode",
+            "operation":"=",
+            "paramName":"industry_code"
+        },
+        {
+            "name":"batchId",
+            "operation":"=",
+            "paramName":"batch_id"
+        },
+        {
+            "name":"extend1",
+            "operation":"=",
+            "paramName":"extend_1"
+        }
+    ],
+    "fields": [
+        {
+            "name": "settleDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "清算日期 格式为yyyyMMdd"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "商户号"
+        },
+        {
+            "name": "amount",
+            "type": "",
+            "mysql_type":"bigint(20)",
+            "doc": "产品编码"
+        },
+        {
+            "name": "period",
+            "type": "int",
+            "mysql_type":"int(11)",
+            "doc": "M	数字， 例如： 1 表示账期为 T+1"
+        },
+        {
+            "name": "splitDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "入账日期 格式yyyyMMdd(清算日期+实际账期天数)"
+        },
+        {
+            "name": "accountType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "账户类型0-对私 1-对公"
+        },
+        {
+            "name": "accountNo",
+            "type": "String",
+            "mysql_type":"bigint(50)",
+            "doc": "收款人账号"
+        },
+        {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "收款人名称"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "收款人清算行行号"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "备注说明"
+        },
+        {
+            "name": "channelRespCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "渠道返回代码"
+        },
+        {
+            "name": "extend1",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "关联支付订单号列表 trans_order_ids"
+        },
+        {
+            "name": "extend2",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "扩展字段2"
+        },
+        {
+            "name": "extend3",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "扩展字段3"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "虚账户分账入账状态（0-未入账 1-已入账）"
+        },
+        {
+            "name": "providerCode",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "文件提供商"
+        },
+        {
+            "name": "batchId",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "批次Id"
+        },
+        {
+            "name": "transDate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "发起提现交易日期yyyyMMdd"
+        },
+        {
+            "name": "serverTransId",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "服务端交易流水号"
+        },
+        {
+            "name": "clientTransId",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "客户端交易流水号"
+        },
+        {
+            "name": "transStatus",
+            "type": "String",
+            "mysql_type":"varchar(30)",
+            "doc": "交易状态|同交易表状态"
+        },
+        {
+            "name": "queryTimes",
+            "type": "int",
+            "mysql_type":"varchar(11)",
+            "doc": "提现结果查询次数"
+        },
+        {
+            "name": "transDesc",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "提现结果描述"
+        },
+        {
+            "name": "subject",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "分账主体0-个人 1商户"
+        },
+        {
+            "name": "reconcileDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "华通清算对账日"
+        },
+        {
+            "name": "userAccount",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "用户账户"
+        },
+        {
+            "name": "settleMode",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "结算方式0=代付结算 1=记账结算"
+        },
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "代付客户号"
+        }
+    ]
+}

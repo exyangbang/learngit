@@ -1,0 +1,71 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "industryamtlimit",
+    "type": "table",
+    "name": "IndustryAmtLimit",
+    "mysqlname":"t_industry_amt_limit",
+    "update":false,
+    "doc": "客户交易限额表",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(12)",
+            "doc": "代付客户号"
+        },
+         {
+             "name": "industryId",
+             "type": "Long",
+             "mysql_type":"bigint(20)",
+             "doc": "代付客户id）"
+         },
+        {
+            "name": "industryName",
+            "type": "String",
+            "mysql_type":" varchar(200)",
+            "doc": "名称"
+        },
+        {
+            "name": "publicIndividualAmt",
+            "type": "Long",
+            "mysql_type":" bigint(20)",
+            "doc": "对公单笔限额（单位分）"
+        },
+        {
+            "name": "privateIndividualAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "对私单笔限额（单位分）"
+        },
+        {
+            "name": "unitIndividualAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "单位结算卡单笔限额（单位分）"
+        },
+        {
+            "name": "industryDateAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "客户号单日限额（单位分）"
+        },
+        {
+            "name": "subaccountsDateAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "子账户单日限额（单位分）"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":" varchar(255)",
+            "doc": "备注"
+        }
+    ]
+}

@@ -1,0 +1,332 @@
+#########################生产环境配置#########################
+#单数据源配置 start#
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    async:
+      request-timeout: 60000
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    connectionProperties: druid.stat.mergeSql=true
+    url: jdbc:mysql://10.20.148.27:10322/db_utp_ht_v2?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: utp_ht2_rw
+    password: Yea_isse43
+    druid:
+      initial-size: 50
+      max-active: 300
+      min-idle: 10
+      keep-alive: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connectionSize: 100
+      validation-query: select 'x' from dual
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query-timeout: 1000
+      phy-timeout-millis: 60000
+      stat-view-servlet:
+        login-username: utp
+        login-password: utp=123
+  redis:
+    sentinel:
+      master: utpmaster1
+      nodes: 10.22.68.8:6471,10.22.68.9:6472,10.22.68.10:6473
+    password: admin
+#单数据源配置 end#
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  offsetAsPageNum: true
+  supportMethodsArguments: true
+
+#日志配置 start#
+logging:
+  level:
+    root: INFO
+    cn.kingnet.utp: INFO
+    cn.kingnet.utp.service.persistence: INFO
+    cn.kingnet.utp.channel: INFO
+    cn.kingnet.product: INFO
+    com.baomidou.mybatisplus: INFO
+    org.spring.springboot.dao: INFO
+    cn.kingnet.utp.trade.common.security: INFO
+    cn.kingnet.product.account.service.impl: INFO
+    cn.kingnet.utpchannel.onebank.service: INFO
+  config: file:./utp-config/logback-spring.xml
+  file: /data/app/app/log/utp-v2/${spring.application.name}/${spring.application.name}.log
+  file.max-size: 50MB
+  file.max-history: 180
+#日志配置 end#
+
+#mybatis-plus配置 start#
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    id-type: 2
+    field-strategy: 0
+    db-column-underline: true
+    refresh-mapper: true
+    capital-mode: true
+#mybatis-plus配置 end#
+
+#hystrix及ribbon配置 start#
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#hystrix及ribbon配置 end#
+
+#渠道配置 start#
+cn:
+  kingnet:
+    utp:
+      sign-type: HTSIGN
+      private-key: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDHv7NZV5aeYdeDEHEinJEBVBHILGdt4n780HdKt7KmquaDw5wOtVmE11D1SX1z62R6Z+42n3oL94snjhIAtQ1LiLtdERAghRMhOTJyGey6s8GG3/lT6Jp2Kyer9NHYb4yVKZKMsl2c/kzgSyzXuqi+cPXgZtTkGNYygzSJW7hlmWNi/H7PwHEyymJ9Wyg3LZX44Vy95JKJDtp15N3lO1FWqohxcXXu2Xvs9SA679k0KzHlitkBz613npDv8VQ/vyKoHJHolMdNb1tS2uZQ4MEIsi67sKro+RVyhUP9XDSnpXghPZQtV/APcswde2wdJi/6BnZGGj8A86vwASwq5DZbAgMBAAECggEBAJo4ONmG1YRNGF5ZyG+noBD9foklN2nQkKjSrveiIq2pjzY2RXvZqlb1As2OwuxH1pjnOzUzJcCti+OrPd0L7ErgM4CkVuY0uFNTXM5Zk7uGY6mlrVOKaA9KPGP4LjhDz6+unDZC1CIM+P/HKsUYmYYHot5xpnbBckcno91VUmYljTZlstt4aQ+JIhCqdPZ+xC/DVD3J07eBRdVCpVrVo1Zqkd5c1yfoQytDWOm9KBYs8FgvVRz/PKcYyTY/qWXCA2e3ElmJQ0wbo66gZuCdfn7wIiXvz9o7pw4oNZIStvVaaFMMv77Iip6xSEsPOVmoSE8lsUsntdVpCQiRS9VlS7ECgYEA4i5oEJ9anqVOj+RHLYoL63bep/zkdNZkYjo+zZ7yRnncGMqPwOU+tBQXaW7JjrrL4HM+oBy+fUVWn6iEw2PZNe8iwTbFpkr9FmWJnxng/xUd3mu42jEglOTa9FGh6AH9ZLHphms2AXRlIu6Uwb901W5vYX45C4k42p+0f34Kd6MCgYEA4hUzsZGy1CgiDlHrj8bW8g9jNCn1BfUkKVL3CTWPG+mSWr3kq1rpdCmFLc3QUppViSUISxtfcttzF6tiEHmRHQQLbTa7N03tfeEUEnxdz6PXF5dZ5IKfmlJiEdA0WMylvCxcpUd91Ci4x5K+1f5iyV/CuzmuNSBmev4Na4WekekCgYEAlZQVFDEej95It1ZDUDWELoMdOsE/IJmMJ33XfMpJ9Ruv1+FV8j5pGlRTK1GuECsum0/7sY1w2I2bfNjIfCMzSbzNIjQjwBbFiyM5QTOvHWKMr0RUKk/k+TLkLkEyLqnqNsaF5nROceXU4KYhUIRaMq/nDvWXqi5koAiQKORk7bsCgYEAtunOdAjcNVfvDcTrn9yRBTC743VavyIxyplMMxA5I60a8v2V56lbHdeF36QXuu0Q7S+gARw5YjT4bhsD8S5Z4K7oC8lvOPR8hA65badfQuJc4MJcQUwJkxK6M41O/NU99fuyTSqFPERiE12/tmTlSeWHKHEnZ+Y546Jt+yMVQxkCgYA4BnYwVi/vC8dOk1wdLaQLkwunLTyifl2v9lWOqwMoLAdN5oW5UK5LJys9/Ps0aXSijEyFoqWxXbdmG8P0Rc55WQsUFZU4ufun6c4KUcPe6xCbO1RXcmDHCu6FAydqHYjNeI85mrTY6ow3fLrVrHGAnxnbZpO1hkBdPs5R/sqhjA==
+      public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx7+zWVeWnmHXgxBxIpyRAVQRyCxnbeJ+/NB3Sreypqrmg8OcDrVZhNdQ9Ul9c+tkemfuNp96C/eLJ44SALUNS4i7XREQIIUTITkychnsurPBht/5U+iadisnq/TR2G+MlSmSjLJdnP5M4Ess17qovnD14GbU5BjWMoM0iVu4ZZljYvx+z8BxMspifVsoNy2V+OFcveSSiQ7adeTd5TtRVqqIcXF17tl77PUgOu/ZNCsx5YrZAc+td56Q7/FUP78iqByR6JTHTW9bUtrmUODBCLIuu7Cq6PkVcoVD/Vw0p6V4IT2ULVfwD3LMHXtsHSYv+gZ2Rho/APOr8AEsKuQ2WwIDAQAB
+      auth-cache-timeout: 1
+      ht-sign-flag: 1
+      sign-cert-name: ONEBANKforAPAPI
+      verify-cert-name: CFCA_ACS_OCA31
+      virtual-account-prefix: '9100001101'
+      precard-account-prefix: '9990001101'
+      cipher:
+        private-key: MIICdAIBADANBgkqhkiG9w0BAQEFAASCAl4wggJaAgEAAoGBAJCJsGyPojfkcRZtLlrJJEpzBMrCPrlOGfpSHWXFxsXi11CVGuTF/SJqL/jEIhCLu/Izoknk13VlVZr+nxyIWJYNisXPLysEU8Qowg3a0AbIkxV/hgLqSJmqkVunx0XPSnfRtb7KEbp0yZCUpZZw5Co+kZz+6qb90WWfmQnC3tU/AgMBAAECgYB35hA47imWDeWVwfpLC0IUlDcsb1gS5ev8z/NdAmRysUsFqLrHfkoPK2EiDqlnalL9hsGgZLoqw2XxDjk1NRGuFuW1emL/Dzu/6AT+0R2+IqeN5ZTbr7dbb7pQIxeG/QVQT20UJyNJzVBg7Ibrkpj4w78KUk90s57v7dxKTgNnYQJBAPbxxKxrny+DdBpr6PPHFLIc0hT5i3LrqdGdrlNXrOzm/sc77f4Wfhc6qbHa+BYsLqzbgx3j7/E4YeqFnkMA+08CQQCV1o/xSPsFkhkRAJCt9dXw0gTDdECOwbdgtzccVeVFDFs8F4FDI2mbGR8YvM1aAUx6okWDzNx9SdOq/2zTcksRAkA6R6bd9mxUP1boYW1SEzr8KjcegiJ6Fco3UVpyCvAh3QZmKOurGs3ZV5vzALWqLfU6EHhqVoArUt4xBiXqtFGbAkAF2lvFERS9IvfXsi30naW9wnZtLB1Zdjezj3SXpsNN7y2hK0nhVYDKjjCoxrc+zM4v/Ca6/0Wdn0SlaVTW7aABAj8eSegZxvkAWh2LapmFRUiWGH39VzSnqA3h/sjH0/BBO0V2mfK3Yg2hpQIYgJxmShKgww6Nf3GT2TH0eRP3IJ8=
+        public-key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQibBsj6I35HEWbS5aySRKcwTKwj65Thn6Uh1lxcbF4tdQlRrkxf0iai/4xCIQi7vyM6JJ5Nd1ZVWa/p8ciFiWDYrFzy8rBFPEKMIN2tAGyJMVf4YC6kiZqpFbp8dFz0p30bW+yhG6dMmQlKWWcOQqPpGc/uqm/dFln5kJwt7VPwIDAQAB
+      mix-trans-map: {'industryCode':3} #单位天
+      channel:
+        onebank:
+          thread-pool-num: 8
+          max-thread-pool-num: 8
+          dmb-config-path: utp-config/onebank/consumer/live
+          timeout: 6000
+          channel-id: 'APA'
+          txn-teller-id: 'APA001'
+          txn-branch-code: '1001'
+          dfa: '1M0'
+          target-dfa: '110'
+          target-dfa-general: '110'
+          transfer-map:
+            private: #RDFA对私区 转账交易
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3041020009'
+              scene-id: '01'
+              call-back-service-id: '1041040001'
+              call-back-scene-id: '01'
+            public: #CDFA对公区 转账交易
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3041030009'
+              scene-id: '01'
+              call-back-service-id: '1041040001'
+              call-back-scene-id: '01'
+            accountBalanceQuery:  #一般户账户余额查询
+              service-id: '3013020007'
+              scene-id: '09'
+              prcscd: 'i302'
+            accountTransDetailQuery:  #一般户交易资金明细查询
+              service-id: '3013020010'
+              scene-id: '03'
+              prcscd: 'f304'
+            privateTransQuery: #RDFA对私区转账交易结果查询
+              service-id: '3043020004'
+              scene-id: '01'
+            publicTransQuery: #CDFA对公区转账交易结果查询
+              service-id: '3043030004'
+              scene-id: '01'
+            statementDownload: #对账单下载
+              product-code: 'ALL'
+              service-id: '3044010003'
+              scene-id: '03'
+            innerAccountBalanceQuery: #内部户账户余额查询及内部户账户信息查询
+              service-id: '3013010028'
+              scene-id: '05'
+              prcscd: 'i303'
+            innerAccountTransDetailQuery: #内部户交易资金明细查询
+              service-id: '3013010029'
+              scene-id: '06'
+              prcscd: 'i328'
+            accountVerification: #RDFA对私区四要素认证
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3042020006'
+              scene-id: '01'
+              version: '1.0.1'
+            accountPublicVerification: #CDFA对公区四要素认证
+              product-code: '1050030102'
+              new-product-code: '1050030103'
+              service-id: '3042030006'
+              scene-id: '01'
+              version: '1.0.1'
+            accountInfoQuery: #一般户账户信息查询
+              service-id: '3013020007'
+              scene-id: '10'
+              prcscd: 'i306'
+            getPersonHotspot: #查询个人客户热点信息
+              service-id: '2013010001'
+              scene-id: '01'
+            getOrgHotspot: #查询企业客户热点信息
+              service-id: '2013010002'
+              scene-id: '01'
+            addPerson: #建立个人客户信息
+              service-id: '2012010001'
+              scene-id: '01'
+            addOrg: #建立企业客户信息
+              service-id: '2012010002'
+              scene-id: '01'
+            updatePerson: #更新个人客户信息
+              service-id: '2012010001'
+              scene-id: '04'
+            updateOrg: #更新企业客户信息
+              service-id: '2012010002'
+              scene-id: '04'
+            orcIdentity: #ORC身份识别
+              service-id: '6012010004'
+              scene-id: '01'
+            onlineCheck: #联网核查
+              product-code: '3044APA001'
+              service-id: '5012010004'
+              scene-id: '01'
+          ftp:
+            host: '10.20.148.43'
+            port: 6688
+            https-port: 6686
+            sys-id: 30449
+            user-name: sys_30449
+            password: E2B4A17B055FE659F3DA4FC3696EB0EEEBAE6B555BBC1D8D2F55EEA0DCF7A3AB
+          electronic:
+            url: 'http://10.20.148.67:8080/PaperlessServer/PaperlessServlet'
+            operator-code: '001001'
+            channel-code: 'APA'
+            seal-code: 'RECEIPT'
+            seal-password: '123123'
+            timestamp-channel: '0'
+            template-config-map:
+              #帝网科技客户电子回单模版参数配置
+              KHDZHD:
+                template-code: 'APA-KHDZHD-001'
+                sign-location-type: '2'
+                left-x: 560
+                left-y: 320
+              #帝网科技客户电子回单模版参数配置(带手续费)
+              KHDZHD002:
+                template-code: 'APA-KHDZHD-002'
+                sign-location-type: '2'
+                left-x: 560
+                left-y: 320
+              #帝网科技开立回单模版参数配置
+              KLHD:
+                template-code: 'APA-KLHD-001'
+                sign-location-type: '3'
+                keyword: '注册会员号开立'
+                location-style: 'D'
+                offset-x: 20
+      reconciliation:
+        minus-days: 180
+        onebank:
+          download-dir: ${user.dir}/../download/reconciliation/onebank/files
+          file-type: txt
+          corn-time: 0 0 10 * * *
+          minusdayrecon-time: 0 0 11 * * *
+      product:
+        account:
+          system-id: '30449'
+          dfa: '1M0'
+          public-account:
+            payer-opbk: '323391060018'
+            acct-type: '01'
+            sys-header-acct-type: '3'
+          proxy-ip: 10.20.148.145
+          proxy-port: 3128
+          union-api-config-file: utp-config/onebank/unionapi/live/serverList.conf
+          max-card-auth-count: 5
+          max-split-settle-rows: 100
+      manage:
+        des-key: abcdefghijklmnopqrstuvwx
+      download: #文件下载保存目录
+        batch-dir: ${user.dir}/../download/batch-files
+        settle-dir: ${user.dir}/../download/settle
+      upload: #上传文件保存目录
+        settle-split-dir: ${user.dir}/../upload/settle-split
+        file-dir: ${user.dir}/../upload
+      picture:
+        file-dir: /data/app/app/utp/nfsfiles/images
+      pdf:
+        file-dir: /data/app/app/utp/nfsfiles/pdf
+      dSpecialReconFile: /data/app/app/utp/nfsfiles/dSpecialReconFile
+      subDailyBalanceFile: /data/app/app/utp/nfsfiles/subDailyBalanceFile
+      sftp:
+        user-name: pssutproinsftp
+        password: Oneb@ank123
+        host: 10.20.148.143
+        port: 22022
+      schedule:
+        pdf-font: utp-config/pdf/simsun.ttf
+        logo:  utp-config/pdf/logo.jpg
+        official-seal:  utp-config/pdf/stamper.png
+        batch-download: #下载批次回执文件任务
+          cron: 0 0/15 * * * ?
+          gt-minutes: 60  # 条件：大于批次交易时间多少分钟
+        ht-properties:
+          corn:
+            sync-fund-account:
+              special-period: 1 #间隔几分钟
+              normal-period: 5 #间隔几分钟
+              early-time: '001500' #000000-earlyTime区间触发同步起始日期要往前推一天
+              sync-all: false #是否全量同步 1|true 开启，其他关闭
+            sync-account:
+              special-period: 1 #间隔几分钟
+              normal-period: 5 #间隔几分钟
+            fee-income-account-month-stat: '10 0 2 5 * *'
+            fee-income-account-month-colection: '10 0 3 5 * *'
+            person-org-hotspot: '0 55 0/1 * * ?'
+            subAccountSettleSplitDaily: '0 0 2 * * ?'
+            subAccountSettleSplitPeriod: '0/10 * * * * ?'
+            balancePaymentTnSettleDaily: '0 0 8 * * ?'
+            makeDSpecialReconFilePeriod: '0 30 0 * * ?'
+            makeSubDailyBalanceFilePeriod: '0 0 0 * * ?'
+            retainSubDailyBalanceFileDayNum: 10
+            mixTransDetailBackUpTask: '0 0 3 * * ?'
+          thread-pool-num: 4
+          max-thread-pool-num: 8
+          blocking-queue-num: 3000
+          settle-split-dir: ${user.dir}/../upload/settle-result
+          result-dir: ${user.dir}/../upload/result
+        deposit-notice:
+          periodseconds: 1
+        create-ele-receipt:
+          periodseconds: 10
+        query-trans-status:
+          periodseconds: 10
+        merchant-account:
+          corn-time: 0 0 * * * *
+          freeze-hour: 24
+          apply-hour: 48
+        remark-convert-pdf:
+          periodseconds: 30
+#渠道配置 end#
+
+feign:
+  name:
+    onebank: utp-channel-onebank
+    persis: utp-service-persistence
+    account: utp-product-account
+    scheduler: utp-scheduler

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" scanPeriod="10 seconds">
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- -=-=-=-=-=-根据日期存储，若大小超过20M则进行切换存储-=-=-=-=-=-=-=-=-=-=-= -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>false</Prudent>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</FileNamePattern>
+            <MaxHistory>${LOG_FILE_MAX_HISTORY:-180}</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <MaxFileSize>${LOG_FILE_MAX_SIZE:-50MB}</MaxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+
+    <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>80</discardingThreshold>
+        <queueSize>1024</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="FILE"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNCFILE"/>
+    </root>
+
+</configuration>

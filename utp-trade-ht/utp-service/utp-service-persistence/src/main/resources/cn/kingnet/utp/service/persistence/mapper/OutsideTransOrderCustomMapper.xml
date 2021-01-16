@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.OutsideTransOrderCustomMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.OutsideTransOrder">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="industry_code" jdbcType="VARCHAR" property="industryCode"/>
+        <result column="batch_id" jdbcType="VARCHAR" property="batchId"/>
+        <result column="req_date" jdbcType="VARCHAR" property="reqDate"/>
+        <result column="req_time" jdbcType="VARCHAR" property="reqTime"/>
+        <result column="trans_date" jdbcType="VARCHAR" property="transDate"/>
+        <result column="trans_time" jdbcType="VARCHAR" property="transTime"/>
+        <result column="trans_order_id" jdbcType="VARCHAR" property="transOrderId"/>
+        <result column="mer_no" jdbcType="VARCHAR" property="merNo"/>
+        <result column="pay_mode" jdbcType="VARCHAR" property="payMode"/>
+        <result column="trans_amount" jdbcType="BIGINT" property="transAmount"/>
+        <result column="seller_name" jdbcType="VARCHAR" property="sellerName"/>
+        <result column="buyer_name" jdbcType="VARCHAR" property="buyerName"/>
+        <result column="goods_info" jdbcType="VARCHAR" property="goodsInfo"/>
+        <result column="upload_status" jdbcType="VARCHAR" property="uploadStatus"/>
+        <result column="upload_desc" jdbcType="VARCHAR" property="uploadDesc"/>
+        <result column="split_status" jdbcType="VARCHAR" property="splitStatus"/>
+        <result column="linked_split_num" jdbcType="INTEGER" property="linkedSplitNum"/>
+        <result column="mer_name" jdbcType="VARCHAR" property="merName"/>
+        <result column="mer_phone" jdbcType="VARCHAR" property="merPhone"/>
+        <result column="txn_channel" jdbcType="VARCHAR" property="txnChannel"/>
+        <result column="txn_channel_trade_no" jdbcType="VARCHAR" property="txnChannelTradeNo"/>
+        <result column="discount_amount" jdbcType="BIGINT" property="discountAmount"/>
+        <result column="buyer_id" jdbcType="VARCHAR" property="buyerId"/>
+        <result column="buyer_phone" jdbcType="VARCHAR" property="buyerPhone"/>
+        <result column="logistics" jdbcType="VARCHAR" property="logistics"/>
+        <result column="file_convert_flag" jdbcType="INTEGER" property="fileConvertFlag"/>
+        <result column="file_convert_desc" jdbcType="VARCHAR" property="fileConvertDesc"/>
+        <result column="callback_url" jdbcType="VARCHAR" property="callbackUrl"/>
+        <result column="remark" jdbcType="LONGVARCHAR" property="remark"/>
+    </resultMap>
+
+    <insert id="insertBatch" parameterType="cn.kingnet.utp.service.persistence.entity.OutsideTransOrder">
+        insert into t_outside_trans_order(id,gmt_create,gmt_modified,industry_code,batch_id,
+        req_date,req_time,trans_date,trans_time,trans_order_id,mer_no,pay_mode,trans_amount,seller_name,buyer_name,
+        goods_info,upload_status, upload_desc,mer_name,mer_phone,txn_channel,
+        txn_channel_trade_no,discount_amount,buyer_id,buyer_phone,logistics,callback_url,remark)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.gmtCreate},#{item.gmtModified},#{item.industryCode},#{item.batchId},
+            #{item.reqDate},#{item.reqTime},#{item.transDate},#{item.transTime},#{item.transOrderId},#{item.merNo},#{item.payMode},#{item.transAmount},#{item.sellerName},#{item.buyerName},
+            #{item.goodsInfo},#{item.uploadStatus},#{item.uploadDesc},#{item.merName},#{item.merPhone},#{item.txnChannel},
+            #{item.txnChannelTradeNo},#{item.discountAmount},#{item.buyerId},#{item.buyerPhone},#{item.logistics},#{item.callbackUrl},#{item.remark}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

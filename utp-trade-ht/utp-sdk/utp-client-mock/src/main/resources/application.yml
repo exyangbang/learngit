@@ -1,0 +1,35 @@
+server:
+  port: 18080
+
+spring:
+  application:
+    name: utp-client-mock
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+
+logging:
+  level:
+    root: info
+    org.client.mock: INFO
+  file: ${user.dir}/logs/${spring.application.name}.log
+  file.max-size: 50MB
+  file.max-history: 180
+
+
+#监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+info:
+  name: ${spring.application.name}
+  ip: ${spring.cloud.client.ip-address}
+eureka:
+  instance:
+    prefer-ip-address: true

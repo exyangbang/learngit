@@ -1,0 +1,92 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "withdrawalsrecord",
+    "type": "table",
+    "name": "WithdrawalsRecord",
+    "mysqlname":"t_withdrawals_record ",
+    "update":false,
+    "doc": "手续费收益提现申请记录表",
+    "key":[],
+    "index":[
+        {
+            "name":"client_trans_index_1",
+            "fields":["clientTransId"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"clientTransId",
+            "operation":"=",
+            "paramName":"client_trans_id"
+        }
+    ],
+    "fields": [
+        {
+            "name": "clientTransId",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "提现客户端流水号"
+        },
+         {
+             "name": "feeAccountNo",
+             "type": "String",
+             "mysql_type":"varchar(40)",
+             "doc": "手续费客户号"
+         },
+         {
+             "name": "feeAccountName",
+             "type": "String",
+             "mysql_type":"varchar(200)",
+             "doc": "手续费客户名称"
+         },
+         {
+             "name": "bankAccountNo",
+             "type": "String",
+             "mysql_type":"varchar(40)",
+             "doc": "资金账号"
+         },
+         {
+             "name": "bankAccountName",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "资金账户户名"
+         },
+         {
+             "name": "reciveAccountNo",
+             "type": "String",
+             "mysql_type":"varchar(40)",
+             "doc": "收款方账号"
+         },
+         {
+             "name": "reciveAccountName",
+             "type": "String",
+             "mysql_type":"varchar(200)",
+             "doc": "资金账户户名"
+         },
+         {
+             "name": "account",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "收款方名称"
+         },
+        {
+            "name": "amount",
+            "type": "Long",
+            "mysql_type":" bigint(20)",
+            "doc": "提现金额（单位分）"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":" varchar(2)",
+            "doc": "状态（0-不可用 1-可用）"
+        },
+        {
+            "name": "auditStatus",
+            "type": "String",
+            "mysql_type":" varchar(2)",
+            "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+        }
+    ]
+}

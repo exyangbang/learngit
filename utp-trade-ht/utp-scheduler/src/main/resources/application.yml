@@ -1,0 +1,98 @@
+---
+spring:
+  profiles: dev
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.214.13:3306/utp_manage_ht_3?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: dwxxkj=123
+      connection-properties: druid.stat.mergeSql=true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+#单数据源配置 end#
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  offsetAsPageNum: true
+  supportMethodsArguments: true
+
+#日志配置 start#
+logging:
+  level:
+    cn.kingnet: debug
+    com.baomidou.mybatisplus: debug
+    org.spring.springboot.dao: debug
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+
+feign:
+  name:
+    onebank: utp-channel-onebank
+    persis: utp-service-persistence
+    account: utp-product-account
+
+cn:
+  kingnet:
+    utp:
+      product:
+        account:
+          system-id: '32101'
+          dfa: 'EM0'
+          public-account:
+            payer-opbk: '323391060018'
+            acct-type: '01'
+            sys-header-acct-type: '3'
+      schedule:
+        pdf-font:  file:/utp-config/pdf/simsun.ttf
+        logo:  file:/utp-config/pdf/logo.jpg
+        official-seal:  file:/utp-config/pdf/stamperDemo.png
+        ht-properties:
+          corn:
+            sync-fund-account: '0 0/10 * * * *'
+            sync-account: '0 0/15 * * * *'
+          thread-pool-num: 4
+          max-thread-pool-num: 8
+          blocking-queue-num: 3000
+          local-target-path: d:/ht-settle-download
+          remote-target-path: ./
+          sftp:
+            host: 192.168.214.15
+            port: 22
+            username: sftpuser
+            password: dwxxkj=123
+          settle-split-dir: ${user.dir}/../upload/settle-result
+          settle-result-url: http://localhost:8080
+          service-provider: udpUser
+          validate-code: validCode
+          result-dir: ${user.dir}/../upload/result
+        deposit-notice:
+          periodseconds: 1
+        create-ele-receipt:
+          periodseconds: 10
+        merchant-account:
+          corn-time: 0 0 * * * *
+          freeze-hour: 24
+          apply-hour: 48
+      pdf:
+        file-dir: ${user.dir}/../pdf
+#hystrix及ribbon配置 start#
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#hystrix及ribbon配置 end#

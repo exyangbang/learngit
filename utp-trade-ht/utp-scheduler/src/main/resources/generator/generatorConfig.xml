@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--引入配置文件-->
+    <properties resource="generator/mybatis_generator.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Condition"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CachePlugin">
+            <property name="cache_type" value="cn.kingnet.framework.starter.mybatis.cache.redis.MybatisRedisCache"/>
+            <!--6000毫秒清空缓存-->
+            <property name="cache_flushInterval" value="6000"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.MapperPlugin">
+            <property name="mappers" value="com.baomidou.mybatisplus.mapper.BaseMapper"/>
+            <property name="forceAnnotation" value="true"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.PlusMapperPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CreateVoPlugin"/>
+        <!-- 取消注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${druid.driver-class}"
+                        connectionURL="${druid.url}"
+                        userId="${druid.username}"
+                        password="${druid.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${model.target.package}" targetProject="${mybatis.model.path}">
+            <property name="rootClass"
+                      value="cn.kingnet.framework.starter.base.sql.BaseEntity"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.xml.path}"/>
+
+        <javaClientGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.interface.path}"
+                             type="XMLMAPPER"/>
+
+        <!--
+                <table tableName="t_job_task"
+                       domainObjectName="JobTask"
+                       mapperName="JobTaskMapper">
+                </table>
+
+
+                <table tableName="t_file_upload_log"
+                       domainObjectName="FileUploadLog"
+                       mapperName="FileUploadLogMapper">
+                </table>
+                <table tableName="t_electronic_receipt"
+                       domainObjectName="ElectronicReceipt"
+                       mapperName="ElectronicReceiptMapper">
+                </table>
+
+
+                        <table tableName="t_fee_income_account_month_stat"
+                               domainObjectName="FeeIncomeAccountMonthStat"
+                               mapperName="FeeIncomeAccountMonthStatMapper">
+                            <property name="voObjectName" value="FeeIncomeAccountMonthStatVo"/>
+                        </table>
+                        <table tableName="t_fee_income_account_month_collection"
+                               domainObjectName="FeeIncomeAccountMonthCollection"
+                               mapperName="FeeIncomeAccountMonthCollectionMapper">
+                            <property name="voObjectName" value="FeeIncomeAccountMonthCollectionVo"/>
+                        </table>
+
+
+
+                <table tableName="t_fund_account"
+                       domainObjectName="FundAccount"
+                       mapperName="FundAccountMapper">
+                    <property name="voObjectName" value="FundAccountVo"/>
+                </table>
+
+                <table tableName="t_industry_sync_log"
+                       domainObjectName="IndustrySyncLog"
+                       mapperName="IndustrySyncLogMapper">
+                </table>
+
+                <table tableName="t_upload_subAccount_settle_split_detail"
+                       domainObjectName="UploadSubAccountSettleSplitDetail"
+                       mapperName="UploadSubAccountSettleSplitDetailMapper">
+                    <property name="voObjectName" value="UploadSubAccountSettleSplitDetailVo"/>
+                </table>
+
+        <table tableName="t_trans_current"
+               domainObjectName="TransCurrent"
+               mapperName="TransCurrentMapper">
+            <property name="voObjectName" value="TransCurrentVo"/>
+        </table>
+        <table tableName="t_trans_history"
+               domainObjectName="TransHistory"
+               mapperName="TransHistoryMapper">
+            <property name="voObjectName" value="TransHistoryVo"/>
+        </table>
+        <table tableName="t_account_electronic_receipt"
+               domainObjectName="AccountElectronicReceipt"
+               mapperName="AccountElectronicReceiptMapper">
+            <property name="voObjectName" value="AccountElectronicReceiptVo"/>
+        </table>
+        <table tableName="t_merchant_info"
+               domainObjectName="MerchantInfo"
+               mapperName="MerchantInfoMapper">
+            <property name="voObjectName" value="MerchantInfoVo"/>
+        </table>
+
+        <table tableName="t_channel_income_flow"
+               domainObjectName="ChannelIncomeFlow"
+               mapperName="ChannelIncomeFlowMapper">
+            <property name="voObjectName" value="ChannelIncomeFlowVo"/>
+        </table>
+        <table tableName="t_electronic_receipt"
+               domainObjectName="ElectronicReceipts"
+               mapperName="ElectronicReceiptsMapper">
+        </table>
+        <table tableName="t_industry"
+               domainObjectName="Industry"
+               mapperName="IndustryMapper">
+            <property name="voObjectName" value="IndustryVo"/>
+        </table>
+
+        -->
+        <table tableName="t_outside_trans_order"
+               domainObjectName="OutsideTransOrder"
+               mapperName="OutsideTransOrderMapper">
+            <property name="voObjectName" value="OutsideTransOrderVo"/>
+        </table>
+    </context>
+</generatorConfiguration>

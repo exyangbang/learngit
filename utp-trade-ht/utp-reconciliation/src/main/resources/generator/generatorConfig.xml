@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--引入配置文件-->
+    <properties resource="generator/mybatis_generator.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Condition"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CachePlugin">
+            <property name="cache_type" value="cn.kingnet.framework.starter.mybatis.cache.redis.MybatisRedisCache"/>
+            <!--6000毫秒清空缓存-->
+            <property name="cache_flushInterval" value="6000"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.MapperPlugin">
+            <property name="mappers" value="com.baomidou.mybatisplus.mapper.BaseMapper"/>
+            <property name="forceAnnotation" value="true"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.PlusMapperPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CreateVoPlugin"/>
+        <!-- 取消注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${druid.driver-class}"
+                        connectionURL="${druid.url}"
+                        userId="${druid.username}"
+                        password="${druid.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${model.target.package}" targetProject="${mybatis.model.path}">
+            <property name="rootClass"
+                      value="cn.kingnet.framework.starter.base.sql.BaseEntity"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.xml.path}"/>
+
+        <javaClientGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.interface.path}"
+                             type="XMLMAPPER"/>
+
+    <!--    <table tableName="t_channel_info"
+               domainObjectName="ChannelInfo"
+               mapperName="ChannelInfoMapper">
+        </table>
+        <table tableName="t_merchant_day_sum"
+               domainObjectName="MerchantDaySum"
+               mapperName="MerchantDaySumMapper">
+        </table>
+        <table tableName="t_merchant_reconcile_record"
+               domainObjectName="MerchantReconcileRecord"
+               mapperName="MerchantReconcileRecordMapper">
+        </table>
+        <table tableName="t_settle_check_info"
+               domainObjectName="SettleCheckInfo"
+               mapperName="SettleCheckInfoMapper">
+        </table>
+        <table tableName="t_trans_current"
+               domainObjectName="TransCurrent"
+               mapperName="TransCurrentMapper">
+        </table>
+        <table tableName="t_trans_history"
+               domainObjectName="TransHistory"
+               mapperName="TransHistoryMapper">
+        </table>
+        -->
+        <table tableName="t_merchant_account_info"
+               domainObjectName="MerchantAccountInfo"
+               mapperName="MerchantAccountInfoMapper">
+            <property name="voObjectName" value="MerchantAccountInfoVo"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

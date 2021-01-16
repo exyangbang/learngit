@@ -1,0 +1,113 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "outsidetransorder",
+    "type": "table",
+    "name": "OutsideTransOrder",
+    "mysqlname":"t_outside_trans_order",
+    "update":false,
+    "doc": "",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "平台编码"
+        },
+        {
+            "name": "batchId",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "批次号"
+        },
+        {
+            "name": "reqDate",
+            "type": "String",
+            "mysql_type":"bigint(8)",
+            "doc": "请求日期yyyyMMdd"
+        },
+        {
+            "name": "reqTime",
+            "type": "String",
+            "mysql_type":"int(6)",
+            "doc": "请求时间HHmmss"
+        },
+        {
+            "name": "transDate",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "交易日期yyyyMMdd"
+        },
+        {
+            "name": "transTime",
+            "type": "String",
+            "mysql_type":"varchar(6)",
+            "doc": "交易时间HHmmss"
+        },
+        {
+            "name": "transOrderId",
+            "type": "String",
+            "mysql_type":"bigint(64)",
+            "doc": "交易支付订单号"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "交易商户号"
+        },
+        {
+            "name": "payMode",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "支付方式|0支付宝 1微信 2银联  3无正向支付流水  9其他支付方式"
+        },
+        {
+            "name": "transAmount",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "交易金额单位分"
+        },
+        {
+            "name": "sellerName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "卖方名称"
+        },
+        {
+            "name": "buyerName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "买方名称"
+        },
+        {
+            "name": "goodsInfo",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "商品信息(描述)"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "备注信息"
+        },
+        {
+            "name": "uploadStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "上送状态成功：SUCCESS | 失败：FAILURE"
+        },
+        {
+            "name": "uploadDesc",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "上送状态描述"
+        }
+    ]
+}

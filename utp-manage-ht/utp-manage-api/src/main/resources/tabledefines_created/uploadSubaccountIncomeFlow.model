@@ -1,0 +1,72 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "account",
+    "type": "table",
+    "name": "AccIncomeFlow",
+    "mysqlname":"t_upload_subaccount_income_flow",
+    "update":false,
+    "doc": "子账户入金流水报备",
+    "key":[],
+    "index":[
+        {
+            "name":"uk_incomeFlowId",
+            "fields":["income_flow_id"],
+            "unique":true
+        },
+        {
+            "name":"uk_incomeFlowId_payFlowIds",
+            "fields":["income_flow_id","pay_flow_ids"]
+        },
+        {
+            "name":"uk_subAccount_batchNo",
+            "fields":["sub_account","batch_no"]
+        }
+    ],
+    "conditions":[
+
+    ],
+     "fields": [
+            {
+                "name": "subAccount",
+                "type": "String",
+                "mysql_type":"varchar(30)",
+                "doc": "入金子账户"
+            },
+            {
+                "name": "batchNo",
+                "type": "String",
+                "mysql_type":"varchar(50)",
+                "doc": "入金批次Id"
+            },
+             {
+                 "name": "seqNo",
+                 "type": "int",
+                 "mysql_type":"int(11)",
+                 "doc": "批次内序号"
+             },
+            {
+                "name": "incomeFlowId",
+                "type": "String",
+                "mysql_type":"varchar(50)",
+                "doc": "入金流水id"
+            },
+            {
+                "name": "incomeAmount",
+                "type": "Long",
+                "mysql_type":"bigint(20)",
+                "doc": "入金金额单位分"
+            },
+            {
+                "name": "payFlowIds",
+                "type": "String",
+                "mysql_type":"varchar(50)",
+                "doc": "上送支付流水ids"
+            },
+            {
+                "name": "remark",
+                "type": "String",
+                "mysql_type":"varchar(1024)",
+                "doc": "备注说明"
+            }
+        ]
+    }

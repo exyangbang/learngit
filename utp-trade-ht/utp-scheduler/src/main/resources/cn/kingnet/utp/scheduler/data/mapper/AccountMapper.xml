@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.scheduler.data.mapper.AccountMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.scheduler.data.entity.Account">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="obj_type" jdbcType="VARCHAR" property="objType"/>
+        <result column="obj_code" jdbcType="VARCHAR" property="objCode"/>
+        <result column="obj_name" jdbcType="VARCHAR" property="objName"/>
+        <result column="fund_account" jdbcType="VARCHAR" property="fundAccount"/>
+        <result column="balance" jdbcType="BIGINT" property="balance"/>
+        <result column="frozen_amount" jdbcType="BIGINT" property="frozenAmount"/>
+        <result column="avail_amount" jdbcType="BIGINT" property="availAmount"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="version" jdbcType="BIGINT" property="version"/>
+        <result column="fee_template_id" jdbcType="BIGINT" property="feeTemplateId"/>
+        <result column="industry_id" jdbcType="BIGINT" property="industryId"/>
+        <result column="bank_client_no" jdbcType="VARCHAR" property="bankClientNo"/>
+    </resultMap>
+
+    <select id="getAccountInfo" resultType="cn.kingnet.utp.scheduler.data.entity.Account">
+        SELECT
+            ac.id,
+            ac.account,
+            ac.obj_type,
+            ac.obj_code,
+            ac.obj_name,
+            ac.fund_account AS fundAccount
+        FROM
+            t_account ac
+            INNER JOIN t_fund_account fund ON fund.bank_account_no = ac.fund_account
+            INNER JOIN t_merchant_info merinfo ON merinfo.account = ac.account
+        WHERE
+            ac.`status` = '1' and merinfo.status = '1'
+            AND ( ac.obj_type = '3' OR ac.obj_type = '8' )
+            AND LENGTH( merinfo.id_code ) > 0
+            AND LENGTH( merinfo.telephone ) > 0
+            AND ac.bank_client_no IS NULL
+
+        UNION ALL
+
+        SELECT
+            ac.id,
+            ac.account,
+            ac.obj_type,
+            ac.obj_code,
+            ac.obj_name,
+            ac.fund_account AS fundAccount
+        FROM
+            t_account ac
+            INNER JOIN t_fund_account fund ON fund.bank_account_no = ac.fund_account
+            INNER JOIN t_merchant_info merinfo ON merinfo.account = ac.account
+        WHERE
+            ac.`status` = '1' and ( merinfo.status = '1' or merinfo.status = '2' )
+            AND ((ac.obj_type = '2' and merinfo.auth_status = 1) or (ac.obj_type = '7' and merinfo.auth_status = 1))
+            AND LENGTH( merinfo.bus_lic_code ) > 0
+            AND LENGTH( merinfo.telephone ) > 0
+            AND ac.bank_client_no IS NULL
+
+        UNION ALL
+
+        SELECT
+            ac.id,
+            ac.account,
+            ac.obj_type,
+            ac.obj_code,
+            ac.obj_name,
+            ac.fund_account AS fundAccount
+        FROM
+            t_account ac
+            INNER JOIN t_industry ind ON ind.account = ac.account
+            INNER JOIN t_fund_account fund ON fund.bank_account_no = ac.fund_account
+        WHERE
+            ac.`status` = '1' and ind.status = '1'
+            AND ac.obj_type = '1'
+            AND LENGTH( ind.bus_lic_code ) > 0
+            AND LENGTH( ind.phone ) >0
+            AND ac.bank_client_no IS NULL
+    </select>
+
+    <select id="buildDailyBalanceReconBo"
+            resultType="cn.kingnet.utp.service.persistence.entity.bo.IndustrySubAccountDailyBalanceReconFileBO">
+        select t.industry_code,t.account,a.obj_type,a.obj_code,a.obj_name,a.balance,a.avail_amount,a.frozen_amount,a.status,a.version
+        from t_merchant_info t left join t_account a on t.account=a.account where t.industry_code = #{industryCode}
+    </select>
+
+</mapper>

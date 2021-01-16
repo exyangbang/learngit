@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.scheduler.data.mapper.FundAccountMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.scheduler.data.entity.FundAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="account_num" jdbcType="VARCHAR" property="accountNum" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="bank_account_no" jdbcType="VARCHAR" property="bankAccountNo" />
+    <result column="bank_account_name" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="synchronization_time" jdbcType="TIMESTAMP" property="synchronizationTime" />
+    <result column="current_balance" jdbcType="BIGINT" property="currentBalance" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+    <result column="use_type" jdbcType="VARCHAR" property="useType" />
+    <result column="share_flag" jdbcType="VARCHAR" property="shareFlag" />
+  </resultMap>
+</mapper>

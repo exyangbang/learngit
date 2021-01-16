@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.scheduler.data.mapper.FileUploadLogMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.scheduler.data.entity.FileUploadLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="payer_account" jdbcType="VARCHAR" property="payerAccount" />
+    <result column="biz_date" jdbcType="VARCHAR" property="bizDate" />
+    <result column="period" jdbcType="INTEGER" property="period" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="total_count" jdbcType="BIGINT" property="totalCount" />
+    <result column="total_amount" jdbcType="BIGINT" property="totalAmount" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_desc" jdbcType="VARCHAR" property="transDesc" />
+    <result column="real_count" jdbcType="BIGINT" property="realCount" />
+    <result column="real_amount" jdbcType="BIGINT" property="realAmount" />
+    <result column="callback_url" jdbcType="VARCHAR" property="callbackUrl" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="callback_times" jdbcType="INTEGER" property="callbackTimes" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="channel_key" jdbcType="VARCHAR" property="channelKey" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+</mapper>

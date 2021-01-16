@@ -1,0 +1,150 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "merchant",
+    "type": "table",
+    "name": "MerchantInfo",
+    "mysqlName":"merchant_info",
+    "update":false,
+    "doc": "商户基本信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"merchant_info_index_1",
+            "fields":["merNo"],
+            "unique":true
+        },
+        {
+            "name":"merchant_info_index_2",
+            "fields":["status"]
+        },
+        {
+            "name":"merchant_info_index_3",
+            "fields":["orgCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"like",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"merName",
+            "operation":"like",
+            "paramName":"mer_name"
+        },
+        {
+            "name":"legalName",
+            "operation":"like",
+            "paramName":"legal_name"
+        },
+        {
+            "name":"status",
+            "operation":"=",
+            "paramName":"status"
+        },
+        {
+            "name":"orgCode",
+            "operation":"=",
+            "paramName":"org_code"
+        }
+    ],
+    "fields": [
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        },
+        {
+            "name": "merName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "商户名称"
+        },
+        {
+            "name": "nameAbbreviation",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "商户简称"
+        },
+        {
+            "name": "administrativeCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "行政区划代码"
+        },
+        {
+            "name": "orgCode",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "所属收单机构代码"
+        },
+        {
+            "name": "orgName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "所属收单机构名称"
+        },
+        {
+            "name": "provinceCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "所属省"
+        },
+        {
+            "name": "cityCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "所属市"
+        },
+        {
+            "name": "countyCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "所属县"
+        },
+        {
+            "name": "regAddress",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "注册地址"
+        },
+        {
+            "name": "businessAddress",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "营业地址"
+        },
+        {
+            "name": "legalName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "法人代表姓名"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "商户状态"
+        },
+        {
+            "name": "websiteName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "商户网站名称"
+        },
+        {
+            "name": "payMerchantNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "支出商户号"
+        },
+        {
+            "name": "templateId",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "模板ID"
+        }
+    ]
+}

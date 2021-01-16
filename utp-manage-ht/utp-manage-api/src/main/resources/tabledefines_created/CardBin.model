@@ -1,0 +1,206 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "system",
+    "type": "table",
+    "name": "CardBinInfo",
+    "mysqlname":"kkpay_card_bin_info",
+    "update":false,
+    "doc": "卡bin管理",
+    "key":[],
+    "index":[
+        {
+            "name":"card_bin_index_1",
+            "fields":["cardname"]
+        },
+        {
+            "name":"card_bin_index_2",
+            "fields":["binnum"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"cardname",
+            "operation":"like",
+            "paramName":"cardname"
+        },
+        {
+            "name":"binnum",
+            "operation":"=",
+            "paramName":"binnum"
+        },
+        {
+            "name":"debitcreditflag",
+            "operation":"=",
+            "paramName":"debitcreditflag"
+        },
+        {
+            "name":"issuercode",
+            "operation":"like",
+            "paramName":"issuercode"
+        },
+        {
+            "name":"issuername",
+            "operation":"like",
+            "paramName":"issuername"
+        }
+    ],
+    "fields": [
+        {
+            "name": "issuercode",
+            "type": "String",
+            "mysql_type":"varchar(14)",
+            "doc": "发卡行机构代码"
+        },
+        {
+            "name": "issuername",
+            "type": "String",
+            "mysql_type":"varchar(120)",
+            "doc": "发卡机构名称"
+        },
+         {
+             "name": "cardname",
+             "type": "String",
+             "mysql_type":"varchar(60)",
+             "doc": "卡名称"
+         },
+        {
+            "name": "cardnotrack",
+            "type": "String",
+            "mysql_type":"varchar(5)",
+            "doc": "主账号读取磁道"
+        },
+        {
+            "name": "cardnostartPos",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "主账号起始字节"
+        },
+        {
+            "name": "cardnolen",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "主账号长度"
+        },
+        {
+            "name": "binnum",
+            "type": "String",
+            "mysql_type":"varchar(12)",
+            "doc": "卡BIN号"
+        },
+        {
+            "name": "bintrack",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "卡BIN读取磁道"
+        },
+        {
+            "name": "binstartpos",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "卡BIN起始字节"
+        },
+        {
+            "name": "binlen",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "卡BIN长度"
+        },
+        {
+            "name": "alltrack",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "全部磁道信息"
+        },
+        {
+            "name": "alltrackstartpos",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "全部磁道起始字节"
+        },
+        {
+            "name": "alltracklen",
+            "type": "String",
+            "mysql_type":"varchar(6)",
+            "doc": "第2以及3磁道长度"
+        },
+        {
+            "name": "cuplogoflag",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "是否银联卡品牌"
+        },
+        {
+            "name": "debitcreditflag",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "卡种(D-借记卡;C-贷记卡;Z-准贷记卡;Y-预付卡)"
+        },
+        {
+            "name": "adddeletestat",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "本期增减状态"
+        },
+        {
+            "name": "clearbankno",
+            "type": "String",
+            "mysql_type":"varchar(14)",
+            "doc": "人行清算行行号"
+        },
+        {
+            "name": "clearbankname",
+            "type": "String",
+            "mysql_type":"varchar(120)",
+            "doc": "人行清算行行名"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "状态"
+        },
+        {
+            "name": "adddata",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "保留使用"
+        },
+        {
+            "name": "remark1",
+            "type": "String",
+            "mysql_type":"varchar(60)",
+            "doc": "备注1"
+        },
+        {
+            "name": "remark2",
+            "type": "String",
+            "mysql_type":"varchar(60)",
+            "doc": "备注2"
+        },
+        {
+            "name": "remark3",
+            "type": "String",
+            "mysql_type":"varchar(60)",
+            "doc": "备注3"
+        },
+        {
+            "name": "bankcode",
+            "type": "String",
+            "mysql_type":"varchar(14)",
+            "doc": "所属行行号"
+        },
+        {
+            "name": "bankname",
+            "type": "String",
+            "mysql_type":"varchar(140)",
+            "doc": "所属行行名称"
+        },
+        {
+            "name": "banktypeflag",
+            "type": "String",
+            "mysql_type":"varchar(1)",
+            "doc": "所属行分类标识(0-一般银行,1-村镇银行,2-港澳外资银行)"
+        }
+
+    ]
+}

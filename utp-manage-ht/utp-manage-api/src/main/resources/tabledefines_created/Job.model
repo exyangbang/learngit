@@ -1,0 +1,121 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "job",
+    "type": "table",
+    "name": "JobTask",
+    "mysqlname":"t_job_task",
+    "update":false,
+    "doc": "作业任务管理",
+    "key":[],
+    "index":[
+        {
+            "name":"t_job_task_index_1",
+            "fields":["jobId"]
+        },
+        {
+            "name":"t_job_task_index_2",
+            "fields":["jobName"]
+        },
+        {
+            "name":"t_job_task_index_3",
+            "fields":["jobDate"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"jobId",
+            "operation":"like",
+            "paramName":"job_id"
+        },
+        {
+            "name":"jobName",
+            "operation":"like",
+            "paramName":"job_name"
+        },
+        {
+            "name":"jobDate",
+            "operation":"=",
+            "paramName":"job_date"
+        }
+    ],
+    "fields": [
+        {
+            "name": "jobId",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "作业ID"
+        },
+        {
+            "name": "jobName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "任务名称"
+        },
+         {
+             "name": "jobDate",
+             "type": "String",
+             "mysql_type":"varchar(100)",
+             "doc": "任务日期"
+         },
+        {
+            "name": "jobPriority",
+            "type": "Integer",
+            "mysql_type":"int(11)",
+            "doc": "任务优先级"
+        },
+        {
+            "name": "jobtaskState",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "作业任务状态"
+        },
+        {
+            "name": "lastRunStarttime",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "上次运行开始时间"
+        },
+        {
+            "name": "lastRunEndtime",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "上次运行结束时间"
+        },
+        {
+            "name": "nextRerunTime",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "下次运行时间"
+        },
+        {
+            "name": "retryTimes",
+            "type": "Integer",
+            "mysql_type":"int(10)",
+            "doc": "重试次数"
+        },
+        {
+            "name": "taskArgs",
+            "type": "String",
+            "mysql_type":"varchar(1024)",
+            "doc": "任务参数"
+        },
+        {
+            "name": "taskId",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "任务Id"
+        },
+        {
+            "name": "catchException",
+            "type": "String",
+            "mysql_type":"varchar(2048)",
+            "doc": "异常信息"
+        },
+        {
+            "name": "description",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "描述"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "account",
+    "type": "table",
+    "name": "FundAcctInfo",
+    "mysqlname":"fund_acct_info",
+    "update":false,
+    "doc": "反洗钱控制名单",
+    "key":[],
+    "index":[
+        {
+            "name":"fun_acct",
+            "fields":["fundAcct"],
+            "unique":true
+        }
+    ],
+    "conditions":[],
+    "fields": [
+        {
+            "name": "id",
+            "type": "Integer",
+            "mysql_type":"int(11)",
+            "doc": "主键ID"
+        },
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "客户号"
+        },
+         {
+             "name": "fundAcct",
+             "type": "String",
+             "mysql_type":"varchar(48)",
+             "doc": "内部户账号"
+         },
+        {
+            "name": "fundAcctName",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "内部户账号名称"
+        }
+    ]
+}

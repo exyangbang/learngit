@@ -1,0 +1,55 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "codedictionary",
+    "type": "table",
+    "name": "CodeDictionary",
+    "mysqlname":"t_code_dictionary",
+    "update":false,
+    "doc": "业务编码字典",
+    "key":[],
+    "index":[
+        {
+            "name":"t_code_dictionary_type",
+            "fields":["type","code"],
+            "unique":true
+        }
+    ],
+    "conditions":[
+        {
+            "name":"code",
+            "operation":"=",
+            "paramName":"code"
+        },
+        {
+            "name":"type",
+            "operation":"=",
+            "paramName":"type"
+        }
+    ],
+    "fields": [
+        {
+            "name": "type",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "字典类型 0001:支付机构 0002:行业 0003:职业"
+        },
+        {
+            "name": "code",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "key值"
+        },
+        {
+            "name": "value",
+            "type": "String",
+            "mysql_type":"varchar(1000)",
+            "doc": "信息名称"
+        },
+         {
+             "name": "remark",
+             "type": "String",
+             "mysql_type":"varchar(1000)",
+             "doc": "备注信息"
+         }
+    ]
+}

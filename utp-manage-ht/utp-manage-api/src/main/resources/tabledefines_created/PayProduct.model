@@ -1,0 +1,59 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "product",
+    "type": "table",
+    "name": "PayProduct",
+    "mysqlname":"t_pay_product",
+    "update":false,
+    "doc": "支付产品表",
+    "key":[],
+    "index":[
+        {
+            "name":"t_pay_product_index_1",
+            "fields":["code"],
+            "unique":true
+        },
+        {
+            "name":"t_pay_product_index_2",
+            "fields":["name"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"code",
+            "operation":"=",
+            "paramName":"code"
+        },
+        {
+            "name":"name",
+            "operation":"=",
+            "paramName":"name"
+        }
+    ],
+    "fields": [
+        {
+            "name": "code",
+            "type": "String",
+            "mysql_type":"varchar(30)",
+            "doc": "产品编码"
+        },
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(50)",
+            "doc": "产品名称"
+        },
+         {
+             "name": "remark",
+             "type": "String",
+             "mysql_type":"varchar(255)",
+             "doc": "备注信息"
+         },
+           {
+               "name": "status",
+               "type": "String",
+               "mysql_type":"varchar(20)",
+               "doc": "状态"
+           }
+    ]
+}

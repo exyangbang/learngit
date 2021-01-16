@@ -1,0 +1,100 @@
+server:
+  port: 9806
+  tomcat:
+    max-threads: 400
+    max-connections: 1000
+  max-http-header-size: 1024000
+spring:
+  application:
+    name: utp-service-persistence
+  profiles:
+    active: @profileActive@
+
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      discovery:
+        enabled: false
+        service-id: utp-config-server
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9761/eureka/
+
+---
+spring:
+  profiles: sit
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://utp-trade-discovery:9761/eureka/
+
+---
+spring:
+  profiles: uat
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/,http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: pre
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/,http://utp-trade-discovery-02:9761/eureka/
+
+
+---
+spring:
+  profiles: prd
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/,http://utp-trade-discovery-02:9761/eureka/
+
+---
+spring:
+  profiles: live
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: utp-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://utp-trade-discovery-01:9761/eureka/,http://utp-trade-discovery-02:9761/eureka/

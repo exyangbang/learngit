@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.TransCurrentMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.TransCurrent">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="channel_key" jdbcType="VARCHAR" property="channelKey" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="mer_no" jdbcType="VARCHAR" property="merNo" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="client_trans_time" jdbcType="VARCHAR" property="clientTransTime" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="server_batch_no" jdbcType="VARCHAR" property="serverBatchNo" />
+    <result column="server_link_id" jdbcType="VARCHAR" property="serverLinkId" />
+    <result column="trans_amount" jdbcType="BIGINT" property="transAmount" />
+    <result column="real_amount" jdbcType="BIGINT" property="realAmount" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="channel_resp_time" jdbcType="VARCHAR" property="channelRespTime" />
+    <result column="channel_resp_code" jdbcType="VARCHAR" property="channelRespCode" />
+    <result column="channel_resp_id" jdbcType="VARCHAR" property="channelRespId" />
+    <result column="channel_resp_msg" jdbcType="VARCHAR" property="channelRespMsg" />
+    <result column="resp_code" jdbcType="VARCHAR" property="respCode" />
+    <result column="resp_exception" jdbcType="VARCHAR" property="respException" />
+    <result column="resp_message" jdbcType="VARCHAR" property="respMessage" />
+    <result column="revoke_status" jdbcType="VARCHAR" property="revokeStatus" />
+    <result column="refund_status" jdbcType="VARCHAR" property="refundStatus" />
+    <result column="refund_amount" jdbcType="BIGINT" property="refundAmount" />
+    <result column="reconcile_status" jdbcType="VARCHAR" property="reconcileStatus" />
+    <result column="trans_callback_url" jdbcType="VARCHAR" property="transCallbackUrl" />
+    <result column="reconcile_time" jdbcType="TIMESTAMP" property="reconcileTime" />
+    <result column="reconcile_date" jdbcType="VARCHAR" property="reconcileDate" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="batch_sub_no" jdbcType="VARCHAR" property="batchSubNo" />
+    <result column="currency" jdbcType="VARCHAR" property="currency" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="mer_fee" jdbcType="BIGINT" property="merFee" />
+    <result column="channel_fee" jdbcType="BIGINT" property="channelFee" />
+    <result column="pc_flag" jdbcType="VARCHAR" property="pcFlag" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="payee_acct_no" jdbcType="VARCHAR" property="payeeAcctNo" />
+    <result column="payee_name" jdbcType="VARCHAR" property="payeeName" />
+    <result column="payer_acct_no" jdbcType="VARCHAR" property="payerAcctNo" />
+    <result column="payer_name" jdbcType="VARCHAR" property="payerName" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="split_info_id" jdbcType="BIGINT" property="splitInfoId" />
+    <result column="mer_settle_type" jdbcType="VARCHAR" property="merSettleType" />
+    <result column="mer_charge_mode" jdbcType="VARCHAR" property="merChargeMode" />
+    <result column="channel_settle_type" jdbcType="VARCHAR" property="channelSettleType" />
+    <result column="channel_charge_mode" jdbcType="VARCHAR" property="channelChargeMode" />
+    <result column="channel_settle_date" jdbcType="VARCHAR" property="channelSettleDate" />
+    <result column="orgin_channel_fee" jdbcType="BIGINT" property="orginChannelFee" />
+    <result column="payer_account" jdbcType="VARCHAR" property="payerAccount" />
+    <result column="payee_account" jdbcType="VARCHAR" property="payeeAccount" />
+    <result column="fee_account" jdbcType="VARCHAR" property="feeAccount" />
+    <result column="income_account" jdbcType="VARCHAR" property="incomeAccount" />
+    <result column="need_channel_reconcile" jdbcType="VARCHAR" property="needChannelReconcile" />
+    <result column="show_payer_account_no" jdbcType="VARCHAR" property="showPayerAccountNo" />
+    <result column="show_payer_account_name" jdbcType="VARCHAR" property="showPayerAccountName" />
+    <result column="show_payee_account_no" jdbcType="VARCHAR" property="showPayeeAccountNo" />
+    <result column="show_payee_account_name" jdbcType="VARCHAR" property="showPayeeAccountName" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="elc_make_flag" jdbcType="VARCHAR" property="elcMakeFlag" />
+    <result column="fee_account_name" jdbcType="VARCHAR" property="feeAccountName" />
+    <result column="income_account_name" jdbcType="VARCHAR" property="incomeAccountName" />
+    <result column="payer_opbk_name" jdbcType="VARCHAR" property="payerOpbkName" />
+    <result column="payee_opbk_name" jdbcType="VARCHAR" property="payeeOpbkName" />
+    <result column="summary_description" jdbcType="VARCHAR" property="summaryDescription" />
+    <result column="history_status" jdbcType="VARCHAR" property="historyStatus" />
+    <result column="query_time" jdbcType="INTEGER" property="queryTime" />
+    <result column="remote_ip" jdbcType="VARCHAR" property="remoteIp" />
+    <result column="payment_type" jdbcType="VARCHAR" property="paymentType" />
+    <result column="payment_period" jdbcType="INTEGER" property="paymentPeriod" />
+    <result column="payment_settle_status" jdbcType="VARCHAR" property="paymentSettleStatus" />
+  </resultMap>
+
+    <delete id="deleteFromCurrentDate" parameterType="java.util.Map">
+        DELETE FROM t_trans_current WHERE server_trans_id = #{serverTransId}
+   </delete>
+
+    <select id="selectIndustryTransId" parameterType="java.util.Map" resultType="java.util.HashMap">
+    select * from (
+    select t.client_trans_id,t.server_trans_id from t_trans_current t where t.industry_code = #{industryCode}
+    union all
+    select t.client_trans_id,t.server_trans_id from t_trans_history t where t.industry_code = #{industryCode}
+    ) tmp
+  </select>
+
+    <select id="selectCountIndustryCodeAndClientTransIdOrServerTransId" parameterType="java.util.Map"  resultType="java.lang.Integer">
+        select sum(num) from (
+            select count(1) as num from t_trans_current t where t.industry_code= #{industryCode}
+                <if test='clientTransId !=null and clientTransId != ""'>
+                    AND t.client_trans_id = #{clientTransId}
+                </if>
+                <if test='serverTransId !=null and serverTransId != ""'>
+                    AND t.server_trans_id = #{serverTransId}
+                </if>
+            union all
+            select count(1) as num from t_trans_history t where t.industry_code= #{industryCode}
+                <if test='clientTransId !=null and clientTransId != ""'>
+                    AND t.client_trans_id = #{clientTransId}
+                </if>
+                <if test='serverTransId !=null and serverTransId != ""'>
+                    AND t.server_trans_id = #{serverTransId}
+                </if>
+        ) as tmp ;
+
+    </select>
+
+
+</mapper>

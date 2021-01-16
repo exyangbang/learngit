@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.MerchantAccountInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.MerchantAccountInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mer_no" jdbcType="VARCHAR" property="merNo" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="account_type" jdbcType="VARCHAR" property="accountType" />
+    <result column="account_no" jdbcType="VARCHAR" property="accountNo" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="receive_bank_code" jdbcType="VARCHAR" property="receiveBankCode" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="auth_amt" jdbcType="BIGINT" property="authAmt" />
+    <result column="bind_status" jdbcType="VARCHAR" property="bindStatus" />
+    <result column="auth_count" jdbcType="INTEGER" property="authCount" />
+    <result column="req_bind_date" jdbcType="TIMESTAMP" property="reqBindDate" />
+    <result column="freeze_date" jdbcType="TIMESTAMP" property="freezeDate" />
+    <result column="channel_resp_code" jdbcType="VARCHAR" property="channelRespCode" />
+    <result column="channel_resp_msg" jdbcType="VARCHAR" property="channelRespMsg" />
+  </resultMap>
+
+  <select id="findMerAccountByIndustryCodeAndAcctNo" parameterType="java.util.Map" resultMap="BaseResultMap">
+      SELECT t.*
+        FROM t_merchant_account_info t
+        LEFT JOIN t_merchant_info m
+        ON m.account = t.account
+      WHERE m.industry_code = #{industryCode}
+        AND t.account_no = #{accountNo}
+        AND t.bind_status = '0'
+        AND m.status = '1'
+  </select>
+</mapper>

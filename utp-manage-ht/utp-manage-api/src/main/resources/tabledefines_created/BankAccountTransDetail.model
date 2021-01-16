@@ -1,0 +1,174 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "bankaccounttransdetail",
+    "type": "table",
+    "name": "BankAccountTransDetail",
+    "mysqlname":"t_bank_account_trans_detail",
+    "update":false,
+    "doc": "未入账资金流水查询",
+    "key":[],
+    "index":[
+        {
+            "name":"t_bank_account_trans_detail_industry_code",
+            "fields":["industryCode"],
+            "unique":true
+        },
+        {
+            "name":"t_bank_account_trans_detail_detail_serial_number",
+            "fields":["detailSerialNumber"]
+        },
+        {
+            "name":"t_bank_account_trans_detail_cust_account_noAndTxn_date",
+            "fields":["custAccountNo","txnDate"]
+        },
+        {
+            "name":"t_bank_account_trans_detail_accountNoAndTxnDateAndSeialNumber_UK",
+            "fields":["custAccountNo","txnDate","detailSerialNumber"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"industryCode",
+            "operation":"=",
+            "paramName":"industry_code"
+        },
+        {
+            "name":"detailSerialNumber",
+            "operation":"=",
+            "paramName":"detail_serial_number"
+        },
+        {
+            "name":"custAccountNo",
+            "operation":"=",
+            "paramName":"cust_account_no"
+        },
+        {
+            "name":"txnDate",
+            "operation":"=",
+            "paramName":"txn_date"
+        }
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "平台编码"
+        },
+        {
+            "name": "cardNumber",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "卡号"
+        },
+        {
+             "name": "custAccountNo",
+             "type": "String",
+             "mysql_type":"varchar(32)",
+             "doc": "客户账号"
+         },
+
+        {
+            "name": "custAccountName",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "客户名称"
+        },
+        {
+            "name": "txnDate",
+            "type": "Long",
+            "mysql_type":"varchar(8)",
+            "doc": "交易账务日期，清算日期"
+        },
+        {
+            "name": "natureDate",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "交易自然日期，交易日期"
+        },
+        {
+            "name": "detailSerialNumber",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "明细序号"
+        },
+        {
+            "name": "drcrFlag",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "借贷标志 0-借方 1-贷方"
+        },
+        {
+            "name": "txnAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "交易金额（单位分)"
+        },
+        {
+            "name": "accountBalance",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "账户余额（单位分)"
+        },
+        {
+           "name": "otherCustAccountNo",
+           "type": "String",
+           "mysql_type":"varchar(50)",
+           "doc": "对方账号"
+        },
+        {
+           "name": "otherCustName",
+           "type": "String",
+           "mysql_type":"varchar(50)",
+           "doc": "对方客户名称"
+        },
+        {
+           "name": "reversedFlag",
+           "type": "String",
+           "mysql_type":"varchar(10)",
+           "doc": "0-正常 1-被冲账 2-冲账"
+        },
+        {
+           "name": "remarkDetail",
+           "type": "String",
+           "mysql_type":"varchar(1024)",
+           "doc": "备注信息"
+        },
+        {
+           "name": "txnTime",
+           "type": "String",
+           "mysql_type":"varchar(6)",
+           "doc": "交易时间HHmmss"
+        },
+        {
+           "name": "sysReferenceNo",
+           "type": "String",
+           "mysql_type":"varchar(34)",
+           "doc": "华通系统交易流水号"
+        },
+        {
+           "name": "orgSysReferenceNo",
+           "type": "String",
+           "mysql_type":"varchar(34)",
+           "doc": "华通原系统交易流水号"
+        },
+        {
+           "name": "otherBankName",
+           "type": "String",
+           "mysql_type":"varchar(80)",
+           "doc": "对方行名"
+        },
+        {
+           "name": "otherRemark",
+           "type": "String",
+           "mysql_type":"varchar(80)",
+           "doc": "对方银行备注"
+        },
+        {
+           "name": "operStatus",
+           "type": "String",
+           "mysql_type":"varchar(2)",
+           "doc": "操作状态 0-未入账 1-已入账"
+        },
+    ]
+}

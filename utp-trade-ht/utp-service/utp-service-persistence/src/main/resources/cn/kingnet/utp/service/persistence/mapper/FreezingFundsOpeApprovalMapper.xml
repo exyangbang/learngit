@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.FreezingFundsOpeApprovalMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.FreezingFundsOpeApproval">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="obj_type" jdbcType="VARCHAR" property="objType" />
+    <result column="bus_lic_code" jdbcType="VARCHAR" property="busLicCode" />
+    <result column="obj_name" jdbcType="VARCHAR" property="objName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="ind_name" jdbcType="VARCHAR" property="indName" />
+    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
+    <result column="frozen_amount" jdbcType="BIGINT" property="frozenAmount" />
+    <result column="audit_remark" jdbcType="VARCHAR" property="auditRemark" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="clinet_trans_id" jdbcType="VARCHAR" property="clinetTransId" />
+    <result column="add_usr" jdbcType="VARCHAR" property="addUsr" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="resp_msg" jdbcType="VARCHAR" property="respMsg" />
+    <result column="freeze_id" jdbcType="BIGINT" property="freezeId" />
+    <result column="unfreeze_status" jdbcType="VARCHAR" property="unfreezeStatus" />
+  </resultMap>
+</mapper>

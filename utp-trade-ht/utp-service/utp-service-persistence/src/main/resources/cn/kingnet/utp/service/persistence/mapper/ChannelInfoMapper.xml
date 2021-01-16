@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.ChannelInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.ChannelInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="channel_key" jdbcType="VARCHAR" property="channelKey" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="join_type" jdbcType="VARCHAR" property="joinType" />
+    <result column="front_url" jdbcType="VARCHAR" property="frontUrl" />
+    <result column="back_url" jdbcType="VARCHAR" property="backUrl" />
+    <result column="trid" jdbcType="VARCHAR" property="trid" />
+    <result column="trtp" jdbcType="VARCHAR" property="trtp" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="chn_fee_template_id" jdbcType="BIGINT" property="chnFeeTemplateId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="acc_no" jdbcType="VARCHAR" property="accNo" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="channel_quota" jdbcType="BIGINT" property="channelQuota" />
+    <result column="channel_mer_no" jdbcType="VARCHAR" property="channelMerNo" />
+    <result column="channel_mer_name" jdbcType="VARCHAR" property="channelMerName" />
+    <result column="channel_mer_short_name" jdbcType="VARCHAR" property="channelMerShortName" />
+    <result column="channel_mer_category" jdbcType="VARCHAR" property="channelMerCategory" />
+    <result column="channel_capital_source" jdbcType="VARCHAR" property="channelCapitalSource" />
+  </resultMap>
+</mapper>

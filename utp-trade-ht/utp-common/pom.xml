@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>utp-trade-ht</artifactId>
+        <groupId>cn.kingnet</groupId>
+        <version>2.5.5</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>utp-common</artifactId>
+    <packaging>jar</packaging>
+    <name>utp-common</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>cn.kingnet</groupId>
+            <artifactId>kingnet-framework-starter-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-collections4</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.htrace</groupId>
+            <artifactId>htrace-core4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cavium.jni</groupId>
+            <artifactId>cavium.jni</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cryptokit.jni</groupId>
+            <artifactId>cryptokit.jni</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>logback-cfca</groupId>
+            <artifactId>logback-cfca-jdk1.6</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.keyou</groupId>
+            <artifactId>platform-api3-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>PKCS11JNI</groupId>
+            <artifactId>PKCS11JNI</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>SADK</groupId>
+            <artifactId>SADK</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>sansec</groupId>
+            <artifactId>SwxaJCE</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>sansec</groupId>
+            <artifactId>SwxaLib</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>utp-common</finalName>
+    </build>
+</project>

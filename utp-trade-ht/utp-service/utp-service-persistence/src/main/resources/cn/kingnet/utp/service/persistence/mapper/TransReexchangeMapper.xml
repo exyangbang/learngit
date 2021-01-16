@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.TransReexchangeMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.TransReexchange">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="channel_key" jdbcType="VARCHAR" property="channelKey" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="mer_no" jdbcType="VARCHAR" property="merNo" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="client_trans_time" jdbcType="VARCHAR" property="clientTransTime" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="server_batch_no" jdbcType="VARCHAR" property="serverBatchNo" />
+    <result column="server_link_id" jdbcType="VARCHAR" property="serverLinkId" />
+    <result column="trans_amount" jdbcType="BIGINT" property="transAmount" />
+    <result column="real_amount" jdbcType="BIGINT" property="realAmount" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_date" jdbcType="VARCHAR" property="transDate" />
+    <result column="trans_time" jdbcType="VARCHAR" property="transTime" />
+    <result column="reconcile_status" jdbcType="VARCHAR" property="reconcileStatus" />
+    <result column="reconcile_time" jdbcType="TIMESTAMP" property="reconcileTime" />
+    <result column="reconcile_date" jdbcType="VARCHAR" property="reconcileDate" />
+    <result column="payee_acct_no" jdbcType="VARCHAR" property="payeeAcctNo" />
+    <result column="payee_name" jdbcType="VARCHAR" property="payeeName" />
+    <result column="payer_acct_no" jdbcType="VARCHAR" property="payerAcctNo" />
+    <result column="payer_name" jdbcType="VARCHAR" property="payerName" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="channel_settle_date" jdbcType="VARCHAR" property="channelSettleDate" />
+    <result column="solve_status" jdbcType="VARCHAR" property="solveStatus" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+  </resultMap>
+</mapper>

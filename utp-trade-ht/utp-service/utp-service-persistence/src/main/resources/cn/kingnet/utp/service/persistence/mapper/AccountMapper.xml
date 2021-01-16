@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.AccountMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.Account">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="obj_type" jdbcType="VARCHAR" property="objType"/>
+        <result column="obj_code" jdbcType="VARCHAR" property="objCode"/>
+        <result column="obj_name" jdbcType="VARCHAR" property="objName"/>
+        <result column="fund_account" jdbcType="VARCHAR" property="fundAccount"/>
+        <result column="balance" jdbcType="BIGINT" property="balance"/>
+        <result column="frozen_amount" jdbcType="BIGINT" property="frozenAmount"/>
+        <result column="avail_amount" jdbcType="BIGINT" property="availAmount"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="version" jdbcType="BIGINT" property="version"/>
+        <result column="fee_template_id" jdbcType="BIGINT" property="feeTemplateId"/>
+        <result column="industry_id" jdbcType="BIGINT" property="industryId"/>
+        <result column="bank_client_no" jdbcType="VARCHAR" property="bankClientNo"/>
+        <result column="bank_client_status" jdbcType="INTEGER" property="bankClientStatus"/>
+        <result column="bank_client_chn_flag" jdbcType="INTEGER" property="bankClientChnFlag"/>
+    </resultMap>
+
+
+    <update id="updateBalance" parameterType="cn.kingnet.utp.service.persistence.entity.Account">
+     update t_account set
+      balance = balance + #{balance},
+      frozen_amount = frozen_amount + #{frozenAmount},
+      avail_amount = avail_amount + #{availAmount},
+      version = version + 1,
+      gmt_modified = #{gmtModified}
+      where id = #{id}  and version = #{version}
+    </update>
+
+    <select flushCache="true" id="getCurAccount" resultType="cn.kingnet.utp.service.persistence.entity.Account"
+            useCache="false">
+        select * from t_account  where account = #{account}
+    </select>
+
+    <select id="getCurAccountLock" resultType="cn.kingnet.utp.service.persistence.entity.Account">
+        select * from t_account  where account = #{account} for update
+    </select>
+
+    <select id="queryUserAccountByIndustryCode"
+            resultType="cn.kingnet.utp.service.persistence.entity.bo.UserAccountInfo">
+        select t.account,t.obj_type,t.obj_code,t.obj_name,t.balance,t.avail_amount,t.frozen_amount,t.fund_account,t.status,a.industry_code,a.industry_name,
+            a.settle_account,'' as orig_account,a.user_type,a.status as merchant_status,a.org_code,a.org_name,a.auth_status as merchant_auth_status
+        from t_account t inner join t_merchant_info a on t.account = a.account where a.industry_code = #{industryCode}
+          union all
+        select t.account,t.obj_type,t.obj_code,t.obj_name,t.balance,t.avail_amount,t.frozen_amount,t.fund_account,t.status,a.industry_code,a.industry_name,
+         '' as settle_account,a.account as orig_account,a.user_type,a.status as merchant_status,a.org_code,a.org_name,a.auth_status as merchant_auth_status
+        from t_account t inner join t_merchant_info a on t.account = a.settle_account where a.industry_code = #{industryCode}
+    </select>
+
+    <select id="selectBankClientAccount" resultType="cn.kingnet.utp.service.persistence.entity.bo.BankClientAccountBO">
+
+        select b.account,b.bank_client_no,b.bank_client_chn_flag,b.bank_client_status from
+        (
+        select a.account,a.id_code,a.bus_lic_code from t_merchant_info a
+        <where>
+            <if test="type == '0'.toString() ">a.id_code = #{code} and a.user_type = #{type}</if>
+            <if test="type == '1'.toString() ">a.bus_lic_code = #{code} and a.user_type = #{type}</if>
+        </where>
+        UNION ALL
+        select a.account,a.id_code,a.bus_lic_code from t_industry a
+        <where>
+            <if test="type == '0'.toString() ">a.id_code = #{code}</if>
+            <if test="type == '1'.toString() ">a.bus_lic_code = #{code}</if>
+        </where>
+        ) tmp
+        INNER JOIN t_account b on tmp.account=b.account
+        where b.bank_client_status>0 limit 1
+
+    </select>
+
+</mapper>

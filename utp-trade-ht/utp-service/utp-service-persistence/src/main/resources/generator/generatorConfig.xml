@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--引入配置文件-->
+    <properties resource="generator/mybatis_generator.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Condition"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CachePlugin">
+            <property name="cache_type" value="cn.kingnet.framework.starter.mybatis.cache.redis.MybatisRedisCache"/>
+            <!--6000毫秒清空缓存-->
+            <property name="cache_flushInterval" value="6000"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.MapperPlugin">
+            <property name="mappers" value="com.baomidou.mybatisplus.mapper.BaseMapper"/>
+            <property name="forceAnnotation" value="true"/>
+        </plugin>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.PlusMapperPlugin"/>
+        <plugin type="cn.kingnet.framework.plugin.mybatis.adapter.CreateVoPlugin"/>
+        <!-- 取消注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${druid.driver-class}"
+                        connectionURL="${druid.url}"
+                        userId="${druid.username}"
+                        password="${druid.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${model.target.package}" targetProject="${mybatis.model.path}">
+            <property name="rootClass"
+                      value="cn.kingnet.framework.starter.base.sql.BaseEntity"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.xml.path}"/>
+
+        <javaClientGenerator targetPackage="${map.target.package}" targetProject="${mybatis.mapper.interface.path}"
+                             type="XMLMAPPER"/>
+
+        <!--
+                     <table tableName="t_industry_amt_limit"
+                              domainObjectName="IndustryAmtLimit"
+                              mapperName="IndustryAmtLimitMapper">
+                           <property name="voObjectName" value="IndustryAmtLimitVo"/>
+                       </table>
+                    <table tableName="t_subaccounts_amt_limit"
+                           domainObjectName="SubaccountsAmtLimit"
+                           mapperName="SubaccountsAmtLimitMapper">
+                        <property name="voObjectName" value="SubaccountsAmtLimitVo"/>
+                    </table>
+
+            <table tableName="t_fee_income_account_month_stat"
+                   domainObjectName="FeeIncomeAccountMonthStat"
+                   mapperName="FeeIncomeAccountMonthStatMapper">
+                <property name="voObjectName" value="FeeIncomeAccountMonthStatVo"/>
+            </table>
+            <table tableName="t_fee_income_account_month_collection"
+                   domainObjectName="FeeIncomeAccountMonthCollection"
+                   mapperName="FeeIncomeAccountMonthCollectionMapper">
+                <property name="voObjectName" value="FeeIncomeAccountMonthCollectionVo"/>
+            </table>
+            <table tableName="t_collect_account_withdraw"
+                   domainObjectName="CollectAccountWithdraw"
+                   mapperName="CollectAccountWithdrawMapper">
+                <property name="voObjectName" value="CollectAccountWithdrawVo"/>
+            </table>
+            <table tableName="t_channel_industry"
+                   domainObjectName="ChannelIndustry"
+                   mapperName="ChannelIndustryMapper">
+                <property name="voObjectName" value="ChannelIndustryVo"/>
+            </table>
+
+
+            <table tableName="t_trans_callback_log"
+                   domainObjectName="TransCallbackLog"
+                   mapperName="TransCallbackLogMapper">
+                <property name="voObjectName" value="TransCallbackLogVo"/>
+            </table>
+
+                                  <table tableName="t_industry_account_info"
+                                         domainObjectName="IndustryAccountInfo"
+                                         mapperName="IndustryAccountInfoMapper">
+                                      <property name="voObjectName" value="IndustryAccountInfoVo"/>
+                                  </table>
+
+
+                                  <table tableName="t_industry_sync_log"
+                                         domainObjectName="IndustrySyncLog"
+                                         mapperName="IndustrySyncLogMapper">
+                                      <property name="voObjectName" value="IndustrySyncLogVo"/>
+                                  </table>
+
+                                  <table tableName="t_merchant_info"
+                                         domainObjectName="MerchantInfo"
+                                         mapperName="MerchantInfoMapper">
+                                      <property name="voObjectName" value="MerchantInfoVo"/>
+                                  </table>
+
+                                  <table tableName="t_channel_merchant"
+                                         domainObjectName="ChannelMerchant"
+                                         mapperName="ChannelMerchantMapper">
+                                      <property name="voObjectName" value="ChannelMerchantVo"/>
+                                  </table>
+
+                                  <table tableName="t_merchant_day_sum"
+                                         domainObjectName="MerchantDaySum"
+                                         mapperName="MerchantDaySumMapper">
+                                      <property name="voObjectName" value="MerchantDaySumVo"/>
+                                  </table>
+
+                                  <table tableName="t_merchant_reconcile_record"
+                                         domainObjectName="MerchantReconcileRecord"
+                                         mapperName="MerchantReconcileRecordMapper">
+                                      <property name="voObjectName" value="MerchantReconcileRecordVo"/>
+                                  </table>
+
+
+
+                                  <table tableName="t_settle_check_info"
+                                         domainObjectName="SettleCheckInfo"
+                                         mapperName="SettleCheckInfoMapper">
+                                      <property name="voObjectName" value="SettleCheckInfoVo"/>
+                                  </table>
+
+                                  <table tableName="t_file_upload_log"
+                                         domainObjectName="FileUploadLog"
+                                         mapperName="FileUploadLogMapper">
+                                      <property name="voObjectName" value="FileUploadLogVo"/>
+                                  </table>
+
+                                  <table tableName="t_account_settle_detail"
+                                         domainObjectName="AccountSettleDetail"
+                                         mapperName="AccountSettleDetailMapper">
+                                      <property name="voObjectName" value="AccountSettleDetailVo"/>
+                                  </table>
+
+                                  <table tableName="t_account_entry_detail"
+                                         domainObjectName="AccountEntryDetail"
+                                         mapperName="AccountEntryDetailMapper">
+                                      <property name="voObjectName" value="AccountEntryDetailVo"/>
+                                  </table>
+
+                                  <table tableName="t_trans_reexchange"
+                                         domainObjectName="TransReexchange"
+                                         mapperName="TransReexchangeMapper">
+                                      <property name="voObjectName" value="TransReexchangeVo"/>
+                                  </table>
+
+
+
+                                  <table tableName="t_split_info"
+                                         domainObjectName="SplitInfo"
+                                         mapperName="SplitInfoMapper">
+                                      <property name="voObjectName" value="SplitInfoVo"/>
+                                  </table>
+
+
+
+                                  <table tableName="t_account_detail"
+                                         domainObjectName="AccountDetail"
+                                         mapperName="AccountDetailMapper">
+                                      <property name="voObjectName" value="AccountDetailVo"/>
+                                  </table>
+
+                                  <table tableName="t_account"
+                                         domainObjectName="Account"
+                                         mapperName="AccountMapper">
+                                      <property name="voObjectName" value="AccountVo"/>
+                                  </table>
+
+                                  <table tableName="t_merchant_info"
+                                         domainObjectName="MerchantInfo"
+                                         mapperName="MerchantInfoMapper">
+                                      <property name="voObjectName" value="MerchantInfoVo"/>
+                                  </table>
+
+
+
+                                  <table tableName="t_white_list"
+                                         domainObjectName="WhiteList"
+                                         mapperName="WhiteListMapper">
+                                      <property name="voObjectName" value="WhiteListVo"/>
+                                  </table>
+
+                                  <table tableName="t_account_order_log"
+                                         domainObjectName="AccountOrderLog"
+                                         mapperName="AccountOrderLogMapper">
+                                      <property name="voObjectName" value="AccountOrderLogVo"/>
+                                  </table>
+
+                                  <table tableName="t_electronic_receipt"
+                                         domainObjectName="ElectronicReceipt"
+                                         mapperName="ElectronicReceiptMapper">
+                                      <property name="voObjectName" value="ElectronicReceiptVo"/>
+                                  </table>
+
+                                  <table tableName="t_fee_template"
+                                         domainObjectName="FeeTemplate"
+                                         mapperName="FeeTemplateMapper">
+                                      <property name="voObjectName" value="FeeTemplateVo"/>
+                                  </table>
+
+
+                             <table tableName="t_upload_split_pay_flow"
+                                 domainObjectName="UploadSplitPayFlow"
+                                 mapperName="UploadSplitPayFlowMapper">
+                              <property name="voObjectName" value="UploadSplitPayFlowVo"/>
+                          </table>
+
+                   <table tableName="t_channel_respcode"
+                          domainObjectName="ChannelRespcode"
+                          mapperName="ChannelRespcodeMapper">
+                       <property name="voObjectName" value="ChannelRespcodeVo"/>
+                   </table>
+
+
+
+            <table tableName="t_freezing_funds_ope_approval"
+                   domainObjectName="FreezingFundsOpeApproval"
+                   mapperName="FreezingFundsOpeApprovalMapper">
+                <property name="voObjectName" value="FreezingFundsOpeApprovalVo"/>
+            </table>
+            <table tableName="t_code_dictionary"
+                   domainObjectName="CodeDictionary"
+                   mapperName="CodeDictionaryMapper">
+                <property name="voObjectName" value="CodeDictionaryVo"/>
+            </table>
+
+            <table tableName="t_upload_subAccount_income_flow"
+                   domainObjectName="UploadSubAccountIncomeFlow"
+                   mapperName="UploadSubAccountIncomeFlowMapper">
+                <property name="voObjectName" value="UploadSubAccountIncomeFlowVo"/>
+            </table>
+            <table tableName="t_upload_subAccount_settle_split_log"
+                   domainObjectName="UploadSubAccountSettleSplitLog"
+                   mapperName="UploadSubAccountSettleSplitLogMapper">
+                <property name="voObjectName" value="UploadSubAccountSettleSplitLogVo"/>
+            </table>
+            <table tableName="t_upload_subAccount_settle_split_detail"
+                   domainObjectName="UploadSubAccountSettleSplitDetail"
+                   mapperName="UploadSubAccountSettleSplitDetailMapper">
+                <property name="voObjectName" value="UploadSubAccountSettleSplitDetailVo"/>
+            </table>
+
+            <table tableName="t_trans_current"
+                   domainObjectName="TransCurrent"
+                   mapperName="TransCurrentMapper">
+                <property name="voObjectName" value="TransCurrentVo"/>
+            </table>
+
+            <table tableName="t_trans_history"
+                   domainObjectName="TransHistory"
+                   mapperName="TransHistoryMapper">
+                <property name="voObjectName" value="TransHistoryVo"/>
+            </table>
+
+
+
+            <table tableName="t_account_electronic_receipt"
+                   domainObjectName="AccountElectronicReceipt"
+                   mapperName="AccountElectronicReceiptMapper">
+                <property name="voObjectName" value="AccountElectronicReceiptVo"/>
+            </table>
+
+
+
+            <table tableName="t_merchant_account_info"
+                   domainObjectName="MerchantAccountInfo"
+                   mapperName="MerchantAccountInfoMapper">
+                <property name="voObjectName" value="MerchantAccountInfoVo"/>
+            </table>
+
+            <table tableName="t_upload_subaccount_multi_settle_detail"
+                   domainObjectName="SubAccountMulTiSettleDetail"
+                   mapperName="SubAccountMulTiSettleDetailMapper">
+                <property name="voObjectName" value="SubAccountMulTiSettleDetailVo"/>
+            </table>
+
+       <table tableName="t_clear_bank_code"
+                   domainObjectName="ClearBankCode"
+                   mapperName="ClearBankCodeMapper">
+                <property name="voObjectName" value="ClearBankCodeVo"/>
+            </table>
+
+            <table tableName="t_bank_account_trans_detail"
+                   domainObjectName="BankAccountTransDetail"
+                   mapperName="BankAccountTransDetailMapper">
+                <property name="voObjectName" value="BankAccountTransDetailVo"/>
+            </table>
+
+            <table tableName="t_channel_income_flow"
+                   domainObjectName="ChannelIncomeFlow"
+                   mapperName="ChannelIncomeFlowMapper">
+                <property name="voObjectName" value="ChannelIncomeFlowVo"/>
+            </table>
+
+            <table tableName="t_channel_info"
+                   domainObjectName="ChannelInfo"
+                   mapperName="ChannelInfoMapper">
+                <property name="voObjectName" value="ChannelInfoVo"/>
+            </table>
+            <table tableName="t_channel_industry"
+                   domainObjectName="ChannelIndustry"
+                   mapperName="ChannelIndustryMapper">
+                <property name="voObjectName" value="ChannelIndustryVo"/>
+            </table>
+             -->
+        <!--<table tableName="t_account"-->
+               <!--domainObjectName="Account"-->
+               <!--mapperName="AccountMapper">-->
+            <!--<property name="voObjectName" value="AccountVo"/>-->
+        <!--</table>-->
+
+
+
+        <!--<table tableName="t_sub_pay_payee_white_list"-->
+               <!--domainObjectName="SubPayPayeeWhiteList"-->
+               <!--mapperName="SubPayPayeeWhiteListMapper">-->
+            <!--<property name="voObjectName" value="SubPayPayeeWhiteListVo"/>-->
+        <!--</table>-->
+<!--
+        <table tableName="t_trans_order_relation"
+               domainObjectName="TransOrderRelation"
+               mapperName="TransOrderRelationMapper">
+            <property name="voObjectName" value="TransOrderRelationVo"/>
+        </table>
+
+        <table tableName="t_account_info"
+               domainObjectName="AccountInfo"
+               mapperName="AccountInfoMapper">
+            <property name="voObjectName" value="AccountInfoVo"/>
+        </table>
+        <table tableName="t_trans_param_fail"
+               domainObjectName="TransParamFail"
+               mapperName="TransParamFailMapper">
+            <property name="voObjectName" value="TransParamFailVo"/>
+        </table>
+
+        <table tableName="t_industry"
+               domainObjectName="Industry"
+               mapperName="IndustryMapper">
+            <property name="voObjectName" value="IndustryVo"/>
+        </table>
+
+        <table tableName="t_outside_trans_order"
+               domainObjectName="OutsideTransOrder"
+               mapperName="OutsideTransOrderMapper">
+            <property name="voObjectName" value="OutsideTransOrderVo"/>
+        </table>
+ -->
+        <table tableName="t_account_info"
+               domainObjectName="AccountInfo"
+               mapperName="AccountInfoMapper">
+            <property name="voObjectName" value="AccountInfoVo"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,177 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "certificate",
+    "type": "table",
+    "name": "CertificateInfo",
+    "mysqlname":"certificate_info",
+    "update":false,
+    "doc": "证书信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"certificate_info_index_1",
+            "fields":["certificateSeq"]
+        },
+        {
+            "name":"certificate_info_index_2",
+            "fields":["certificateNo"]
+        },
+        {
+            "name":"certificate_info_index_3",
+            "fields":["orgCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"certificateSeq",
+            "operation":"=",
+            "paramName":"certificate_seq"
+        },
+        {
+            "name":"orgCode",
+            "operation":"=",
+            "paramName":"org_code"
+        },
+        {
+            "name":"orgName",
+            "operation":"like",
+            "paramName":"org_name"
+        },
+        {
+            "name":"certificateName",
+            "operation":"like",
+            "paramName":"certificate_name"
+        },
+        {
+            "name":"certificateType",
+            "operation":"=",
+            "paramName":"certificate_type"
+        },
+        {
+            "name":"status",
+            "operation":"=",
+            "paramName":"status"
+        }
+    ],
+    "fields": [
+        {
+            "name": "certificateNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "证书号",
+            "required":true
+        },
+        {
+            "name": "certificateSeq",
+            "type": "String",
+            "mysql_type":"varchar(128)",
+            "doc": "证书序列号",
+            "required":true
+        },
+        {
+            "name": "certificateName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "证书名称",
+            "required":false
+        },
+        {
+            "name": "channelId",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "渠道编号",
+             "required":false
+        },
+        {
+            "name": "orgCode",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "所属收单机构代码",
+            "required":true
+        },
+        {
+            "name": "orgName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "所属收单机构名称",
+            "required":false
+        },
+        {
+            "name": "certificateType",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "证书类型",
+            "required":true
+        },
+        {
+            "name": "privateKey",
+            "type": "String",
+            "mysql_type":"text",
+            "doc": "私钥信息",
+            "required":false
+        },
+        {
+            "name": "privateKeyPassword",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "私钥证书密码",
+            "required":false
+        },
+        {
+            "name": "privateStorePassword",
+            "type": "String",
+            "mysql_type":"varchar(8)",
+            "doc": "私钥store密码",
+            "required":false
+        },
+        {
+            "name": "publicKey",
+            "type": "String",
+            "mysql_type":"text",
+            "doc": "公钥信息",
+            "required":false
+        },
+        {
+            "name": "effectiveDate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "证书生效日期",
+            "required":false
+        },
+        {
+            "name": "expirationDate",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "证书失效日期",
+            "required":false
+        },
+        {
+            "name": "certificateFile",
+            "type": "byte[]",
+            "mysql_type":"blob",
+            "doc": "二进制证书文件",
+            "required":false
+        },
+        {
+            "name": "certificatePath",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "证书存放路径",
+            "required":false
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "状态",
+            "required":true
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(500)",
+            "doc": "备注信息",
+            "required":false
+        }
+    ]
+}

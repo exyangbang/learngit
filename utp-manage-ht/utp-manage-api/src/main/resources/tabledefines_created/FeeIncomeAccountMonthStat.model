@@ -1,0 +1,78 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "feeincomeaccountmonthstat",
+    "type": "table",
+    "name": "FeeIncomeAccountMonthStat",
+    "mysqlName":"t_fee_income_account_month_stat",
+    "update":false,
+    "doc": "手续费收益账户月统计表",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "statMonth",
+            "type": "String",
+            "mysql_type":"varchar(6)",
+            "doc": "统计月份yyyyMM"
+        },
+        {
+            "name": "account",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "手续费收益账户号"
+        },
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "手续费收益账户名称"
+        },
+        {
+            "name": "collectionStatus",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "'归集划款状态 0未划转 1已划转"
+        },
+        {
+            "name": "incomeAmount",
+            "type": "Long",
+            "mysql_type":"varchar(20)",
+            "doc": "入金金额（单位分）"
+        },
+        {
+            "name": "outcomeAmount",
+            "type": "Long",
+            "mysql_type":"varchar(20)",
+            "doc": "出金金额（单位分）"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(512)",
+            "doc": "备注说明"
+        },
+        {
+            "name": "transStatus",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "交易状态"
+        },
+        {
+            "name": "transDesc",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "交易状态描述"
+        },
+        {
+            "name": "serverTransId",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "服务端流水号"
+        }
+    ]
+}

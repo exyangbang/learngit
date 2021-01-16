@@ -1,0 +1,83 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "industryamtlimit",
+    "type": "table",
+    "name": "IndustryAmtLimitApproval",
+    "mysqlname":"t_industry_amt_limit_approval",
+    "update":false,
+    "doc": "客户交易限额记录表",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "industryCode",
+            "type": "String",
+            "mysql_type":"varchar(12)",
+            "doc": "代付客户号"
+        },
+         {
+             "name": "industryId",
+             "type": "Long",
+             "mysql_type":"bigint(20)",
+             "doc": "代付客户id）"
+         },
+        {
+            "name": "industryName",
+            "type": "String",
+            "mysql_type":" varchar(200)",
+            "doc": "名称"
+        },
+        {
+            "name": "publicIndividualAmt",
+            "type": "Long",
+            "mysql_type":" bigint(20)",
+            "doc": "对公单笔限额（单位分）"
+        },
+        {
+            "name": "privateIndividualAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "对私单笔限额（单位分）"
+        },
+        {
+            "name": "unitIndividualAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "单位结算卡单笔限额（单位分）"
+        },
+        {
+            "name": "industryDateAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "客户号单日限额（单位分）"
+        },
+        {
+            "name": "subaccountsDateAmt",
+            "type": "Long",
+            "mysql_type":"bigint(20))",
+            "doc": "子账户单日限额（单位分）"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":" varchar(255)",
+            "doc": "备注"
+        },
+        {
+            "name": "auditStatus",
+            "type": "String",
+            "mysql_type":" varchar(2)",
+            "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+        },
+        {
+          "name": "operationType",
+          "type": "String",
+          "mysql_type":" varchar(2)",
+          "doc": "操作类型（0-删除 1-修改 2-添加）"
+        }
+    ]
+}

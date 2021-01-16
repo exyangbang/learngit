@@ -1,0 +1,60 @@
+---
+spring:
+  profiles: dev
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.214.13:3306/utp_manage_ht_3?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: dwxxkj=123
+      connection-properties: druid.stat.mergeSql=true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+
+#单数据源配置 end#
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  offsetAsPageNum: true
+  supportMethodsArguments: true
+
+#日志配置 start#
+logging:
+  level:
+    cn.kingnet: debug
+    com.baomidou.mybatisplus: debug
+    org.spring.springboot.dao: debug
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+cn:
+  kingnet:
+    utp:
+      channel:
+        onebank:
+          ftp:
+            host: 10.11.17.77
+            port: 6688
+            https-port: 6686
+            sys-id: 32103
+            user-name: sys_32103
+            password: 6EC57294D519242DF8A9E18520C34F92EC8BDC2D57A332FEB2696AB1F3F04E69
+      reconciliation:
+        minus-days: 3
+        onebank:
+          download-dir: ${user.dir}/../download/reconciliation/onebank/files
+          file-type: txt
+          corn-time: 0 0 16 * * *
+          minusdayrecon-time: 0 0 17 * * *
+feign:
+  name:
+    onebank: utp-channel-onebank
+    persis: utp-service-persistence
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1

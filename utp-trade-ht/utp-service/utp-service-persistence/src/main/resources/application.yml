@@ -1,0 +1,93 @@
+---
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+  profiles: dev
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    connectionProperties: druid.stat.mergeSql=true
+    url: jdbc:mysql://192.168.214.13:3306/utp_manage_ht_3?useUnicode=true&characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: dwxxkj=123
+    druid:
+      initial-size: 50
+      max-active: 300
+      min-idle: 10
+      keep-alive: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connectionSize: 100
+      validation-query: select 'x' from dual
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query-timeout: 1000
+      phy-timeout-millis: 60000
+      stat-view-servlet:
+        login-username: utp
+        login-password: utp=123
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  offsetAsPageNum: true
+  supportMethodsArguments: true
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    id-type: 2
+    field-strategy: 0
+    db-column-underline: true
+    refresh-mapper: true
+    capital-mode: true
+#日志配置 start#
+logging:
+  level:
+    cn.kingnet: debug
+    com.baomidou.mybatisplus: debug
+    org.spring.springboot.dao: debug
+  file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+
+#hystrix及ribbon配置 start#
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#hystrix及ribbon配置 end#
+cn:
+  kingnet:
+    utp:
+      virtual-account-prefix: '9100001101'
+      precard-account-prefix: '9990001101'
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9761/eureka/
+    registry-fetch-interval-seconds: 5

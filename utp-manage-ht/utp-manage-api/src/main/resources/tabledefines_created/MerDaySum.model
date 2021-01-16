@@ -1,0 +1,93 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "settle",
+    "type": "table",
+    "name": "SettleSumInfo",
+    "mysqlname":"t_mer_day_sum",
+    "update":false,
+    "doc": "对账汇总表",
+    "key":[],
+    "index":[
+        {
+            "name":"t_mer_day_sum_index_1",
+            "fields":["settleDate"],
+            "unique":true
+        },
+        {
+            "name":"t_mer_day_sum_index_2",
+            "fields":["orgCode"]
+        },
+        {
+            "name":"t_mer_day_sum_index_3",
+            "fields":["merNo"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"settleDate",
+            "operation":"=",
+            "paramName":"settle_date"
+        },
+        {
+            "name":"orgCode",
+            "operation":"=",
+            "paramName":"org_code"
+        }
+    ],
+    "fields": [
+        {
+            "name": "settleDate",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "对账日期"
+        },
+        {
+            "name": "orgCode",
+            "type": "String",
+            "mysql_type":"varchar(30)",
+            "doc": "机构编号"
+        },
+        {
+             "name": "merNo",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "商户号"
+        },
+        {
+           "name": "transDate",
+           "type": "String",
+           "mysql_type":"varchar(20)",
+           "doc": "交易日期"
+        },
+        {
+            "name": "productCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "产品编码/类型"
+        },
+        {
+            "name": "tradeType",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "交易类型"
+        },
+        {
+            "name": "totalCount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "交易总笔数"
+        },
+        {
+            "name": "totalAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "交易总金额"
+        },
+        {
+            "name": "totalFee",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "总手续费"
+        }
+    ]
+}

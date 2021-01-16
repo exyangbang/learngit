@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>utp-product</module>
+        <module>utp-service</module>
+        <module>utp-config-server</module>
+        <module>utp-discovery</module>
+        <module>utp-channel</module>
+        <module>utp-common</module>
+        <module>utp-reconciliation</module>
+       <!-- <module>utp-sdk</module>-->
+        <module>utp-scheduler</module>
+      <!--  <module>utp-datamigration</module>-->
+    </modules>
+
+    <parent>
+        <groupId>cn.kingnet</groupId>
+        <artifactId>kingnet-framework-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>utp-trade-ht</artifactId>
+    <packaging>pom</packaging>
+    <version>2.5.5</version>
+
+    <properties>
+        <poi.version>3.16</poi.version>
+        <fastjson.version>1.2.70</fastjson.version>
+    </properties>
+
+
+    <repositories>
+        <repository>
+            <id>dw</id>
+            <url>http://192.168.214.15:8081/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>dw</id>
+            <url>http://192.168.214.15:8081/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.kingnet</groupId>
+                <artifactId>utp-channel-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.kingnet</groupId>
+                <artifactId>utp-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.kingnet</groupId>
+                <artifactId>utp-service-persistence-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.kingnet</groupId>
+                <artifactId>utp-product-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>cn.kingnet</groupId>
+                <artifactId>utp-product-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>3.1.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcmail-jdk15</artifactId>
+                <version>1.46</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lsy.baselib</groupId>
+                <artifactId>CNCBCryptoPkg</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom2</artifactId>
+                <version>2.0.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>22.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.rholder</groupId>
+                <artifactId>guava-retrying</artifactId>
+                <version>2.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>3.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.htrace</groupId>
+                <artifactId>htrace-core4</artifactId>
+                <version>4.0.1-incubating</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>0.1.54</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.keyou</groupId>
+                <artifactId>platform-api3-core</artifactId>
+                <version>3.3.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cavium.jni</groupId>
+                <artifactId>cavium.jni</artifactId>
+                <version>3.2.0.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cryptokit.jni</groupId>
+                <artifactId>cryptokit.jni</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>logback-cfca</groupId>
+                <artifactId>logback-cfca-jdk1.6</artifactId>
+                <version>4.1.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>PKCS11JNI</groupId>
+                <artifactId>PKCS11JNI</artifactId>
+                <version>3.2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>SADK</groupId>
+                <artifactId>SADK</artifactId>
+                <version>3.5.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>sansec</groupId>
+                <artifactId>SwxaJCE</artifactId>
+                <version>2.1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>sansec</groupId>
+                <artifactId>SwxaLib</artifactId>
+                <version>2.1.19</version>
+            </dependency>
+            <dependency>
+                <groupId>cfca.paperless.client</groupId>
+                <artifactId>PaperlessClient</artifactId>
+                <version>3.7.1.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

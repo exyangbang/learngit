@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.SubPayPayeeWhiteListMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.SubPayPayeeWhiteList">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="payee_account" jdbcType="VARCHAR" property="payeeAccount" />
+    <result column="payee_name" jdbcType="VARCHAR" property="payeeName" />
+    <result column="industry_id" jdbcType="BIGINT" property="industryId" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+
+  <select id="selectCountByIndustryAndPayee" parameterType="java.util.Map"  resultType="java.lang.Integer">
+    SELECT COUNT(1)
+      FROM t_sub_pay_payee_white_list t
+      WHERE t.industry_id = #{industryId}
+        AND t.payee_account = #{payeeAccount}
+        AND t.payee_name = #{payeeName}
+  </select>
+</mapper>

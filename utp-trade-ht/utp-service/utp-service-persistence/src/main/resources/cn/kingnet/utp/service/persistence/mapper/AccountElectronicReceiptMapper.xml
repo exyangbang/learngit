@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.AccountElectronicReceiptMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.AccountElectronicReceipt">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="receipt_no" jdbcType="VARCHAR" property="receiptNo" />
+    <result column="md5_hex" jdbcType="VARCHAR" property="md5Hex" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="file_content" jdbcType="LONGVARBINARY" property="fileContent" />
+  </resultMap>
+</mapper>

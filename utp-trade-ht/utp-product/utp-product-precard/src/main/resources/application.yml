@@ -1,0 +1,65 @@
+---
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    config:
+      discovery:
+        enabled: false
+  profiles: dev
+logging:
+    level:
+      cn.kingnet: debug
+    file: ${user.dir}/../logs/${spring.application.name}/${spring.application.name}.log
+feign:
+  name:
+    onebank: utp-channel-onebank
+    persis: utp-service-persistence
+cn:
+  kingnet:
+    utp:
+      product:
+        account:
+          system-id: '32101'
+          dfa: 'EM0'
+          public-account:
+            payer-opbk: '323391060018'
+            acct-type: '01'
+            sys-header-acct-type: '3'
+          proxy-ip: 127.0.0.1
+          proxy-port: 8080
+          union-api-config-file: utp-config/onebank/unionapi/dev/serverList.conf
+      sign-type: RSA
+      private-key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQRRoCMqV6k7yleLGOxit2gcmfajlkPcviQP/9JRbPLPaG7DQYPtZSODbMAFRDtVAJsAB1MdIsgpItPGWKBljNyCAUB1T9QH2S9vXodVOWZUMv5J8JxoVcMbjIZx/55wp7oPC8Jw7H2CMsnqZGAUnjTUjfaOCsDjUBNJLTO0L3/61YrezhOUxfj/MaXrAAyE06lbAizJmacdI3YtntsF82mDBvT5jpFnp/R/pxZIkjAVgC8PDvW0P2iP1USsfiXa/S6jw0ta207ZxkmYzinoTTZ7ADBerSdBoGjtABLVuqKZpEDk0OyGM2Jq7gNdvCo7NBAkOuVJ1joLg4ZgH8KlORAgMBAAECggEBAJECvBQxrVRGjz/rZD2Tr2lo/rh3XpR0DoRvW42niFUh6liRF8iV3+YJa+XoiMNH9/12xSrUUJFbLGpAtjY/Kw/EuskXPc7DW2u7dgavwk5iHUC4fx9wUSSbHhyy6Om4O21O5q8qxrjQvdTwdbciaI7SHd4oCN7jWXaIY36dsYg4A3p282PGOH5yHaLi9p5gQ5DqatPo9VBXL/PtsVVasqED0hznNxu9lWwpW1UVEWeAgVDhtpKsgZehgs5mxV7kdQ2rcKon2kKGVNAEO2JlCG9KRMhQoASeeFamJqfDOZT/tG+hiHoQQWTuaJ7k1of3CtKLwAu87FyUo7Kk8CPPWU0CgYEA+8xxaB8epmnifwZ3NEdj6l+M8EoruR7iAHUKqPX565jDVd6DpFIOoORg+ktIKYdX2LaGerWF2stGbtgATp0K103vyLMVXUZKpw6eG7x7YPvpIDGwnhtbDruDzvX04ZkIOy5rKabn9PeFwI+zqJn1asZz/Pg8SFS+8fMeGpAlg1sCgYEA07652gvdJcSbbWVd7GdQtLDeK1Sh4T51Q7l7emTZIOU678eHNpx9uyd8CIifwxolIXcjNZ8+WTfmNEvMbK7v3t0oMe+1A3mC7u1Swdk2kyQhtORzVy1Kjfc6qURMt3EExhBY1I/eKsq6akD4qEMc6YoNuGTjJCU4yZcdFRcvFIMCgYAbZthAmIJhYcyAPlfinJJHAzb3P1savj2iBxqt4HbeKLW5Nonk6/kjkTbshhzISC5LKzHfULnMYaq8jU0bQQPZAmZB1RtSF0Awheq24gAbQc7Q7hdmXVu/crCZaTLJCjpXFmobEkrT4cvwdLL8eiS3BfnBYdJNnMta0TZJdb5fWQKBgQCfNCjSq9bjvbZLA0siIvAIW28/zwtDqs1KVVxkwwyJ8jBk9nVQd0sFe4ODew38CF1gkw4TFB8xv5jDOzaBhOpve4LsQNmtuh/a+u8dNu8UpLb/JkEei7whj4A4olS4HC7FqKbRczZMoE6W8zDCemtzoEv+l0Q8+gt/brH8GIladwKBgAWLlJVBS7kKYowFVMHKQLyRAw8YWJqjcaMKI7sd77SRPNMZkNpvwZ2Rh0bZstNikD+T0AGzMfGLShsVfn9BBysn/b54j/yzh9afOoPJB2su9YVGuchVq3DCWdOWoqsAyOsG8hrMS4cKl5GYGoB1zeE7/Izexoqn9/KtvdTx2Ndo
+      public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0EUaAjKlepO8pXixjsYrdoHJn2o5ZD3L4kD//SUWzyz2huw0GD7WUjg2zABUQ7VQCbAAdTHSLIKSLTxligZYzcggFAdU/UB9kvb16HVTlmVDL+SfCcaFXDG4yGcf+ecKe6DwvCcOx9gjLJ6mRgFJ401I32jgrA41ATSS0ztC9/+tWK3s4TlMX4/zGl6wAMhNOpWwIsyZmnHSN2LZ7bBfNpgwb0+Y6RZ6f0f6cWSJIwFYAvDw71tD9oj9VErH4l2v0uo8NLWttO2cZJmM4p6E02ewAwXq0nQaBo7QAS1bqimaRA5NDshjNiau4DXbwqOzQQJDrlSdY6C4OGYB/CpTkQIDAQAB
+      auth-cache-timeout: 0
+      ht-sign-flag: 1
+      sign-cert-name:
+      verify-cert-name:
+      manage:
+        des-key: abcdefghijklmnopqrstuvwx
+      download: #文件下载保存目录
+        batch-dir: ${user.dir}/../download/batch-files
+        settle-dir: ${user.dir}/../download/settle
+      upload: #上传文件保存目录
+        settle-split-dir: ${user.dir}/../upload/settle-split
+        file-dir: ${user.dir}/../upload
+
+#hystrix及ribbon配置 start#
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+#hystrix及ribbon配置 end#

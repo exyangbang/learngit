@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.scheduler.data.mapper.FeeIncomeAccountMonthStatMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.scheduler.data.entity.FeeIncomeAccountMonthStat">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="stat_month" jdbcType="VARCHAR" property="statMonth" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="collection_status" jdbcType="VARCHAR" property="collectionStatus" />
+    <result column="income_amount" jdbcType="BIGINT" property="incomeAmount" />
+    <result column="outcome_amount" jdbcType="BIGINT" property="outcomeAmount" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_desc" jdbcType="VARCHAR" property="transDesc" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+  </resultMap>
+
+    <select id="feeIncomeAccountMonthStatList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select a.account,a.obj_name as name,
+        sum(CASE when b.operate_type='01' OR b.operate_type='06' then b.amount ELSE 0 END ) as income_amount,
+        sum(CASE when b.operate_type='04' OR b.operate_type='07' then b.amount ELSE 0 END ) as outcome_amount
+        from t_account a left JOIN t_account_detail b on a.account=b.account and DATE_FORMAT(b.record_time,'%Y%m')= #{statMonth}
+        where a.obj_type='4' AND b.operate_sub_type != '10'
+        <if test="account != null and account !='' ">
+            AND a.account = #{account}
+        </if>
+        group by a.account,a.obj_name
+
+    </select>
+
+    <select id="selectFeeIncomeAndCollectionBO" parameterType="java.util.Map" resultType="cn.kingnet.utp.scheduler.data.bo.FeeIncomeAndCollectionBO">
+  select DISTINCT
+	    b.code as feeIndustryCode,b.name as feeIndustryName,b.account as feeIndustryAccount,b.org_code as feeOrgCode,b.org_name as feeOrgName,
+        d.account_type as feeFundAccType,d.bank_account_no as feeFundAccNo,d.bank_account_name as feeFundAccName,d.bank_code as feeFundOpBankCode,
+	    c.code as collectionIndustryCode,c.name as collectionIndustryName,c.account as collectionIndustryAccount,
+        e.account_type as collectionFundAccType,e.bank_account_no as collectionFundAccNo,e.bank_account_name as collectionFundAccName,e.bank_code as collectionFundOpBankCode
+     from t_industry a
+    INNER JOIN  t_industry b on a.processing_fee_income_account = b.id
+    INNER JOIN t_industry c on a.collection_industry_id = c.id
+    LEFT JOIN t_fund_account d on b.fund_account = d.bank_account_no
+    LEFT JOIN t_fund_account e on c.fund_account = e.bank_account_no
+    where b.account= #{incomeFeeAccount};
+  </select>
+
+
+</mapper>

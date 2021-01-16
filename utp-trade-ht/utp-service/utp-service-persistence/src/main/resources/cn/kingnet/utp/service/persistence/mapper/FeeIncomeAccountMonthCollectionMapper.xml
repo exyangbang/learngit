@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.FeeIncomeAccountMonthCollectionMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.FeeIncomeAccountMonthCollection">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="stat_month" jdbcType="VARCHAR" property="statMonth" />
+    <result column="fee_stat_id" jdbcType="BIGINT" property="feeStatId" />
+    <result column="trans_id" jdbcType="BIGINT" property="transId" />
+  </resultMap>
+</mapper>

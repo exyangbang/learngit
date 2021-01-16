@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.MerchantInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.MerchantInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="mer_no" jdbcType="VARCHAR" property="merNo"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="mer_name" jdbcType="VARCHAR" property="merName"/>
+        <result column="name_abbreviation" jdbcType="VARCHAR" property="nameAbbreviation"/>
+        <result column="administrative_code" jdbcType="VARCHAR" property="administrativeCode"/>
+        <result column="org_code" jdbcType="VARCHAR" property="orgCode"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="industry_code" jdbcType="VARCHAR" property="industryCode"/>
+        <result column="industry_name" jdbcType="VARCHAR" property="industryName"/>
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="county_code" jdbcType="VARCHAR" property="countyCode"/>
+        <result column="reg_address" jdbcType="VARCHAR" property="regAddress"/>
+        <result column="business_address" jdbcType="VARCHAR" property="businessAddress"/>
+        <result column="legal_name" jdbcType="VARCHAR" property="legalName"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="website_name" jdbcType="VARCHAR" property="websiteName"/>
+        <result column="pay_merchant_no" jdbcType="VARCHAR" property="payMerchantNo"/>
+        <result column="template_id" jdbcType="VARCHAR" property="templateId"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="user_type" jdbcType="VARCHAR" property="userType"/>
+        <result column="id_type" jdbcType="VARCHAR" property="idType"/>
+        <result column="id_code" jdbcType="VARCHAR" property="idCode"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="bus_lic_code" jdbcType="VARCHAR" property="busLicCode"/>
+        <result column="ent_name" jdbcType="VARCHAR" property="entName"/>
+        <result column="auth_status" jdbcType="INTEGER" property="authStatus"/>
+        <result column="auth_call_back" jdbcType="VARCHAR" property="authCallBack"/>
+        <result column="auth_remark" jdbcType="VARCHAR" property="authRemark"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="prosession" jdbcType="VARCHAR" property="prosession"/>
+        <result column="id_indate" jdbcType="VARCHAR" property="idIndate"/>
+        <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="file_type" jdbcType="VARCHAR" property="fileType"/>
+        <result column="other_file_type" jdbcType="VARCHAR" property="otherFileType"/>
+        <result column="file_num" jdbcType="VARCHAR" property="fileNum"/>
+        <result column="nature" jdbcType="VARCHAR" property="nature"/>
+        <result column="settle_account" jdbcType="VARCHAR" property="settleAccount"/>
+        <result column="bus_lic_pic" jdbcType="LONGVARCHAR" property="busLicPic"/>
+        <result column="person_pic" jdbcType="LONGVARCHAR" property="personPic"/>
+        <result column="person_reverse_pic" jdbcType="LONGVARCHAR" property="personReversePic"/>
+        <result column="license_pic" jdbcType="LONGVARCHAR" property="licensePic"/>
+    </resultMap>
+
+    <resultMap id="merChannelInfoMap" type="cn.kingnet.utp.service.persistence.vo.MerChannelInfoVO">
+        <result column="mer_no" jdbcType="VARCHAR" property="merNo"/>
+        <result column="mer_name" jdbcType="VARCHAR" property="merName"/>
+        <result column="org_code" jdbcType="VARCHAR" property="orgCode"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="channel_key" jdbcType="VARCHAR" property="channelKey"/>
+        <result column="channel_name" jdbcType="VARCHAR" property="channelName"/>
+        <result column="channel_code" jdbcType="VARCHAR" property="channelCode"/>
+        <result column="product_no" jdbcType="VARCHAR" property="productNo"/>
+        <result column="acc_no" jdbcType="VARCHAR" property="accNo"/>
+        <result column="user_code" jdbcType="VARCHAR" property="userCode"/>
+    </resultMap>
+
+    <select id="getMerChannelInfo" parameterType="String" resultMap="merChannelInfoMap">
+    SELECT
+         mi.mer_no,
+         mi.mer_name,
+         mi.org_code,
+         mi.org_name,
+         ci.channel_key ,
+         ci.channel_code ,
+         ci.channel_name ,
+         ci.product_no,
+         ci.acc_no,
+         ci.user_code
+     FROM t_channel_merchant a
+     JOIN t_merchant_info mi ON mi.mer_no = a.mer_no
+     JOIN t_channel_info ci ON ci.channel_code = a.channel_code
+     WHERE a.mer_no = #{merNo} AND a.product_no = #{productNo} AND mi.status = '1' AND  ci.status = '1'
+  </select>
+
+    <select id="getUserPayInfo" parameterType="java.util.Map" resultType="cn.kingnet.utp.trade.common.bo.UserPayInfo">
+    select a.account as user_account,a.mer_name as user_name,b.account_type as user_acc_type,b.account_no as fund_acc_no,b.account_name as fund_acc_name,
+        b.bank_code,b.bank_name,b.receive_bank_code,a.org_code,a.org_name,a.mer_no,a.industry_code,a.industry_name,a.status,a.nature,a.settle_account,a.user_type,a.auth_status
+    from t_merchant_info a LEFT JOIN t_merchant_account_info b on a.account = b.account
+    where a.account= #{userAccount}
+    union all
+    select a.settle_account as user_account,a.mer_name as user_name,b.account_type as user_acc_type,b.account_no as fund_acc_no,b.account_name as fund_acc_name,
+        b.bank_code,b.bank_name,b.receive_bank_code,a.org_code,a.org_name,a.mer_no,a.industry_code,a.industry_name,a.status,'9' as nature,a.settle_account,a.user_type,a.auth_status
+    from t_merchant_info a LEFT JOIN t_merchant_account_info b on a.account = b.account
+    where a.settle_account = #{userAccount}
+  </select>
+
+    <select id="getMerchantInfoBo" parameterType="java.util.Map" resultType="cn.kingnet.utp.trade.common.bo.MerchantInfoBo">
+        select id,account,mer_no,mer_name,org_code,org_name,industry_code,industry_name,user_type,status,auth_status,nature,settle_account
+        from  t_merchant_info t where t.account = #{subAccount}
+        union all
+         select id,account,mer_no,mer_name,org_code,org_name,industry_code,industry_name,user_type,status,auth_status,'9' as nature,settle_account
+        from  t_merchant_info t where t.settle_account = #{subAccount}
+    </select>
+
+
+</mapper>

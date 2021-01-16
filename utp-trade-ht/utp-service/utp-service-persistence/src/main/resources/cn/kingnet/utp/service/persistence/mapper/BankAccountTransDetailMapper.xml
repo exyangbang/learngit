@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.BankAccountTransDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.BankAccountTransDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="card_number" jdbcType="VARCHAR" property="cardNumber" />
+    <result column="cust_account_no" jdbcType="VARCHAR" property="custAccountNo" />
+    <result column="cust_account_name" jdbcType="VARCHAR" property="custAccountName" />
+    <result column="txn_date" jdbcType="VARCHAR" property="txnDate" />
+    <result column="nature_date" jdbcType="VARCHAR" property="natureDate" />
+    <result column="detail_serial_number" jdbcType="BIGINT" property="detailSerialNumber" />
+    <result column="drcr_flag" jdbcType="VARCHAR" property="drcrFlag" />
+    <result column="txn_amount" jdbcType="BIGINT" property="txnAmount" />
+    <result column="account_balance" jdbcType="BIGINT" property="accountBalance" />
+    <result column="other_cust_account_no" jdbcType="VARCHAR" property="otherCustAccountNo" />
+    <result column="other_cust_name" jdbcType="VARCHAR" property="otherCustName" />
+    <result column="reversed_flag" jdbcType="VARCHAR" property="reversedFlag" />
+    <result column="remark_detail" jdbcType="VARCHAR" property="remarkDetail" />
+    <result column="txn_time" jdbcType="VARCHAR" property="txnTime" />
+    <result column="sys_reference_no" jdbcType="VARCHAR" property="sysReferenceNo" />
+    <result column="org_sys_reference_no" jdbcType="VARCHAR" property="orgSysReferenceNo" />
+    <result column="other_bank_name" jdbcType="VARCHAR" property="otherBankName" />
+    <result column="other_remark" jdbcType="VARCHAR" property="otherRemark" />
+    <result column="oper_status" jdbcType="VARCHAR" property="operStatus" />
+    <result column="summary_description" jdbcType="VARCHAR" property="summaryDescription" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="source_flag" jdbcType="VARCHAR" property="sourceFlag" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="biz_reference_no" jdbcType="VARCHAR" property="bizReferenceNo" />
+    <result column="other_bank_no" jdbcType="VARCHAR" property="otherBankNo" />
+    <result column="other_rid" jdbcType="VARCHAR" property="otherRid" />
+  </resultMap>
+
+  <select id="selectFundAccountCoreNo" parameterType="java.util.Map" resultType="java.util.HashMap">
+    select t.cust_account_no,t.sys_reference_no,t.other_rid from t_bank_account_trans_detail t
+  </select>
+
+  <cache />
+</mapper>

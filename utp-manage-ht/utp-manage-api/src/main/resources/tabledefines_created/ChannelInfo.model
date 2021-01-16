@@ -1,0 +1,138 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "channel",
+    "type": "table",
+    "name": "ChannelInfo",
+    "mysqlname":"t_channel_info",
+    "update":false,
+    "doc": "渠道信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"t_channel_info_index_1",
+            "fields":["channelCode"],
+            "unique":true
+        },
+        {
+            "name":"t_channel_info_index_2",
+            "fields":["channelName"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"channelCode",
+            "operation":"like",
+            "paramName":"channel_code"
+        },
+        {
+            "name":"channelName",
+            "operation":"=",
+            "paramName":"channel_name"
+        },
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"productNo",
+            "operation":"=",
+            "paramName":"product_no"
+        },
+         {
+             "name":"status",
+             "operation":"=",
+             "paramName":"status"
+         }
+    ],
+    "fields": [
+        {
+            "name": "channelKey",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "渠道标识"
+        },
+        {
+            "name": "channelName",
+            "type": "String",
+            "mysql_type":"varchar(100)",
+            "doc": "渠道名称"
+        },
+         {
+             "name": "channelCode",
+             "type": "String",
+             "mysql_type":"varchar(50)",
+             "doc": "渠道编码"
+         },
+         {
+                "name": "merNo",
+                "type": "String",
+                "mysql_type":"varchar(50)",
+                "doc": "商户编号"
+            },
+           {
+               "name": "productNo",
+               "type": "String",
+               "mysql_type":"varchar(50)",
+               "doc": "支付产品编码"
+           },
+           {
+              "name": "joinType",
+              "type": "String",
+              "mysql_type":"varchar(10)",
+              "doc": "接入类型"
+          },
+          {
+              "name": "frontUrl",
+              "type": "String",
+              "mysql_type":"varchar(255)",
+              "doc": "请求前台地址"
+          },
+          {
+              "name": "backUrl",
+              "type": "String",
+              "mysql_type":"varchar(255)",
+              "doc": "请求后台地址"
+          },
+           {
+               "name": "trid",
+               "type": "String",
+               "mysql_type":"varchar(50)",
+               "doc": "trid参数"
+           },
+             {
+                 "name": "trtp",
+                 "type": "String",
+                 "mysql_type":"varchar(50)",
+                 "doc": "trtp参数"
+             },
+             {
+                "name": "orgCode",
+                "type": "String",
+                "mysql_type":"varchar(50)",
+                "doc": "机构号"
+            },
+           {
+               "name": "chnFeeTemplateId",
+               "type": "Long",
+               "mysql_type":"bigint(20)",
+               "doc": "渠道手续费模板Id"
+           },{
+             "name": "status",
+             "type": "String",
+             "mysql_type":"varchar(20)",
+             "doc": "状态"
+         },
+        {
+          "name": "accNo",
+          "type": "String",
+          "mysql_type":"varchar(32)",
+          "doc": "企业账户"
+        },{
+          "name": "userCode",
+          "type": "String",
+          "mysql_type":"varchar(32)",
+          "doc": "用户编码"
+        }
+    ]
+}

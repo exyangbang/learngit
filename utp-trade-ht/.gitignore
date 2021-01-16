@@ -1,0 +1,32 @@
+**.class
+# Package Files #
+**.jar
+**.war
+**.ear
+**.log.gz
+**.log.*
+**.zip
+
+# Eclipse Files #
+**.classpath
+**.project
+**.settings
+
+# Idea IntelliJ Files #
+**.idea
+**.iml
+**/*.iml
+
+/target
+**/target
+**.DS_Store
+
+**.log
+**.zip
+
+**/node_modules
+**/bin
+
+/deploy/utp-trade/apps/**
+/deploy/utp-manage/**
+**/xt_ht_online.pfx

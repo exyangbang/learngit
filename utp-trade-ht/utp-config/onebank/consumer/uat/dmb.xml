@@ -1,0 +1,45 @@
+<root>
+	<basic>
+		<!--子系统ID -->
+		<user>u30449</user>
+		<pwd>bank</pwd>
+		<!--子系统ID -->
+		<systemId>30449</systemId>
+		<dfa>HM0</dfa>
+		<timeout>30000</timeout>
+		<handler>1</handler>
+	</basic>
+	<service>
+		<thread>
+			<node id="pool0001" corePoolSize="8" maximumPoolSize="16" keepAliveTime="10000" queueSize="3000"/>
+		</thread>
+		<provider>
+			<node serviceId="1041040001" sceneId="01" poolId="pool0001" impl="cn.kingnet.utp.channel.onebank.service.callback.TransferCallbackProvider"/>
+			<node serviceId="1043040003" sceneId="01" poolId="pool0001" impl="cn.kingnet.utp.channel.onebank.service.callback.DBMVirtualAccountQueryConsumer"/>
+			<node serviceId="1043040004" sceneId="01" poolId="pool0001" impl="cn.kingnet.utp.channel.onebank.service.callback.DBMAccountIncomeNoticeConsumer"/>
+		</provider>
+	</service>
+
+	<esc>
+		<!-- API请求连接超时时间,读取超时时间，连接失败后的重试次数，默认端口，location节点不配置端口使用 -->
+		<request connTimeout="5000" readTimeout="50000" retry="3" defaultPort="11222">
+			<!-- 集中式终端，轮询发送可用终端 -->
+			<centralized>
+				<location address="10.11.20.170"/>
+				<location address="10.11.20.171"/>
+			</centralized>
+		</request>
+		<!-- api对报文预处理分配线程的线程池配置-->
+		<response corePoolSize="20" maximumPoolSize="40" keepAliveTime="10000" queueSize="3000">
+			<!-- api接受响应报文时的地址-->
+			<location address="30222"/>
+		</response>
+		<!-- 探测模块是否开启探测-->
+		<detector switch="on">
+			<!-- 探测连接超时时间, 读取超时时间, 轮询探测时间周期 -->
+			<roundRobin connTimeout="3000" readTimeout="5000" interval="5000"/>
+			<!-- 健康检测时间周期 -->
+			<healthMonitor interval="5000"/>
+		</detector>
+	</esc>
+</root>

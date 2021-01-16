@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.IndustryAmtLimitMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.IndustryAmtLimit">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="industry_id" jdbcType="BIGINT" property="industryId" />
+    <result column="industry_name" jdbcType="VARCHAR" property="industryName" />
+    <result column="public_individual_amt" jdbcType="BIGINT" property="publicIndividualAmt" />
+    <result column="private_individual_amt" jdbcType="BIGINT" property="privateIndividualAmt" />
+    <result column="unit_individual_amt" jdbcType="BIGINT" property="unitIndividualAmt" />
+    <result column="industry_date_amt" jdbcType="BIGINT" property="industryDateAmt" />
+    <result column="subaccounts_date_amt" jdbcType="BIGINT" property="subaccountsDateAmt" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="same_order_max_spe_amt" jdbcType="VARCHAR" property="sameOrderMaxSpeAmt" />
+    <result column="same_cash_max_amt" jdbcType="VARCHAR" property="sameCashMaxAmt" />
+    <result column="minute_max_cash_tran_amt" jdbcType="VARCHAR" property="minuteMaxCashTranAmt" />
+    <result column="public_subaccounts_date_amt" jdbcType="BIGINT" property="publicSubaccountsDateAmt" />
+    <result column="industry_balance_date_amt" jdbcType="BIGINT" property="industryBalanceDateAmt" />
+    <result column="private_subaccounts_balance_date_amt" jdbcType="BIGINT" property="privateSubaccountsBalanceDateAmt" />
+    <result column="public_subaccounts_balance_date_amt" jdbcType="BIGINT" property="publicSubaccountsBalanceDateAmt" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.IndustryMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.Industry">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="simple_name" jdbcType="VARCHAR" property="simpleName" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="county_code" jdbcType="VARCHAR" property="countyCode" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="cust_number" jdbcType="VARCHAR" property="custNumber" />
+    <result column="cust_account_no" jdbcType="VARCHAR" property="custAccountNo" />
+    <result column="cust_account_name" jdbcType="VARCHAR" property="custAccountName" />
+    <result column="inner_notice_url" jdbcType="VARCHAR" property="innerNoticeUrl" />
+    <result column="fee_expenditure_account" jdbcType="BIGINT" property="feeExpenditureAccount" />
+    <result column="processing_fee_income_account" jdbcType="BIGINT" property="processingFeeIncomeAccount" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="industry_type" jdbcType="VARCHAR" property="industryType" />
+    <result column="whether_external" jdbcType="VARCHAR" property="whetherExternal" />
+    <result column="fund_account" jdbcType="VARCHAR" property="fundAccount" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="collection_industry_id" jdbcType="BIGINT" property="collectionIndustryId" />
+    <result column="ent_name" jdbcType="VARCHAR" property="entName" />
+    <result column="reg_address" jdbcType="VARCHAR" property="regAddress" />
+    <result column="bus_lic_code" jdbcType="VARCHAR" property="busLicCode" />
+    <result column="id_type" jdbcType="VARCHAR" property="idType" />
+    <result column="id_code" jdbcType="VARCHAR" property="idCode" />
+    <result column="account_no" jdbcType="VARCHAR" property="accountNo" />
+    <result column="business_type" jdbcType="VARCHAR" property="businessType" />
+    <result column="dn" jdbcType="VARCHAR" property="dn" />
+    <result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+    <result column="max_brokerage_rate" jdbcType="BIGINT" property="maxBrokerageRate" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="customer_trade" jdbcType="VARCHAR" property="customerTrade" />
+    <result column="file_type" jdbcType="VARCHAR" property="fileType" />
+    <result column="other_file_type" jdbcType="VARCHAR" property="otherFileType" />
+    <result column="file_num" jdbcType="VARCHAR" property="fileNum" />
+    <result column="balance_pay_period" jdbcType="VARCHAR" property="balancePayPeriod" />
+    <result column="is_opne_double_acc" jdbcType="VARCHAR" property="isOpneDoubleAcc" />
+    <result column="is_opne_balance_pay" jdbcType="VARCHAR" property="isOpneBalancePay" />
+    <result column="authentication_mode" jdbcType="VARCHAR" property="authenticationMode" />
+    <result column="need_public_auth_amt" jdbcType="VARCHAR" property="needPublicAuthAmt" />
+    <result column="able_bind_multi_card" jdbcType="VARCHAR" property="ableBindMultiCard" />
+    <result column="auth_payment_account_id" jdbcType="BIGINT" property="authPaymentAccountId" />
+    <result column="open_sub_single_pay" jdbcType="VARCHAR" property="openSubSinglePay" />
+    <result column="verify_payee_account_sign" jdbcType="VARCHAR" property="verifyPayeeAccountSign" />
+    <result column="verify_payee_white_list_sign" jdbcType="VARCHAR" property="verifyPayeeWhiteListSign" />
+    <result column="payer_sub_type" jdbcType="VARCHAR" property="payerSubType" />
+    <result column="sub_income_type" jdbcType="INTEGER" property="subIncomeType" />
+    <result column="able_trans_order_init" jdbcType="INTEGER" property="ableTransOrderInit" />
+    <result column="sub_account_open_max" jdbcType="INTEGER" property="subAccountOpenMax" />
+    <result column="reconciliation_mode" jdbcType="INTEGER" property="reconciliationMode" />
+    <result column="able_download_daily_balance" jdbcType="INTEGER" property="ableDownloadDailyBalance" />
+    <result column="open_account_mode" jdbcType="INTEGER" property="openAccountMode" />
+    <result column="industry_income_type" jdbcType="INTEGER" property="industryIncomeType" />
+    <result column="open_show_custom_flag" jdbcType="INTEGER" property="openShowCustomFlag" />
+    <result column="bus_lic_pic" jdbcType="LONGVARCHAR" property="busLicPic" />
+    <result column="person_pic" jdbcType="LONGVARCHAR" property="personPic" />
+    <result column="person_reverse_pic" jdbcType="LONGVARCHAR" property="personReversePic" />
+    <result column="license_pic" jdbcType="LONGVARCHAR" property="licensePic" />
+  </resultMap>
+
+  <select id="getFundAccountByIndustryCode" parameterType="java.util.Map" resultType="cn.kingnet.utp.service.persistence.entity.FundAccount">
+    SELECT f.* from t_industry t left join t_fund_account f on t.fund_account = f.bank_account_no
+    where t.code = #{industryCode} and t.status = '1' and f.status = '1'
+  </select>
+  <select id="getIndustryBrokerageAccount" parameterType="java.util.Map" resultType="cn.kingnet.utp.service.persistence.entity.Account">
+    SELECT t.* from t_account t left join t_merchant_info m on t.account = m.account
+    where t.obj_type='7' and m.industry_code = #{industryCode} and t.status = '1'
+  </select>
+
+  <select id="getIndustryPayInfo" parameterType="java.util.Map" resultType="cn.kingnet.utp.trade.common.bo.IndustryPayInfo">
+    select a.code as industry_code,a.name as industry_name,a.org_code,a.org_name ,a.status,a.industry_type,a.business_type,a.inner_notice_url,
+        a.account as industry_account,d.account_type as fund_acc_type,d.bank_account_no as fund_acc_no,d.bank_account_name as fund_acc_name,
+        d.bank_code as fund_bank_code,b.account as fee_out_account,b.name as fee_out_name,c.account as fee_in_account,c.name as fee_in_name
+  from t_industry a
+  LEFT JOIN t_industry b on a.fee_expenditure_account = b.id
+  LEFT JOIN t_industry c on a.processing_fee_income_account= c.id
+  left JOIN t_fund_account  d on a.fund_account=d.bank_account_no
+  where a.code= #{industryCode};
+  </select>
+  <select id="getIndustryBySubAccount" parameterType="java.util.Map" resultType="cn.kingnet.utp.service.persistence.entity.Industry">
+    select a.id,a.code,a.name,a.industry_type,a.account,a.fund_account,a.inner_notice_url,
+     a.org_code,a.org_name,a.status,a.dn,a.is_opne_balance_pay,a.is_opne_double_acc,
+     a.max_brokerage_rate,a.whether_external,a.balance_pay_period,a.authentication_mode,
+     a.sub_income_type,a.able_trans_order_init,a.sub_account_open_max
+     from t_merchant_info t inner join  t_industry a on t.industry_code = a.code
+    where t.account = #{subAccount}
+    union all
+     select a.id,a.code,a.name,a.industry_type,a.account,a.fund_account,a.inner_notice_url,
+     a.org_code,a.org_name,a.status,a.dn,a.is_opne_balance_pay,a.is_opne_double_acc,
+     a.max_brokerage_rate,a.whether_external,a.balance_pay_period,a.authentication_mode,
+     a.sub_income_type,a.able_trans_order_init,a.sub_account_open_max
+     from t_merchant_info t inner join  t_industry a on t.industry_code = a.code
+    where t.settle_account = #{subAccount}
+  </select>
+
+  <select id="selectFunctionAccountRemitterList" resultType="cn.kingnet.utp.trade.common.bo.IndustryAccountInfoBo">
+    select a.account,a.industry_code,a.industry_name,a.industry_type,b.account_no,b.account_name
+    from (
+      select c.account,c.code as industry_code,c.name as industry_name,c.industry_type  from  t_industry c INNER JOIN t_industry d on c.id = d.fee_expenditure_account
+      where  d.code= #{industryCode}
+     UNION ALL
+     select c.account,c.code as industry_code,c.name as industry_name,c.industry_type  from  t_industry c INNER JOIN t_industry d on c.id = d.auth_payment_account_id
+     where c.industry_type='10' and d.code=#{industryCode}
+    ) a LEFT JOIN t_industry_account_info b on a.industry_code = b.industry_code
+
+  </select>
+
+</mapper>

@@ -1,0 +1,42 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "whitelist",
+    "type": "table",
+    "name": "WhiteList",
+    "mysqlname":"t_white_list",
+    "update":false,
+    "doc": "来款账户白名单",
+    "key":[],
+    "index":[
+
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "merName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "客户名称"
+        },
+        {
+            "name": "merAbb",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "客户简称"
+        },
+         {
+             "name": "industryCode",
+             "type": "String",
+             "mysql_type":"varchar(12)",
+             "doc": "代付客户号"
+         },
+         {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "来款方户名"
+         }
+    ]
+}

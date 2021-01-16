@@ -1,0 +1,161 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "settle",
+    "type": "table",
+    "name": "SettleCheckInfo",
+    "mysqlname":"t_settle_check_info",
+    "update":false,
+    "doc": "",
+    "key":[],
+    "index":[
+        {
+            "name":"t_settle_check_info_index_1",
+            "fields":["merNo"],
+            "unique":true
+        },
+        {
+            "name":"t_settle_check_info_index_2",
+            "fields":["orgCode"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"orgCode",
+            "operation":"=",
+            "paramName":"org_code"
+        },
+        {
+            "name":"clientTransId",
+            "operation":"=",
+            "paramName":"client_trans_id"
+        },
+        {
+            "name":"serverTransId",
+            "operation":"=",
+            "paramName":"server_trans_id"
+        },
+        {
+            "name":"productCode",
+            "operation":"=",
+            "paramName":"product_code"
+        },
+        {
+            "name":"tradeType",
+            "operation":"=",
+            "paramName":"trade_type"
+        },
+        {
+            "name":"errorType",
+            "operation":"=",
+            "paramName":"error_type"
+        },
+        {
+            "name":"status",
+            "operation":"=",
+            "paramName":"status"
+        }
+    ],
+    "fields": [
+        {
+            "name": "orgCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "机构编码"
+        },
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "商户号"
+        },
+        {
+            "name": "productCode",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "产品编码"
+        },
+        {
+            "name": "tradeType",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "交易类型"
+        },
+        {
+            "name": "clientTransId",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "客户端流水号"
+        },
+        {
+            "name": "serverTransId",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "服务端流水号"
+        },
+        {
+            "name": "transAmount",
+            "type": "Long",
+            "mysql_type":"bigint(20)",
+            "doc": "交易金额"
+        },
+        {
+            "name": "transStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "交易状态"
+        },
+        {
+            "name": "clientTransTime",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "客户端交易发起时间"
+        },
+        {
+            "name": "channelRespTime",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "渠道返回时间"
+        },
+        {
+            "name": "channelRespCode",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "渠道返回代码"
+        },
+        {
+            "name": "channelRespMsg",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "渠道返回信息"
+        },
+        {
+            "name": "errorType",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "差错类型"
+        },
+        {
+            "name": "errorDesc",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "差错备注"
+        },
+        {
+            "name": "status",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "处理状态"
+        },
+        {
+            "name": "remark",
+            "type": "String",
+            "mysql_type":"varchar(255)",
+            "doc": "处理说明备注"
+        }
+    ]
+}

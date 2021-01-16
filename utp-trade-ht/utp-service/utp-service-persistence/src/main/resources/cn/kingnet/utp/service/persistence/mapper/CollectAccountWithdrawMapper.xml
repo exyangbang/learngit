@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kingnet.utp.service.persistence.mapper.CollectAccountWithdrawMapper">
+  <resultMap id="BaseResultMap" type="cn.kingnet.utp.service.persistence.entity.CollectAccountWithdraw">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="user_create" jdbcType="VARCHAR" property="userCreate" />
+    <result column="user_modified" jdbcType="VARCHAR" property="userModified" />
+    <result column="client_trans_id" jdbcType="VARCHAR" property="clientTransId" />
+    <result column="industry_code" jdbcType="VARCHAR" property="industryCode" />
+    <result column="industry_name" jdbcType="VARCHAR" property="industryName" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="recive_account_no" jdbcType="VARCHAR" property="reciveAccountNo" />
+    <result column="recive_account_name" jdbcType="VARCHAR" property="reciveAccountName" />
+    <result column="audit_status" jdbcType="VARCHAR" property="auditStatus" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="req_date" jdbcType="VARCHAR" property="reqDate" />
+    <result column="req_time" jdbcType="VARCHAR" property="reqTime" />
+    <result column="recive_op_bank_code" jdbcType="VARCHAR" property="reciveOpBankCode" />
+    <result column="recive_op_bank_name" jdbcType="VARCHAR" property="reciveOpBankName" />
+    <result column="recive_cl_bank_code" jdbcType="VARCHAR" property="reciveClBankCode" />
+    <result column="fund_account_no" jdbcType="VARCHAR" property="fundAccountNo" />
+    <result column="fund_account_name" jdbcType="VARCHAR" property="fundAccountName" />
+    <result column="trans_status" jdbcType="VARCHAR" property="transStatus" />
+    <result column="trans_desc" jdbcType="VARCHAR" property="transDesc" />
+    <result column="server_trans_id" jdbcType="VARCHAR" property="serverTransId" />
+  </resultMap>
+</mapper>

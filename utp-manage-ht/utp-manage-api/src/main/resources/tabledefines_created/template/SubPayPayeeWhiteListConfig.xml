@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+    <worksheet name="Sheet1">
+        <section startRow="2" endRow="2">
+        </section>
+        <loop startRow="2" endRow="2" items="items" var="carBin" varType="com.scenetec.upf.operation.model.domain.subpaypayeewhitelist.SubPayPayeeWhiteListDO">
+            <section startRow="1" endRow="1">
+                <mapping row="1" col="0">carBin.payeeAccount</mapping>
+                <mapping row="1" col="1">carBin.payeeName</mapping>
+            </section>
+            <loopbreakcondition>
+                <rowcheck offset="0">
+                    <cellcheck offset="0"></cellcheck>
+                </rowcheck>
+            </loopbreakcondition>
+        </loop>
+    </worksheet>
+</workbook>
+
+
+
+<!--        <?xml version="1.0" encoding="ISO-8859-1"?>-->
+<!--<workbook>-->
+<!--<worksheet name="Sheet1">-->
+<!--    <loop startRow="2" endRow="2" items="items" var="mer" varType="com.scenetec.upf.operation.model.domain.merchant.MerchantInfoDO">-->
+<!--        <section startRow="1" endRow="1">-->
+<!--            <mapping row="2" col="0">mer.merNo</mapping>-->
+<!--            <mapping row="2" col="1">mer.merName</mapping>-->
+<!--            <mapping row="2" col="2">mer.orgCode</mapping>-->
+<!--            <mapping row="2" col="3">mer.industryCode</mapping>-->
+<!--        </section>-->
+<!--        <loopbreakcondition>-->
+<!--            <rowcheck offset="0">-->
+<!--                <cellcheck offset="0"></cellcheck>-->
+<!--            </rowcheck>-->
+<!--        </loopbreakcondition>-->
+<!--    </loop>-->
+<!--</worksheet>-->
+<!--</workbook>-->

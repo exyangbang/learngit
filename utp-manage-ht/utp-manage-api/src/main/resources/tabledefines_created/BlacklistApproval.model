@@ -1,0 +1,48 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "blacklisapproval",
+    "type": "table",
+    "name": "BlacklistApproval",
+    "mysqlname":"t_blacklist_approval",
+    "update":false,
+    "doc": "黑名单审批操作记录",
+    "key":[],
+    "index":[
+    ],
+    "conditions":[
+
+    ],
+    "fields": [
+        {
+            "name": "name",
+            "type": "String",
+            "mysql_type":"varchar(20)",
+            "doc": "姓名"
+        },
+        {
+            "name": "busLicCode",
+            "type": "String",
+            "mysql_type":"varchar(200)",
+            "doc": "证件号"
+        },
+         {
+             "name": "remark",
+             "type": "String",
+             "mysql_type":"varchar(1000)",
+             "doc": "备注"
+         },
+        {
+            "name": "auditStatus",
+            "type": "String",
+            "mysql_type":"varchar(10)",
+            "doc": "状态（0-待审核 1-审核通过 2-审核驳回）"
+        },
+         {
+             "name": "operationType",
+             "type": "String",
+             "mysql_type":"varchar(10)",
+             "doc": "0-删除 1-修改 2-增加"
+         }
+
+    ]
+}

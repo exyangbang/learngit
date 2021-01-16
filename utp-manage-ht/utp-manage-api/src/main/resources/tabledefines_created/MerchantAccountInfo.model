@@ -1,0 +1,76 @@
+{
+    "namespace": "com.scenetec.upf.operation",
+    "module": "merchant",
+    "type": "table",
+    "name": "MerchantAccountInfo",
+    "mysqlName":"merchant_account_info",
+    "update":false,
+    "doc": "商户账户信息表",
+    "key":[],
+    "index":[
+        {
+            "name":"merchant_account_info_index_1",
+            "fields":["merNo"]
+        },
+        {
+            "name":"merchant_account_info_index_2",
+            "fields":["accountType"]
+        }
+    ],
+    "conditions":[
+        {
+            "name":"merNo",
+            "operation":"=",
+            "paramName":"mer_no"
+        },
+        {
+            "name":"accountType",
+            "operation":"=",
+            "paramName":"account_type"
+        }
+    ],
+    "fields": [
+        {
+            "name": "merNo",
+            "type": "String",
+            "mysql_type":"varchar(64)",
+            "doc": "商户号"
+        },
+        {
+            "name": "accountType",
+            "type": "String",
+            "mysql_type":"varchar(2)",
+            "doc": "账户类型"
+        },
+        {
+            "name": "accountNo",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "账号"
+        },
+        {
+            "name": "accountName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "账户名称"
+        },
+        {
+            "name": "bankCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "开户行行号"
+        },
+        {
+            "name": "bankName",
+            "type": "String",
+            "mysql_type":"varchar(300)",
+            "doc": "开户行行名称"
+        },
+        {
+            "name": "receiveBankCode",
+            "type": "String",
+            "mysql_type":"varchar(32)",
+            "doc": "接收行号/结算结构代码"
+        }
+    ]
+}
